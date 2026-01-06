@@ -54,7 +54,16 @@ del db.sqlite3
 pyclean .
 python manage.py makemigrations
 python manage.py migrate
-python manage.py fill_db
+python manage.py load_initial_data
 python manage.py runserver
 ```
+ ## 04 Adding extra fields to a Django custom user model
 
+ [https://pythoneatstail.com/en/overview-all-articles/add-extra-fields-custom-user-model/]
+
+ ```bash
+ python manage.py makemigrations
+ python manage.py migrate 
+ ```
+
+ 
