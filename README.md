@@ -35,3 +35,12 @@ python ..\manage.py startapp people
 python ..\manage.py startapp scoring
 ```
 
+## 02 Wagtail with a custom user model
+
+[https://pythoneatstail.com/en/overview-all-articles/wagtail-custom-user-model/]
+
+```bash
+python manage.py makemigrations
+python manage.py runserver
+```
+
