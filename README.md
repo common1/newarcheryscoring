@@ -44,3 +44,17 @@ python manage.py makemigrations
 python manage.py runserver
 ```
 
+## 03 Create fill_db app
+
+```bash
+pip install pyclean
+python manage.py startapp fill_db
+
+del db.sqlite3
+pyclean .
+python manage.py makemigrations
+python manage.py migrate
+python manage.py fill_db
+python manage.py runserver
+```
+

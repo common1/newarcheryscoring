@@ -25,6 +25,7 @@ BASE_DIR = PROJECT_DIR.parent
 
 INSTALLED_APPS = [
     "userauth",
+    "fill_db",
     "newarcheryscoring.base",
     "newarcheryscoring.blog",
     "newarcheryscoring.locations",
