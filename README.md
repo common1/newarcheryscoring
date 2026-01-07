@@ -100,3 +100,13 @@ get_random_secret_key()
 
 [https://pythoneatstail.com/en/overview-all-articles/signup-and-password-reset-email-verification-allauth-django/]
 
+```bash
+```
+
+## 09 Allowing users to update and delete their profile
+
+[https://pythoneatstail.com/en/overview-all-articles/allowing-users-update-and-delete-their-profile/]
+
+```bash
+```
+
