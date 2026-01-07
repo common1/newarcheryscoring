@@ -96,3 +96,7 @@ get_random_secret_key()
 # Put secret key in local.py
 ```
 
+## 08 Signup and password reset with allauth's email verification in Django
+
+[https://pythoneatstail.com/en/overview-all-articles/signup-and-password-reset-email-verification-allauth-django/]
+
