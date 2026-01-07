@@ -77,3 +77,11 @@ python manage.py runserver
  pip install django-allauth
  ```
 
+## 06 Setting up validated login with allauth in Django
+
+[https://pythoneatstail.com/en/overview-all-articles/setting-login-allauth-django/]
+
+```bash
+pip install django-widget-tweaks
+```
+
