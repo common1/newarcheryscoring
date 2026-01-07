@@ -69,4 +69,11 @@ python manage.py runserver
  python manage.py migrate 
  ```
 
- 
+ ## 05 Setting up allauth in Django
+
+ [https://pythoneatstail.com/en/overview-all-articles/set-allauth-django-project/]
+
+ ```bash
+ pip install django-allauth
+ ```
+
