@@ -85,3 +85,14 @@ python manage.py runserver
 pip install django-widget-tweaks
 ```
 
+## 07 Github, secret keys and other local settings
+
+[https://pythoneatstail.com/en/overview-all-articles/github-secret-keys-and-other-local-settings/]
+
+```bash
+python manage.py shell
+from django.core.management.utils import get_random_secret_key
+get_random_secret_key()
+# Put secret key in local.py
+```
+
