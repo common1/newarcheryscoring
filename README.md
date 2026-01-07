@@ -110,3 +110,8 @@ get_random_secret_key()
 ```bash
 ```
 
+## 10 New base.html template
+
+```bash
+```
+
