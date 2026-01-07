@@ -1,5 +1,4 @@
-Django>=5.2,<5.3
-wagtail>=7.2,<7.3
+wagtail==7.2.1
+Django==6.0.1
 pyclean==3.4.0
 django-countries==8.2.0
-Pillow>=10.0.0,<11.0.0

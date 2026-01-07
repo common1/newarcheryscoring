@@ -24,8 +24,9 @@ BASE_DIR = PROJECT_DIR.parent
 # Application definition
 
 INSTALLED_APPS = [
-    "userauth",
+    "userauth", # an app that contains the custom user model
     "fill_db",
+    "newarcheryscoring.apps.CustomUsersAppConfig", # a custom app config for the wagtail.users app
     "newarcheryscoring.base",
     "newarcheryscoring.blog",
     "newarcheryscoring.locations",
@@ -37,7 +38,7 @@ INSTALLED_APPS = [
     "wagtail.contrib.redirects",
     "wagtail.embeds",
     "wagtail.sites",
-    "wagtail.users",
+    # "wagtail.users",
     "wagtail.snippets",
     "wagtail.documents",
     "wagtail.images",
@@ -73,6 +74,8 @@ TEMPLATES = [
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
             PROJECT_DIR / "templates",
+            BASE_DIR / "templates",
+            BASE_DIR / "userauth/templates/userauth",
         ],
         "APP_DIRS": True,
         "OPTIONS": {
@@ -188,3 +191,8 @@ WAGTAILADMIN_BASE_URL = "http://example.com"
 WAGTAILDOCS_EXTENSIONS = ['csv', 'docx', 'key', 'odt', 'pdf', 'pptx', 'rtf', 'txt', 'xlsx', 'zip']
 
 AUTH_USER_MODEL = 'userauth.CustomUser'
+
+WAGTAIL_USER_CREATION_FORM = 'userauth.forms.WagtailUserCreationForm'
+WAGTAIL_USER_EDIT_FORM = 'userauth.forms.WagtailUserEditForm'
+WAGTAIL_USER_CUSTOM_FIELDS = ['display_name', 'date_of_birth', 'address1', 'address2', 'zip_code', 'city', 'country', 'mobile_phone', 'additional_information', 'photo',]
+

@@ -61,6 +61,9 @@ python manage.py runserver
 
  [https://pythoneatstail.com/en/overview-all-articles/add-extra-fields-custom-user-model/]
 
+ Important
+ [https://docs.wagtail.org/en/v7.2.1/advanced_topics/customization/custom_user_models.html]
+
  ```bash
  python manage.py makemigrations
  python manage.py migrate 
