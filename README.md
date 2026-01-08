@@ -115,3 +115,14 @@ get_random_secret_key()
 ```bash
 ```
 
+## 11 Relocate scoring app
+
+```bash
+# Relocate scoring app from newarcheryscoring to ..
+# Create recording app in newarcheryscoring
+python manage.py startapp scoring
+cd newarcheryscoring
+python ..\manage.py startapp recording
+cd ..
+```
+

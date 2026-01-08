@@ -26,12 +26,13 @@ BASE_DIR = PROJECT_DIR.parent
 INSTALLED_APPS = [
     "userauth", # an app that contains the custom user model
     "fill_db",
+    "scoring",
     "newarcheryscoring.apps.CustomUsersAppConfig", # a custom app config for the wagtail.users app
     "newarcheryscoring.base",
     "newarcheryscoring.blog",
     "newarcheryscoring.locations",
     "newarcheryscoring.people",
-    "newarcheryscoring.scoring",
+    "newarcheryscoring.recording",
     "home",
     "search",
     "wagtail.contrib.forms",
