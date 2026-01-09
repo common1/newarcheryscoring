@@ -126,3 +126,30 @@ python ..\manage.py startapp recording
 cd ..
 ```
 
+## 12 Create scoring models, serializers and views
+
+```
+urls
+http://localhost:8000/scoring/archers/
+http://localhost:8000/scoring/disciplines/
+http://localhost:8000/scoring/disciplinememberships/
+http://localhost:8000/scoring/clubs/
+http://localhost:8000/scoring/clubmemberships/
+http://localhost:8000/scoring/categories/
+http://localhost:8000/scoring/agegroups/
+http://localhost:8000/scoring/teams/
+http://localhost:8000/scoring/teammemberships/
+http://localhost:8000/scoring/scoringsheets/
+http://localhost:8000/scoring/targetfacenamechoices/
+http://localhost:8000/scoring/targetfaces/
+http://localhost:8000/scoring/rounds/
+http://localhost:8000/scoring/roundmemberships/
+http://localhost:8000/scoring/competitions/
+http://localhost:8000/scoring/competitionmemberships/
+```
+
+```bash
+python manage.py load_initial_data
+python manage.py runserver
+```
+

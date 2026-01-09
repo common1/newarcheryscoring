@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     "widget_tweaks",
     "django_extensions",
     "wagtail_modeladmin",
+    "rest_framework",
 ]
 
 SITE_ID = 1
