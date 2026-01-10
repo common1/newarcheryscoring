@@ -471,7 +471,7 @@ class Category(BaseScoringModel):
         through='CategoryMembership',
         blank=True,
         help_text=_("format: not required"),
-        related_name='categories',
+        related_name='category_archers',
         verbose_name=_("Archers"),
     )
     info = models.TextField(
@@ -552,14 +552,14 @@ class CategoryMembership(BaseScoringModel):
         unique=False,
         verbose_name=_("Category"),
         help_text=_("format: required"),
-        related_name='categorymemberships'
+        related_name='categorymembership_category_items'
     )
     archer = models.ForeignKey(
         Archer,
         on_delete=models.PROTECT,
         unique=False,
         verbose_name=_("Archer"),        
-        related_name='categorymembership_archer',
+        related_name='categorymembership_archer_items',
         help_text=_("format: required"),
     )
     agegroup = models.ForeignKey(
@@ -587,7 +587,7 @@ class CategoryMembership(BaseScoringModel):
         CustomUser,
         on_delete=models.PROTECT,
         default=1,
-        related_name='category_membership_author',
+        related_name='categorymembership_author',
         verbose_name=_("Author"),
         help_text=_("format: required, default=1 (superuser)"),
     )
@@ -625,7 +625,7 @@ class Team(BaseScoringModel):
         through='TeamMembership',
         blank=True,
         help_text=_("format: not required"),
-        related_name='teams',
+        related_name='team_archers',
         verbose_name=_("Archers"),
     )
     info = models.TextField(
@@ -694,7 +694,7 @@ class TeamMembership(BaseScoringModel):
         CustomUser,
         on_delete=models.PROTECT,
         default=1,
-        related_name='teammembership',
+        related_name='teammembership_author',
         verbose_name=_("Author"),
         help_text=_("format: required, default=1 (superuser)"),
     )
@@ -866,7 +866,7 @@ class TargetFaceNameChoice(BaseScoringModel):
         CustomUser,
         on_delete=models.PROTECT,
         default=1,
-        related_name='targetface_namechoice_author',
+        related_name='targetfacenamechoice_author',
         verbose_name=_("Author"),
         help_text=_("format: required, default=1 (superuser)"),
     )
@@ -995,7 +995,7 @@ class Round(BaseScoringModel):
         CustomUser,
         on_delete=models.PROTECT,
         default=1,
-        related_name='author_round',
+        related_name='round_author',
         verbose_name=_("Author"),
         help_text=_("format: not required, default=1 (superuser)"),
     )
@@ -1023,7 +1023,7 @@ class RoundMembership(BaseScoringModel):
         default=1,
         verbose_name=_("Round"),
         help_text=_("format: required"),
-        related_name='round_membership'
+        related_name='roundmembership_round'
     )
     archer = models.ForeignKey(
         Archer,
@@ -1031,7 +1031,7 @@ class RoundMembership(BaseScoringModel):
         unique=False,
         verbose_name=_("Archer"),
         help_text=_("format: required"),
-        related_name='archer_round_membership'
+        related_name='roundmembership_archer'
     )
     slug = AutoSlugField(
         populate_from=('archer__last_name', 'round__name'), 
@@ -1048,7 +1048,7 @@ class RoundMembership(BaseScoringModel):
         CustomUser,
         on_delete=models.PROTECT,
         default=1,
-        related_name='author_round_membership',
+        related_name='roundmembership_author',
         verbose_name=_("Author"),
         help_text=_("format: required, default=1 (superuser)"),
     )
@@ -1153,8 +1153,8 @@ class Competition(BaseScoringModel):
         through='CompetitionMembership',
         blank=True,
         help_text=_("format: not required"),
-        related_name='competitions',
-        verbose_name=_("Competitions"),
+        related_name='competition_rounds',
+        verbose_name=_("Competition rounds"),
     )
     start_date = models.DateField(
         null=True,
@@ -1183,7 +1183,7 @@ class Competition(BaseScoringModel):
         CustomUser,
         on_delete=models.PROTECT,
         default=1,
-        related_name='author_competition',
+        related_name='competition_author',
         verbose_name=_("Author"),
         help_text=_("format: not required, default=1 (superuser)"),
     )
@@ -1235,7 +1235,7 @@ class CompetitionMembership(BaseScoringModel):
         CustomUser,
         on_delete=models.PROTECT,
         default=1,
-        related_name='competition_membership_author',
+        related_name='competitionmembership_author',
         verbose_name=_("Author"),
         help_text=_("format: required, default=1 (superuser)"),
     )

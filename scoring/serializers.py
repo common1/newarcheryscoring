@@ -45,6 +45,8 @@ class ArcherSerializer(serializers.ModelSerializer):
         )
 
 class DisciplineSerializer(serializers.ModelSerializer):
+    archers = ArcherSerializer(many=True, read_only=True)
+
     class Meta:
         model= Discipline
         fields = (
@@ -60,6 +62,11 @@ class DisciplineSerializer(serializers.ModelSerializer):
         )
 
 class DisciplineMembershipSerializer(serializers.ModelSerializer):
+    # discipline = DisciplineSerializer()
+    # archer = ArcherSerializer()
+    discipline = serializers.CharField()
+    archer = serializers.CharField()
+
     class Meta:
         model = DisciplineMembership
         fields = (
@@ -75,6 +82,8 @@ class DisciplineMembershipSerializer(serializers.ModelSerializer):
         )
 
 class ClubSerializer(serializers.ModelSerializer):
+    archers = ArcherSerializer(many=True, read_only=True)
+
     class Meta:
         model = Club
         fields = (
@@ -97,6 +106,11 @@ class ClubSerializer(serializers.ModelSerializer):
         )
 
 class ClubMembershipSerializer(serializers.ModelSerializer):
+    # club = ClubSerializer()
+    # archer = ArcherSerializer()
+    club = serializers.CharField()
+    archer = serializers.CharField()
+
     class Meta:
         model = ClubMembership
         fields = (
@@ -114,6 +128,8 @@ class ClubMembershipSerializer(serializers.ModelSerializer):
         )
 
 class CategorySerializer(serializers.ModelSerializer):
+    archers = ArcherSerializer(many=True, read_only=True)
+
     class Meta:
         model = Category
         fields = (
@@ -143,12 +159,17 @@ class AgeGroupSerializer(serializers.ModelSerializer):
         )
 
 class CategoryMembershipSerializer(serializers.ModelSerializer):
+    # category = CategorySerializer()
+    # archer = ArcherSerializer()
+    archer = serializers.CharField()
+    category = serializers.CharField()
+
     class Meta:
         model = CategoryMembership
         fields = (
             'id',
-            'category',
             'archer',
+            'category',
             'agegroup',
             'slug',
             'info',
@@ -159,6 +180,8 @@ class CategoryMembershipSerializer(serializers.ModelSerializer):
         )
 
 class TeamSerializer(serializers.ModelSerializer):
+    archers = ArcherSerializer(many=True, read_only=True)
+
     class Meta:
         model = Team
         fields = (
@@ -174,6 +197,11 @@ class TeamSerializer(serializers.ModelSerializer):
         )
 
 class TeamMembershipSerializer(serializers.ModelSerializer):
+    # team = TeamSerializer()
+    # archer = ArcherSerializer()
+    team = serializers.CharField()
+    archer = serializers.CharField()
+
     class Meta:
         model = TeamMembership
         fields = (
@@ -237,6 +265,8 @@ class TargetFaceSerializer(serializers.ModelSerializer):
         )
 
 class RoundSerializer(serializers.ModelSerializer):
+    archers = ArcherSerializer(many=True, read_only=True)
+
     class Meta:
         model = Round
         fields = (
@@ -256,6 +286,11 @@ class RoundSerializer(serializers.ModelSerializer):
         )
 
 class RoundMembershipSerializer(serializers.ModelSerializer):
+    # round = RoundSerializer()
+    # archer = ArcherSerializer()
+    round = serializers.CharField()
+    archer = serializers.CharField()
+
     class Meta:
         model = RoundMembership
         fields = (
@@ -286,6 +321,8 @@ class ScoreSerializer(serializers.ModelSerializer):
         )
 
 class CompetitionSerializer(serializers.ModelSerializer):
+    rounds = RoundSerializer(many=True, read_only=True)
+
     class Meta:
         model = Competition
         fields = (
@@ -303,6 +340,11 @@ class CompetitionSerializer(serializers.ModelSerializer):
         )
 
 class CompetitionMembershipSerializer(serializers.ModelSerializer):
+    # competition = CompetitionSerializer()
+    # round = RoundSerializer()
+    competition = serializers.CharField()
+    rount = serializers.CharField()
+
     class Meta:
         model = CompetitionMembership
         fields = (
