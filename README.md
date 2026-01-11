@@ -166,3 +166,14 @@ serializers ..InfoSerializer classes completed
  python manage.py runserver
 
  ```
+
+## 14 Django REST Framework - Generic Views | ListAPIView & RetrieveAPIView
+
+[https://www.youtube.com/watch?v=vExjSChWPWg&list=PL-2EBeDYMIbTLulc9FSoAXhbmXpLq2l5t&index=6]
+
+```
+```
+
+```bash
+```
+

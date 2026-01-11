@@ -61,21 +61,24 @@ from .models import (
 )
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework import generics
 
 # Archer
-@api_view(['GET'])
-def archer_list(request):
-    archers = Archer.objects.all()
-    serializer = ArcherSerializer(archers, many=True)
 
-    return Response(serializer.data)
+class ArcherListAPIView(generics.ListAPIView):
+    queryset = Archer.objects.all()
+    serializer_class = ArcherSerializer
 
-@api_view(['GET'])
-def archer_detail(request, pk):
-    archer = get_object_or_404(Archer, pk=pk)
-    serializer = ArcherSerializer(archer)
+class ArcherDetailAPIView(generics.RetrieveAPIView):
+    queryset = Archer.objects.all()
+    serializer_class = ArcherSerializer
 
-    return Response(serializer.data)
+# @api_view(['GET'])
+# def archer_detail(request, pk):
+#     archer = get_object_or_404(Archer, pk=pk)
+#     serializer = ArcherSerializer(archer)
+
+#     return Response(serializer.data)
 
 @api_view(['GET'])
 def archer_info(request):
@@ -88,21 +91,21 @@ def archer_info(request):
     return Response(serializer.data)
 
 # Discipline
-@api_view(['GET'])
-def discipline_list(request):
-    disciplines = Discipline.objects.prefetch_related(
-        'archers',
-    )
-    serializer = DisciplineSerializer(disciplines, many=True)
 
-    return Response(serializer.data)
+class DisciplineListAPIView(generics.ListAPIView):
+    queryset = Discipline.objects.all()
+    serializer_class = DisciplineSerializer
 
-@api_view(['GET'])
-def discipline_detail(request, pk):
-    discipline = get_object_or_404(Discipline, pk=pk)
-    serializer = DisciplineSerializer(discipline)
+class DisciplineDetailAPIView(generics.RetrieveAPIView):
+    queryset = Discipline.objects.all()
+    serializer_class = DisciplineSerializer
 
-    return Response(serializer.data)
+# @api_view(['GET'])
+# def discipline_detail(request, pk):
+#     discipline = get_object_or_404(Discipline, pk=pk)
+#     serializer = DisciplineSerializer(discipline)
+
+#     return Response(serializer.data)
 
 @api_view(['GET'])
 def discipline_info(request):
@@ -117,22 +120,21 @@ def discipline_info(request):
     return Response(serializer.data)
 
 # DisciplineMembership
-@api_view(['GET'])
-def discipline_memberships_list(request):
-    disciplinememberships = DisciplineMembership.objects.prefetch_related(
-        'discipline',
-        'archer',
-    )
-    serializer = DisciplineMembershipSerializer(disciplinememberships, many=True)
 
-    return Response(serializer.data)
+class DisciplineMembershipListAPIView(generics.ListAPIView):
+    queryset = DisciplineMembership.objects.all()
+    serializer_class = DisciplineMembershipSerializer
 
-@api_view(['GET'])
-def discipline_memberships_detail(request, pk):
-    disciplinemembership = get_object_or_404(DisciplineMembership, pk=pk)
-    serializer = DisciplineMembershipSerializer(disciplinemembership)
+class DisciplineMembershipDetailAPIView(generics.RetrieveAPIView):
+    queryset = DisciplineMembership.objects.all()
+    serializer_class = DisciplineMembershipSerializer
 
-    return Response(serializer.data)
+# @api_view(['GET'])
+# def discipline_memberships_detail(request, pk):
+#     disciplinemembership = get_object_or_404(DisciplineMembership, pk=pk)
+#     serializer = DisciplineMembershipSerializer(disciplinemembership)
+
+#     return Response(serializer.data)
 
 @api_view(['GET'])
 def discipline_memberships_info(request):
@@ -148,21 +150,21 @@ def discipline_memberships_info(request):
     return Response(serializer.data)
 
 # Club
-@api_view(['GET'])
-def club_list(request):
-    clubs = Club.objects.prefetch_related(
-        'archers',
-    )
-    serializer = ClubSerializer(clubs, many = True)
 
-    return Response(serializer.data)
+class ClubListAPIView(generics.ListAPIView):
+    queryset = Club.objects.all()
+    serializer_class = ClubSerializer
 
-@api_view(['GET'])
-def club_detail(request, pk):
-    club = get_object_or_404(Club, pk=pk)
-    serializer = ClubSerializer(club)
+class ClubDetailAPIView(generics.RetrieveAPIView):
+    queryset = Club.objects.all()
+    serializer_class = ClubSerializer
 
-    return Response(serializer.data)
+# @api_view(['GET'])
+# def club_detail(request, pk):
+#     club = get_object_or_404(Club, pk=pk)
+#     serializer = ClubSerializer(club)
+
+#     return Response(serializer.data)
 
 @api_view(['GET'])
 def club_info(request):
@@ -177,22 +179,21 @@ def club_info(request):
     return Response(serializer.data)
 
 # ClubMembership
-@api_view(['GET'])
-def club_memberships_list(request):
-    clubmemberships = ClubMembership.objects.prefetch_related(
-        'club',
-        'archer',
-    )
-    serializer = ClubMembershipSerializer(clubmemberships, many=True)
 
-    return Response(serializer.data)
+class ClubMembershipListAPIView(generics.ListAPIView):
+    queryset = ClubMembership.objects.all()
+    serializer_class = ClubMembershipSerializer
 
-@api_view(['GET'])
-def club_memberships_detail(request, pk):
-    clubmembership = get_object_or_404(ClubMembership, pk=pk)
-    serializer = ClubMembershipSerializer(clubmembership)
+class ClubMembershipDetailAPIView(generics.RetrieveAPIView):
+    queryset = ClubMembership.objects.all()
+    serializer_class = ClubMembershipSerializer
 
-    return Response(serializer.data)
+# @api_view(['GET'])
+# def club_memberships_detail(request, pk):
+#     clubmembership = get_object_or_404(ClubMembership, pk=pk)
+#     serializer = ClubMembershipSerializer(clubmembership)
+
+#     return Response(serializer.data)
 
 @api_view(['GET'])
 def club_memberships_info(request):
@@ -208,21 +209,21 @@ def club_memberships_info(request):
     return Response(serializer.data)
 
 # Category
-@api_view(['GET'])
-def category_list(request):
-    categories = Category.objects.prefetch_related(
-        'archers',
-    )
-    serializer = CategorySerializer(categories, many=True)
 
-    return Response(serializer.data)
+class CategoryListAPIView(generics.ListAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
 
-@api_view(['GET'])
-def category_detail(request, pk):
-    category = get_object_or_404(Category, pk=pk)
-    serializer = CategorySerializer(category)
+class CategoryDetailAPIView(generics.RetrieveAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
 
-    return Response(serializer.data)
+# @api_view(['GET'])
+# def category_detail(request, pk):
+#     category = get_object_or_404(Category, pk=pk)
+#     serializer = CategorySerializer(category)
+
+#     return Response(serializer.data)
 
 @api_view(['GET'])
 def category_info(request):
@@ -237,19 +238,21 @@ def category_info(request):
     return Response(serializer.data)
 
 # AgeGroup
-@api_view(['GET'])
-def agegroup_list(request):
-    agegroups = AgeGroup.objects.all()
-    serializer = AgeGroupSerializer(agegroups, many=True)
 
-    return Response(serializer.data)
+class AgeGroupListAPIView(generics.ListAPIView):
+    queryset = AgeGroup.objects.all()
+    serializer_class = AgeGroupSerializer
 
-@api_view(['GET'])
-def agegroup_detail(request, pk):
-    agegroup = get_object_or_404(agegroup, pk=pk)
-    serializer = AgeGroupSerializer(agegroup)
+class AgeGroupDetailAPIView(generics.RetrieveAPIView):
+    queryset = AgeGroup.objects.all()
+    serializer_class = AgeGroupSerializer
 
-    return Response(serializer.data)
+# @api_view(['GET'])
+# def agegroup_detail(request, pk):
+#     agegroup = get_object_or_404(agegroup, pk=pk)
+#     serializer = AgeGroupSerializer(agegroup)
+
+#     return Response(serializer.data)
 
 @api_view(['GET'])
 def agegroup_info(request):
@@ -262,22 +265,21 @@ def agegroup_info(request):
     return Response(serializer.data)
 
 # CategoryMembership
-@api_view(['GET'])
-def category_memberships_list(request):
-    categorymemberships = CategoryMembership.objects.prefetch_related(
-        'category',
-        'archer',
-    )
-    serializer = CategoryMembershipSerializer(categorymemberships, many=True)
 
-    return Response(serializer.data)
+class CategoryMembershipListAPIView(generics.ListAPIView):
+    queryset = CategoryMembership.objects.all()
+    serializer_class = CategoryMembershipSerializer
 
-@api_view(['GET'])
-def category_memberships_detail(request, pk):
-    categorymembership = get_object_or_404(CategoryMembership, pk=pk)
-    serializer = CategoryMembershipSerializer(categorymembership)
+class CategoryMembershipDetailAPIView(generics.RetrieveAPIView):
+    queryset = CategoryMembership.objects.all()
+    serializer_class = CategoryMembershipSerializer
 
-    return Response(serializer.data)
+# @api_view(['GET'])
+# def category_memberships_detail(request, pk):
+#     categorymembership = get_object_or_404(CategoryMembership, pk=pk)
+#     serializer = CategoryMembershipSerializer(categorymembership)
+
+#     return Response(serializer.data)
 
 @api_view(['GET'])
 def category_memberships_info(request):
@@ -294,21 +296,21 @@ def category_memberships_info(request):
     return Response(serializer.data)
 
 # Team
-@api_view(['GET'])
-def team_list(request):
-    teams = Team.objects.prefetch_related(
-        'archers',
-    )
-    serializer = TeamSerializer(teams, many = True)
 
-    return Response(serializer.data)
+class TeamListAPIView(generics.ListAPIView):
+    queryset = Team.objects.all()
+    serializer_class = TeamSerializer
 
-@api_view(['GET'])
-def team_detail(request, pk):
-    team = get_object_or_404(Team, pk=pk)
-    serializer = TeamSerializer(team)
+class TeamDetailAPIView(generics.RetrieveAPIView):
+    queryset = Team.objects.all()
+    serializer_class = TeamSerializer
 
-    return Response(serializer.data)
+# @api_view(['GET'])
+# def team_detail(request, pk):
+#     team = get_object_or_404(Team, pk=pk)
+#     serializer = TeamSerializer(team)
+
+#     return Response(serializer.data)
 
 @api_view(['GET'])
 def team_info(request):
@@ -323,22 +325,21 @@ def team_info(request):
     return Response(serializer.data)
 
 # TeamMembership
-@api_view(['GET'])
-def team_memberships_list(request):
-    teammemberships = TeamMembership.objects.prefetch_related(
-        'team',
-        'archer',
-    )
-    serializer = TeamMembershipSerializer(teammemberships, many=True)
 
-    return Response(serializer.data)
+class TeamMembershipListAPIView(generics.ListAPIView):
+    queryset = TeamMembership.objects.all()
+    serializer_class = TeamMembershipSerializer
 
-@api_view(['GET'])
-def team_memberships_detail(request, pk):
-    teammembership = get_object_or_404(TeamMembership, pk=pk)
-    serializer = TeamMembershipSerializer(teammembership)
+class TeamMembershipDetailAPIView(generics.RetrieveAPIView):
+    queryset = TeamMembership.objects.all()
+    serializer_class = TeamMembershipSerializer
 
-    return Response(serializer.data)
+# @api_view(['GET'])
+# def team_memberships_detail(request, pk):
+#     teammembership = get_object_or_404(TeamMembership, pk=pk)
+#     serializer = TeamMembershipSerializer(teammembership)
+
+#     return Response(serializer.data)
 
 @api_view(['GET'])
 def team_memberships_info(request):
@@ -354,19 +355,21 @@ def team_memberships_info(request):
     return Response(serializer.data)
 
 # ScoringSheet
-@api_view(['GET'])
-def scoringsheet_list(request):
-    scoringsheets = ScoringSheet.objects.all()
-    serializer = ScoringSheetSerializer(scoringsheets, many = True)
 
-    return Response(serializer.data)
+class ScoringSheetListAPIView(generics.ListAPIView):
+    queryset = ScoringSheet.objects.all()
+    serializer_class = ScoringSheetSerializer
 
-@api_view(['GET'])
-def scoringsheet_detail(request, pk):
-    scoringsheets = get_object_or_404(ScoringSheet, pk=pk)
-    serializer = ScoringSheetSerializer(scoringsheets)
+class ScoringSheetDetailAPIView(generics.RetrieveAPIView):
+    queryset = ScoringSheet.objects.all()
+    serializer_class = ScoringSheetSerializer
 
-    return Response(serializer.data)
+# @api_view(['GET'])
+# def scoringsheet_detail(request, pk):
+#     scoringsheets = get_object_or_404(ScoringSheet, pk=pk)
+#     serializer = ScoringSheetSerializer(scoringsheets)
+
+#     return Response(serializer.data)
 
 @api_view(['GET'])
 def scoringsheet_info(request):
@@ -379,12 +382,14 @@ def scoringsheet_info(request):
     return Response(serializer.data)
 
 # TargetFaceNameChoice
-@api_view(['GET'])
-def targetfacenamechoice_list(request):
-    targetfacenamechoices = TargetFaceNameChoice.objects.all()
-    serializer = TargetFaceNameChoiceSerializer(targetfacenamechoices, many = True)
 
-    return Response(serializer.data)
+class TargetFaceNameChoiceListAPIView(generics.ListAPIView):
+    queryset = TargetFaceNameChoice.objects.all()
+    serializer_class = TargetFaceNameChoiceSerializer
+
+class TargetFaceNameChoiceDetailAPIView(generics.RetrieveAPIView):
+    queryset = TargetFaceNameChoice.objects.all()
+    serializer_class = TargetFaceNameChoiceSerializer
 
 @api_view(['GET'])
 def targetfacenamechoice_detail(request, pk):
@@ -404,19 +409,21 @@ def targetfacenamechoice_info(request):
     return Response(serializer.data)
 
 # TargetFace
-@api_view(['GET'])
-def targetface_list(request):
-    targetfaces = TargetFace.objects.all()
-    serializer = TargetFaceSerializer(targetfaces, many = True)
 
-    return Response(serializer.data)
+class TargetFaceListAPIView(generics.ListAPIView):
+    queryset = TargetFace.objects.all()
+    serializer_class = TargetFaceSerializer
 
-@api_view(['GET'])
-def targetface_detail(request, pk):
-    targetface = get_object_or_404(TargetFace, pk=pk)
-    serializer = TargetFaceSerializer(targetface)
+class TargetFaceDetailAPIView(generics.RetrieveAPIView):
+    queryset = TargetFace.objects.all()
+    serializer_class = TargetFaceSerializer
 
-    return Response(serializer.data)
+# @api_view(['GET'])
+# def targetface_detail(request, pk):
+#     targetface = get_object_or_404(TargetFace, pk=pk)
+#     serializer = TargetFaceSerializer(targetface)
+
+#     return Response(serializer.data)
 
 @api_view(['GET'])
 def targetface_info(request):
@@ -429,21 +436,21 @@ def targetface_info(request):
     return Response(serializer.data)
 
 # Round
-@api_view(['GET'])
-def round_list(request):
-    rounds = Round.objects.prefetch_related(
-        'archers',
-    )
-    serializer = RoundSerializer(rounds, many = True)
 
-    return Response(serializer.data)
+class RoundListAPIView(generics.ListAPIView):
+    queryset = Round.objects.all()
+    serializer_class = RoundSerializer
 
-@api_view(['GET'])
-def round_detail(request, pk):
-    round = get_object_or_404(Round, pk=pk)
-    serializer = RoundSerializer(round)
+class RoundDetailAPIView(generics.RetrieveAPIView):
+    queryset = Round.objects.all()
+    serializer_class = RoundSerializer
 
-    return Response(serializer.data)
+# @api_view(['GET'])
+# def round_detail(request, pk):
+#     round = get_object_or_404(Round, pk=pk)
+#     serializer = RoundSerializer(round)
+
+#     return Response(serializer.data)
 
 @api_view(['GET'])
 def round_info(request):
@@ -458,22 +465,21 @@ def round_info(request):
     return Response(serializer.data)
 
 # RoundMembership
-@api_view(['GET'])
-def round_memberships_list(request):
-    roundmemberships = RoundMembership.objects.prefetch_related(
-        'round',
-        'archer',
-    )
-    serializer = RoundMembershipSerializer(roundmemberships, many=True)
 
-    return Response(serializer.data)
+class RoundMembershipListAPIView(generics.ListAPIView):
+    queryset = RoundMembership.objects.all()
+    serializer_class = RoundMembershipSerializer
 
-@api_view(['GET'])
-def round_memberships_detail(request, pk):
-    roundmembership = get_object_or_404(RoundMembership, pk=pk)
-    serializer = RoundMembershipSerializer(roundmembership)
+class RoundMembershipDetailAPIView(generics.RetrieveAPIView):
+    queryset = RoundMembership.objects.all()
+    serializer_class = RoundMembershipSerializer
 
-    return Response(serializer.data)
+# @api_view(['GET'])
+# def round_memberships_detail(request, pk):
+#     roundmembership = get_object_or_404(RoundMembership, pk=pk)
+#     serializer = RoundMembershipSerializer(roundmembership)
+
+#     return Response(serializer.data)
 
 @api_view(['GET'])
 def round_memberships_info(request):
@@ -489,21 +495,21 @@ def round_memberships_info(request):
     return Response(serializer.data)
 
 # Score
-@api_view(['GET'])
-def score_list(request):
-    scores = Score.objects.prefetch_related(
-        'round_archer',
-    )
-    serializer = ScoreSerializer(scores, many = True)
 
-    return Response(serializer.data)
+class ScoreListAPIView(generics.ListAPIView):
+    queryset = Score.objects.all()
+    serializer_class = ScoreSerializer
 
-@api_view(['GET'])
-def score_detail(request, pk):
-    score = get_object_or_404(Score, pk=pk)
-    serializer = ScoreSerializer(score)
+class ScoreDetailAPIView(generics.RetrieveAPIView):
+    queryset = Score.objects.all()
+    serializer_class = ScoreSerializer
 
-    return Response(serializer.data)
+# @api_view(['GET'])
+# def score_detail(request, pk):
+#     score = get_object_or_404(Score, pk=pk)
+#     serializer = ScoreSerializer(score)
+
+#     return Response(serializer.data)
 
 @api_view(['GET'])
 def score_info(request):
@@ -518,21 +524,21 @@ def score_info(request):
     return Response(serializer.data)
 
 # Competition
-@api_view(['GET'])
-def competition_list(request):
-    competitions = Competition.objects.prefetch_related(
-        'rounds',
-    )
-    serializer = CompetitionSerializer(competitions, many = True)
 
-    return Response(serializer.data)
+class CompetitionListAPIView(generics.ListAPIView):
+    queryset = Competition.objects.all()
+    serializer_class = CompetitionSerializer
 
-@api_view(['GET'])
-def competition_detail(request, pk):
-    competition = get_object_or_404(Competition, pk=pk)
-    serializer = CompetitionSerializer(competition)
+class CompetitionDetailAPIView(generics.RetrieveAPIView):
+    queryset = Competition.objects.all()
+    serializer_class = CompetitionSerializer
 
-    return Response(serializer.data)
+# @api_view(['GET'])
+# def competition_detail(request, pk):
+#     competition = get_object_or_404(Competition, pk=pk)
+#     serializer = CompetitionSerializer(competition)
+
+#     return Response(serializer.data)
 
 @api_view(['GET'])
 def competition_info(request):
@@ -547,21 +553,20 @@ def competition_info(request):
     return Response(serializer.data)
 
 # CompetitionMembership
-@api_view(['GET'])
-def competition_memberships_list(request):
-    competitionmemberships = CompetitionMembership.objects.prefetch_related(
-        'competition',
-        'round',
-    )
-    serializer = CompetitionMembershipSerializer(competitionmemberships, many=True)
 
-    return Response(serializer.data)
+class CompetitionMembershipListAPIView(generics.ListAPIView):
+    queryset = CompetitionMembership.objects.all()
+    serializer_class = CompetitionMembershipSerializer
 
-def competition_memberships_detail(request, pk):
-    competitionmembership = get_object_or_404(CompetitionMembership, pk=pk)
-    serializer = CompetitionMembershipSerializer(competitionmembership)
+class CompetitionMembershipDetailAPIView(generics.RetrieveAPIView):
+    queryset = CompetitionMembership.objects.all()
+    serializer_class = CompetitionMembershipSerializer
 
-    return Response(serializer.data)
+# def competition_memberships_detail(request, pk):
+#     competitionmembership = get_object_or_404(CompetitionMembership, pk=pk)
+#     serializer = CompetitionMembershipSerializer(competitionmembership)
+
+#     return Response(serializer.data)
 
 @api_view(['GET'])
 def competition_memberships_info(request):
