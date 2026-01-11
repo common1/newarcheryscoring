@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     "django_extensions",
     "wagtail_modeladmin",
     "rest_framework",
+    "silk",
 ]
 
 SITE_ID = 1
@@ -77,6 +78,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
     "allauth.account.middleware.AccountMiddleware",
+    "silk.middleware.SilkyMiddleware",
 ]
 
 ROOT_URLCONF = "newarcheryscoring.urls"

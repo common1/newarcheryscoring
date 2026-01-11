@@ -90,7 +90,9 @@ def archer_info(request):
 # Discipline
 @api_view(['GET'])
 def discipline_list(request):
-    disciplines = Discipline.objects.all()
+    disciplines = Discipline.objects.prefetch_related(
+        'archers',
+    )
     serializer = DisciplineSerializer(disciplines, many=True)
 
     return Response(serializer.data)
@@ -104,7 +106,9 @@ def discipline_detail(request, pk):
 
 @api_view(['GET'])
 def discipline_info(request):
-    disciplines = Discipline.objects.all()
+    disciplines = Discipline.objects.prefetch_related(
+        'archers',
+    )
     serializer = DisciplineInfoSerializer({
         'disciplines': disciplines,
         'count': len(disciplines),
@@ -115,7 +119,10 @@ def discipline_info(request):
 # DisciplineMembership
 @api_view(['GET'])
 def discipline_memberships_list(request):
-    disciplinememberships = DisciplineMembership.objects.all()
+    disciplinememberships = DisciplineMembership.objects.prefetch_related(
+        'discipline',
+        'archer',
+    )
     serializer = DisciplineMembershipSerializer(disciplinememberships, many=True)
 
     return Response(serializer.data)
@@ -129,7 +136,10 @@ def discipline_memberships_detail(request, pk):
 
 @api_view(['GET'])
 def discipline_memberships_info(request):
-    disciplinememberships = DisciplineMembership.objects.all()
+    disciplinememberships = DisciplineMembership.objects.prefetch_related(
+        'discipline',
+        'archer',
+    )
     serializer = DisciplineMembershipInfoSerializer({
         'disciplinememberships': disciplinememberships,
         'count': len(disciplinememberships),
@@ -137,12 +147,12 @@ def discipline_memberships_info(request):
 
     return Response(serializer.data)
 
-    return Response(serializer.data)
-
 # Club
 @api_view(['GET'])
 def club_list(request):
-    clubs = Club.objects.all()
+    clubs = Club.objects.prefetch_related(
+        'archers',
+    )
     serializer = ClubSerializer(clubs, many = True)
 
     return Response(serializer.data)
@@ -156,7 +166,9 @@ def club_detail(request, pk):
 
 @api_view(['GET'])
 def club_info(request):
-    clubs = Club.objects.all()
+    clubs = Club.objects.prefetch_related(
+        'archers',
+    )
     serializer = ClubInfoSerializer({
         'clubs': clubs,
         'count': len(clubs),
@@ -167,7 +179,10 @@ def club_info(request):
 # ClubMembership
 @api_view(['GET'])
 def club_memberships_list(request):
-    clubmemberships = ClubMembership.objects.all()
+    clubmemberships = ClubMembership.objects.prefetch_related(
+        'club',
+        'archer',
+    )
     serializer = ClubMembershipSerializer(clubmemberships, many=True)
 
     return Response(serializer.data)
@@ -181,7 +196,10 @@ def club_memberships_detail(request, pk):
 
 @api_view(['GET'])
 def club_memberships_info(request):
-    clubmemberships = ClubMembership.objects.all()
+    clubmemberships = ClubMembership.objects.prefetch_related(
+        'club',
+        'archer',
+    )
     serializer = ClubMembershipInfoSerializer({
         'clubmemberships': clubmemberships,
         'count': len(clubmemberships)
@@ -192,7 +210,9 @@ def club_memberships_info(request):
 # Category
 @api_view(['GET'])
 def category_list(request):
-    categories = Category.objects.all()
+    categories = Category.objects.prefetch_related(
+        'archers',
+    )
     serializer = CategorySerializer(categories, many=True)
 
     return Response(serializer.data)
@@ -206,7 +226,9 @@ def category_detail(request, pk):
 
 @api_view(['GET'])
 def category_info(request):
-    categories = Category.objects.all()
+    categories = Category.objects.prefetch_related(
+        'archers',
+    )
     serializer = CategoryInfoSerializer({
         'categories': categories,
         'count': len(categories),
@@ -242,7 +264,10 @@ def agegroup_info(request):
 # CategoryMembership
 @api_view(['GET'])
 def category_memberships_list(request):
-    categorymemberships = CategoryMembership.objects.all()
+    categorymemberships = CategoryMembership.objects.prefetch_related(
+        'category',
+        'archer',
+    )
     serializer = CategoryMembershipSerializer(categorymemberships, many=True)
 
     return Response(serializer.data)
@@ -256,7 +281,11 @@ def category_memberships_detail(request, pk):
 
 @api_view(['GET'])
 def category_memberships_info(request):
-    categorymemberships = CategoryMembership.objects.all()
+    categorymemberships = CategoryMembership.objects.prefetch_related(
+        'category',
+        'archer',
+        'agegroup',
+    )
     serializer = CategoryMembershipInfoSerializer({
         'categorymemberships': categorymemberships,
         'count': len(categorymemberships),
@@ -267,7 +296,9 @@ def category_memberships_info(request):
 # Team
 @api_view(['GET'])
 def team_list(request):
-    teams = Team.objects.all()
+    teams = Team.objects.prefetch_related(
+        'archers',
+    )
     serializer = TeamSerializer(teams, many = True)
 
     return Response(serializer.data)
@@ -281,7 +312,9 @@ def team_detail(request, pk):
 
 @api_view(['GET'])
 def team_info(request):
-    teams = Team.objects.all()
+    teams = Team.objects.prefetch_related(
+        'archers',
+    )
     serializer = TeamInfoSerializer({
         'teams': teams,
         'count': len(teams),
@@ -292,7 +325,10 @@ def team_info(request):
 # TeamMembership
 @api_view(['GET'])
 def team_memberships_list(request):
-    teammemberships = TeamMembership.objects.all()
+    teammemberships = TeamMembership.objects.prefetch_related(
+        'team',
+        'archer',
+    )
     serializer = TeamMembershipSerializer(teammemberships, many=True)
 
     return Response(serializer.data)
@@ -306,7 +342,10 @@ def team_memberships_detail(request, pk):
 
 @api_view(['GET'])
 def team_memberships_info(request):
-    teammemberships = TeamMembership.objects.all()
+    teammemberships = TeamMembership.objects.prefetch_related(
+        'team',
+        'archer',
+    )
     serializer = TeamMembershipInfoSerializer({
         'teammemberships': teammemberships,
         'count': len(teammemberships),
@@ -392,7 +431,9 @@ def targetface_info(request):
 # Round
 @api_view(['GET'])
 def round_list(request):
-    rounds = Round.objects.all()
+    rounds = Round.objects.prefetch_related(
+        'archers',
+    )
     serializer = RoundSerializer(rounds, many = True)
 
     return Response(serializer.data)
@@ -406,7 +447,9 @@ def round_detail(request, pk):
 
 @api_view(['GET'])
 def round_info(request):
-    rounds = Round.objects.all()
+    rounds = Round.objects.prefetch_related(
+        'archers',
+    )
     serializer = RoundInfoSerializer({
         'rounds': rounds,
         'count': len(rounds),
@@ -417,7 +460,10 @@ def round_info(request):
 # RoundMembership
 @api_view(['GET'])
 def round_memberships_list(request):
-    roundmemberships = RoundMembership.objects.all()
+    roundmemberships = RoundMembership.objects.prefetch_related(
+        'round',
+        'archer',
+    )
     serializer = RoundMembershipSerializer(roundmemberships, many=True)
 
     return Response(serializer.data)
@@ -431,7 +477,10 @@ def round_memberships_detail(request, pk):
 
 @api_view(['GET'])
 def round_memberships_info(request):
-    roundmemberships = RoundMembership.objects.all()
+    roundmemberships = RoundMembership.objects.prefetch_related(
+        'round',
+        'archer',
+    ).all()
     serializer = RoundMembershipInfoSerializer({
         'roundmemberships': roundmemberships,
         'count': len(roundmemberships),
@@ -442,7 +491,9 @@ def round_memberships_info(request):
 # Score
 @api_view(['GET'])
 def score_list(request):
-    scores = Score.objects.all()
+    scores = Score.objects.prefetch_related(
+        'round_archer',
+    )
     serializer = ScoreSerializer(scores, many = True)
 
     return Response(serializer.data)
@@ -456,7 +507,9 @@ def score_detail(request, pk):
 
 @api_view(['GET'])
 def score_info(request):
-    scores = Score.objects.all()
+    scores = Score.objects.prefetch_related(
+        'round_archer',
+    )
     serializer = ScoreInfoSerializer({
         'scores': scores,
         'count': len(scores),
@@ -467,7 +520,9 @@ def score_info(request):
 # Competition
 @api_view(['GET'])
 def competition_list(request):
-    competitions = Competition.objects.all()
+    competitions = Competition.objects.prefetch_related(
+        'rounds',
+    )
     serializer = CompetitionSerializer(competitions, many = True)
 
     return Response(serializer.data)
@@ -481,7 +536,9 @@ def competition_detail(request, pk):
 
 @api_view(['GET'])
 def competition_info(request):
-    competitions = Competition.objects.all()
+    competitions = Competition.objects.prefetch_related(
+        'rounds',
+    )
     serializer = CompetitionInfoSerializer({
         'competitions': competitions,
         'count': len(competitions),
@@ -492,7 +549,10 @@ def competition_info(request):
 # CompetitionMembership
 @api_view(['GET'])
 def competition_memberships_list(request):
-    competitionmemberships = CompetitionMembership.objects.all()
+    competitionmemberships = CompetitionMembership.objects.prefetch_related(
+        'competition',
+        'round',
+    )
     serializer = CompetitionMembershipSerializer(competitionmemberships, many=True)
 
     return Response(serializer.data)
@@ -505,7 +565,10 @@ def competition_memberships_detail(request, pk):
 
 @api_view(['GET'])
 def competition_memberships_info(request):
-    competitionmemberships = CompetitionMembership.objects.all()
+    competitionmemberships = CompetitionMembership.objects.prefetch_related(
+        'competition',
+        'round',
+    )
     serializer = CompetitionMembershipInfoSerializer({
         'competitionmemberships': competitionmemberships,
         'count': len(competitionmemberships),

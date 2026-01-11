@@ -186,7 +186,7 @@ class Discipline(BaseScoringModel):
         through='DisciplineMembership',
         blank=True,
         help_text=_("format: not required"),
-        related_name='disciplines',
+        related_name='discipline_archers',
         verbose_name=_("Archers"),
     )
     info = models.TextField(

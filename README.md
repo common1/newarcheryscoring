@@ -155,3 +155,14 @@ Part 3
 serializers ..InfoSerializer classes completed
 ```
 
+## 13 django-silk for Profiling and Optimization with Django REST Framework
+ [https://www.youtube.com/watch?v=OG8alXR4bEs&list=PL-2EBeDYMIbTLulc9FSoAXhbmXpLq2l5t&index=5]
+
+ ```bash
+ pip install django-silk
+ python manage.py makemigrations
+ python manage.py migrate
+ python manage.py collectstatic
+ python manage.py runserver
+
+ ```
