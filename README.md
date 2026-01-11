@@ -151,5 +151,7 @@ http://localhost:8000/scoring/competitionmemberships/
 ```bash
 python manage.py load_initial_data
 python manage.py runserver
+Part 3
+serializers ..InfoSerializer classes completed
 ```
 

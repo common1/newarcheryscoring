@@ -3,23 +3,41 @@ from django.http import JsonResponse
 
 from .serializers import (
     ArcherSerializer,
+    ArcherInfoSerializer,
     DisciplineSerializer,
+    DisciplineInfoSerializer,
     DisciplineMembershipSerializer,
+    DisciplineMembershipInfoSerializer,
     ClubSerializer,
+    ClubInfoSerializer,
     ClubMembershipSerializer,
+    ClubMembershipInfoSerializer,
     CategorySerializer,
+    CategoryInfoSerializer,
     AgeGroupSerializer,
+    AgeGroupInfoSerializer,
     CategoryMembershipSerializer,
+    CategoryMembershipInfoSerializer,
     TeamSerializer,
+    TeamInfoSerializer,
     TeamMembershipSerializer,
+    TeamMembershipInfoSerializer,
     ScoringSheetSerializer,
+    ScoringSheetInfoSerializer,
     TargetFaceNameChoiceSerializer,
+    TargetFaceNameChoiceInfoSerializer,
     TargetFaceSerializer,
+    TargetFaceInfoSerializer,
     RoundSerializer,
+    RoundInfoSerializer,
     RoundMembershipSerializer,
+    RoundMembershipInfoSerializer,
     ScoreSerializer,
+    ScoreInfoSerializer,
     CompetitionSerializer,
+    CompetitionInfoSerializer,
     CompetitionMembershipSerializer,
+    CompetitionMembershipInfoSerializer,
 )
 from .models import (
     Archer,
@@ -59,6 +77,16 @@ def archer_detail(request, pk):
 
     return Response(serializer.data)
 
+@api_view(['GET'])
+def archer_info(request):
+    archers = Archer.objects.all()
+    serializer = ArcherInfoSerializer({
+        'archers': archers,
+        'count': len(archers),
+    })
+
+    return Response(serializer.data)
+
 # Discipline
 @api_view(['GET'])
 def discipline_list(request):
@@ -74,18 +102,40 @@ def discipline_detail(request, pk):
 
     return Response(serializer.data)
 
+@api_view(['GET'])
+def discipline_info(request):
+    disciplines = Discipline.objects.all()
+    serializer = DisciplineInfoSerializer({
+        'disciplines': disciplines,
+        'count': len(disciplines),
+    })
+
+    return Response(serializer.data)
+
 # DisciplineMembership
 @api_view(['GET'])
 def discipline_memberships_list(request):
-    discipline_memberships = DisciplineMembership.objects.all()
-    serializer = DisciplineMembershipSerializer(discipline_memberships, many=True)
+    disciplinememberships = DisciplineMembership.objects.all()
+    serializer = DisciplineMembershipSerializer(disciplinememberships, many=True)
 
     return Response(serializer.data)
 
 @api_view(['GET'])
 def discipline_memberships_detail(request, pk):
-    discipline_membership = get_object_or_404(DisciplineMembership, pk=pk)
-    serializer = DisciplineMembershipSerializer(discipline_membership)
+    disciplinemembership = get_object_or_404(DisciplineMembership, pk=pk)
+    serializer = DisciplineMembershipSerializer(disciplinemembership)
+
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def discipline_memberships_info(request):
+    disciplinememberships = DisciplineMembership.objects.all()
+    serializer = DisciplineMembershipInfoSerializer({
+        'disciplinememberships': disciplinememberships,
+        'count': len(disciplinememberships),
+    })
+
+    return Response(serializer.data)
 
     return Response(serializer.data)
 
@@ -104,18 +154,38 @@ def club_detail(request, pk):
 
     return Response(serializer.data)
 
+@api_view(['GET'])
+def club_info(request):
+    clubs = Club.objects.all()
+    serializer = ClubInfoSerializer({
+        'clubs': clubs,
+        'count': len(clubs),
+    })
+
+    return Response(serializer.data)
+
 # ClubMembership
 @api_view(['GET'])
 def club_memberships_list(request):
-    club_memberships = ClubMembership.objects.all()
-    serializer = ClubMembershipSerializer(club_memberships, many=True)
+    clubmemberships = ClubMembership.objects.all()
+    serializer = ClubMembershipSerializer(clubmemberships, many=True)
 
     return Response(serializer.data)
 
 @api_view(['GET'])
 def club_memberships_detail(request, pk):
-    club_membership = get_object_or_404(ClubMembership, pk=pk)
-    serializer = ClubMembershipSerializer(club_membership)
+    clubmembership = get_object_or_404(ClubMembership, pk=pk)
+    serializer = ClubMembershipSerializer(clubmembership)
+
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def club_memberships_info(request):
+    clubmemberships = ClubMembership.objects.all()
+    serializer = ClubMembershipInfoSerializer({
+        'clubmemberships': clubmemberships,
+        'count': len(clubmemberships)
+    })
 
     return Response(serializer.data)
 
@@ -134,6 +204,16 @@ def category_detail(request, pk):
 
     return Response(serializer.data)
 
+@api_view(['GET'])
+def category_info(request):
+    categories = Category.objects.all()
+    serializer = CategoryInfoSerializer({
+        'categories': categories,
+        'count': len(categories),
+    })
+
+    return Response(serializer.data)
+
 # AgeGroup
 @api_view(['GET'])
 def agegroup_list(request):
@@ -149,18 +229,38 @@ def agegroup_detail(request, pk):
 
     return Response(serializer.data)
 
+@api_view(['GET'])
+def agegroup_info(request):
+    agegroups = AgeGroup.objects.all()
+    serializer = AgeGroupInfoSerializer({
+        'agegroups': agegroups,
+        'count': len(agegroups),
+    })
+
+    return Response(serializer.data)
+
 # CategoryMembership
 @api_view(['GET'])
 def category_memberships_list(request):
-    category_memberships = CategoryMembership.objects.all()
-    serializer = CategoryMembershipSerializer(category_memberships, many=True)
+    categorymemberships = CategoryMembership.objects.all()
+    serializer = CategoryMembershipSerializer(categorymemberships, many=True)
 
     return Response(serializer.data)
 
 @api_view(['GET'])
 def category_memberships_detail(request, pk):
-    category_membership = get_object_or_404(CategoryMembership, pk=pk)
-    serializer = CategoryMembershipSerializer(category_membership)
+    categorymembership = get_object_or_404(CategoryMembership, pk=pk)
+    serializer = CategoryMembershipSerializer(categorymembership)
+
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def category_memberships_info(request):
+    categorymemberships = CategoryMembership.objects.all()
+    serializer = CategoryMembershipInfoSerializer({
+        'categorymemberships': categorymemberships,
+        'count': len(categorymemberships),
+    })
 
     return Response(serializer.data)
 
@@ -179,18 +279,38 @@ def team_detail(request, pk):
 
     return Response(serializer.data)
 
+@api_view(['GET'])
+def team_info(request):
+    teams = Team.objects.all()
+    serializer = TeamInfoSerializer({
+        'teams': teams,
+        'count': len(teams),
+    })
+
+    return Response(serializer.data)
+
 # TeamMembership
 @api_view(['GET'])
 def team_memberships_list(request):
-    team_memberships = TeamMembership.objects.all()
-    serializer = TeamMembershipSerializer(team_memberships, many=True)
+    teammemberships = TeamMembership.objects.all()
+    serializer = TeamMembershipSerializer(teammemberships, many=True)
 
     return Response(serializer.data)
 
 @api_view(['GET'])
 def team_memberships_detail(request, pk):
-    team_membership = get_object_or_404(TeamMembership, pk=pk)
-    serializer = TeamMembershipSerializer(team_membership)
+    teammembership = get_object_or_404(TeamMembership, pk=pk)
+    serializer = TeamMembershipSerializer(teammembership)
+
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def team_memberships_info(request):
+    teammemberships = TeamMembership.objects.all()
+    serializer = TeamMembershipInfoSerializer({
+        'teammemberships': teammemberships,
+        'count': len(teammemberships),
+    })
 
     return Response(serializer.data)
 
@@ -209,6 +329,16 @@ def scoringsheet_detail(request, pk):
 
     return Response(serializer.data)
 
+@api_view(['GET'])
+def scoringsheet_info(request):
+    scoringsheets = ScoringSheet.objects.all()
+    serializer = ScoringSheetInfoSerializer({
+        'scoringsheets': scoringsheets,
+        'count': len(scoringsheets),
+    })
+
+    return Response(serializer.data)
+
 # TargetFaceNameChoice
 @api_view(['GET'])
 def targetfacenamechoice_list(request):
@@ -221,6 +351,16 @@ def targetfacenamechoice_list(request):
 def targetfacenamechoice_detail(request, pk):
     targetfacenamechoice = get_object_or_404(TargetFaceNameChoice, pk=pk)
     serializer = TargetFaceNameChoiceSerializer(targetfacenamechoice)
+
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def targetfacenamechoice_info(request):
+    targetfacenamechoices = TargetFaceNameChoice.objects.all()
+    serializer = TargetFaceNameChoiceInfoSerializer({
+        'targetfacenamechoices': targetfacenamechoices,
+        'count': len(targetfacenamechoices),
+    })
 
     return Response(serializer.data)
 
@@ -239,6 +379,16 @@ def targetface_detail(request, pk):
 
     return Response(serializer.data)
 
+@api_view(['GET'])
+def targetface_info(request):
+    targetfaces = TargetFace.objects.all()
+    serializer = TargetFaceInfoSerializer({
+        'targetfaces': targetfaces,
+        'count': len(targetfaces),
+    })
+
+    return Response(serializer.data)
+
 # Round
 @api_view(['GET'])
 def round_list(request):
@@ -254,18 +404,38 @@ def round_detail(request, pk):
 
     return Response(serializer.data)
 
+@api_view(['GET'])
+def round_info(request):
+    rounds = Round.objects.all()
+    serializer = RoundInfoSerializer({
+        'rounds': rounds,
+        'count': len(rounds),
+    })
+
+    return Response(serializer.data)
+
 # RoundMembership
 @api_view(['GET'])
 def round_memberships_list(request):
-    round_memberships = RoundMembership.objects.all()
-    serializer = RoundMembershipSerializer(round_memberships, many=True)
+    roundmemberships = RoundMembership.objects.all()
+    serializer = RoundMembershipSerializer(roundmemberships, many=True)
 
     return Response(serializer.data)
 
 @api_view(['GET'])
 def round_memberships_detail(request, pk):
-    round_membership = get_object_or_404(RoundMembership, pk=pk)
-    serializer = RoundMembershipSerializer(round_membership)
+    roundmembership = get_object_or_404(RoundMembership, pk=pk)
+    serializer = RoundMembershipSerializer(roundmembership)
+
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def round_memberships_info(request):
+    roundmemberships = RoundMembership.objects.all()
+    serializer = RoundMembershipInfoSerializer({
+        'roundmemberships': roundmemberships,
+        'count': len(roundmemberships),
+    })
 
     return Response(serializer.data)
 
@@ -284,6 +454,16 @@ def score_detail(request, pk):
 
     return Response(serializer.data)
 
+@api_view(['GET'])
+def score_info(request):
+    scores = Score.objects.all()
+    serializer = ScoreInfoSerializer({
+        'scores': scores,
+        'count': len(scores),
+    })
+
+    return Response(serializer.data)
+
 # Competition
 @api_view(['GET'])
 def competition_list(request):
@@ -299,16 +479,36 @@ def competition_detail(request, pk):
 
     return Response(serializer.data)
 
+@api_view(['GET'])
+def competition_info(request):
+    competitions = Competition.objects.all()
+    serializer = CompetitionInfoSerializer({
+        'competitions': competitions,
+        'count': len(competitions),
+    })
+
+    return Response(serializer.data)
+
 # CompetitionMembership
 @api_view(['GET'])
 def competition_memberships_list(request):
-    competition_memberships = CompetitionMembership.objects.all()
-    serializer = CompetitionMembershipSerializer(competition_memberships, many=True)
+    competitionmemberships = CompetitionMembership.objects.all()
+    serializer = CompetitionMembershipSerializer(competitionmemberships, many=True)
 
     return Response(serializer.data)
 
 def competition_memberships_detail(request, pk):
-    competition_membership = get_object_or_404(CompetitionMembership, pk=pk)
-    serializer = CompetitionMembershipSerializer(competition_membership)
+    competitionmembership = get_object_or_404(CompetitionMembership, pk=pk)
+    serializer = CompetitionMembershipSerializer(competitionmembership)
+
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def competition_memberships_info(request):
+    competitionmemberships = CompetitionMembership.objects.all()
+    serializer = CompetitionMembershipInfoSerializer({
+        'competitionmemberships': competitionmemberships,
+        'count': len(competitionmemberships),
+    })
 
     return Response(serializer.data)

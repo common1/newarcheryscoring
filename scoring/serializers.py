@@ -21,6 +21,8 @@ from .models import (
     CompetitionMembership,
 )
 
+# Archer
+
 class ArcherSerializer(serializers.ModelSerializer):
     class Meta:
         model = Archer
@@ -44,6 +46,12 @@ class ArcherSerializer(serializers.ModelSerializer):
             'author',
         )
 
+class  ArcherInfoSerializer(serializers.Serializer):
+    archers = ArcherSerializer(many=True)
+    count = serializers.FloatField()
+
+# Discipline
+
 class DisciplineSerializer(serializers.ModelSerializer):
     archers = ArcherSerializer(many=True, read_only=True)
 
@@ -60,6 +68,12 @@ class DisciplineSerializer(serializers.ModelSerializer):
             'modified_at',
             'is_active',
         )
+
+class  DisciplineInfoSerializer(serializers.Serializer):
+    disciplines = DisciplineSerializer(many=True)
+    count = serializers.FloatField()
+
+# DisciplineMembership
 
 class DisciplineMembershipSerializer(serializers.ModelSerializer):
     # discipline = DisciplineSerializer()
@@ -80,6 +94,13 @@ class DisciplineMembershipSerializer(serializers.ModelSerializer):
             'modified_at',
             'is_active',
         )
+
+class  DisciplineMembershipInfoSerializer(serializers.Serializer):
+    disciplinememberships = DisciplineMembershipSerializer(many=True)
+    count = serializers.FloatField()
+
+
+# Club
 
 class ClubSerializer(serializers.ModelSerializer):
     archers = ArcherSerializer(many=True, read_only=True)
@@ -105,6 +126,12 @@ class ClubSerializer(serializers.ModelSerializer):
             'is_active',
         )
 
+class  ClubInfoSerializer(serializers.Serializer):
+    clubs = ClubSerializer(many=True)
+    count = serializers.FloatField()
+
+# ClubMembership
+
 class ClubMembershipSerializer(serializers.ModelSerializer):
     # club = ClubSerializer()
     # archer = ArcherSerializer()
@@ -127,6 +154,12 @@ class ClubMembershipSerializer(serializers.ModelSerializer):
             'is_active',
         )
 
+class ClubMembershipInfoSerializer(serializers.Serializer):
+    clubmemberships = ClubMembershipSerializer(many=True)
+    count = serializers.FloatField()
+
+# Category
+
 class CategorySerializer(serializers.ModelSerializer):
     archers = ArcherSerializer(many=True, read_only=True)
 
@@ -144,6 +177,12 @@ class CategorySerializer(serializers.ModelSerializer):
             'modified_at',
         )
 
+class CategoryInfoSerializer(serializers.Serializer):
+    categories = CategorySerializer(many=True)
+    count = serializers.FloatField()
+
+# AgeGroup
+
 class AgeGroupSerializer(serializers.ModelSerializer):
     class Meta:
         model = AgeGroup
@@ -157,6 +196,12 @@ class AgeGroupSerializer(serializers.ModelSerializer):
             'modified_at',
             'is_active',
         )
+
+class AgeGroupInfoSerializer(serializers.Serializer):
+    agegroups = AgeGroupSerializer(many=True)
+    count = serializers.FloatField()
+
+# CategoryMembership
 
 class CategoryMembershipSerializer(serializers.ModelSerializer):
     # category = CategorySerializer()
@@ -179,6 +224,12 @@ class CategoryMembershipSerializer(serializers.ModelSerializer):
             'is_active',
         )
 
+class CategoryMembershipInfoSerializer(serializers.Serializer):
+    categorymemberships = CategoryMembershipSerializer(many=True)
+    count = serializers.FloatField()
+
+# Team
+
 class TeamSerializer(serializers.ModelSerializer):
     archers = ArcherSerializer(many=True, read_only=True)
 
@@ -195,6 +246,12 @@ class TeamSerializer(serializers.ModelSerializer):
             'modified_at',
             'is_active',
         )
+
+class TeamInfoSerializer(serializers.Serializer):
+    teams = TeamSerializer(many=True)
+    count = serializers.FloatField()
+
+# TeamMembership
 
 class TeamMembershipSerializer(serializers.ModelSerializer):
     # team = TeamSerializer()
@@ -216,6 +273,12 @@ class TeamMembershipSerializer(serializers.ModelSerializer):
             'is_active',
         )
 
+class TeamMembershipInfoSerializer(serializers.Serializer):
+    teammemberships = TeamMembershipSerializer(many=True)
+    count = serializers.FloatField()
+
+# ScoringSheet
+
 class ScoringSheetSerializer(serializers.ModelSerializer):
     class Meta:
         model = ScoringSheet
@@ -231,6 +294,12 @@ class ScoringSheetSerializer(serializers.ModelSerializer):
             'modified_at',
             'is_active',
         )
+
+class ScoringSheetInfoSerializer(serializers.Serializer):
+    scoringsheets = ScoringSheetSerializer(many=True)
+    count = serializers.FloatField()
+
+# TargetFaceNameChoice
 
 class TargetFaceNameChoiceSerializer(serializers.ModelSerializer):
     class Meta:
@@ -250,6 +319,12 @@ class TargetFaceNameChoiceSerializer(serializers.ModelSerializer):
             'is_active',
         )
 
+class TargetFaceNameChoiceInfoSerializer(serializers.Serializer):
+    targetfacenamechoices = TargetFaceNameChoiceSerializer(many=True)
+    count = serializers.FloatField()
+
+# TargetFace
+
 class TargetFaceSerializer(serializers.ModelSerializer):
     class Meta:
         model = TargetFace
@@ -263,6 +338,12 @@ class TargetFaceSerializer(serializers.ModelSerializer):
             'modified_at',
             'is_active',
         )
+
+class TargetFaceInfoSerializer(serializers.Serializer):
+    targetfaces = TargetFaceSerializer(many=True)
+    count = serializers.FloatField()
+
+# Round
 
 class RoundSerializer(serializers.ModelSerializer):
     archers = ArcherSerializer(many=True, read_only=True)
@@ -285,6 +366,12 @@ class RoundSerializer(serializers.ModelSerializer):
             'is_active',
         )
 
+class RoundInfoSerializer(serializers.Serializer):
+    rounds = RoundSerializer(many=True)
+    count = serializers.FloatField()
+
+# RoundMembership
+
 class RoundMembershipSerializer(serializers.ModelSerializer):
     # round = RoundSerializer()
     # archer = ArcherSerializer()
@@ -305,6 +392,12 @@ class RoundMembershipSerializer(serializers.ModelSerializer):
             'is_active',
         )
 
+class RoundMembershipInfoSerializer(serializers.Serializer):
+    roundmemberships = RoundMembershipSerializer(many=True)
+    count = serializers.FloatField()
+
+# Score
+
 class ScoreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Score
@@ -319,6 +412,12 @@ class ScoreSerializer(serializers.ModelSerializer):
             'modified_at',
             'is_active',
         )
+
+class ScoreInfoSerializer(serializers.Serializer):
+    scores = ScoreSerializer(many=True)
+    count = serializers.FloatField()
+
+# Competition
 
 class CompetitionSerializer(serializers.ModelSerializer):
     rounds = RoundSerializer(many=True, read_only=True)
@@ -338,6 +437,12 @@ class CompetitionSerializer(serializers.ModelSerializer):
             'modified_at',
             'is_active',
         )
+
+class CompetitionInfoSerializer(serializers.Serializer):
+    competitions = CompetitionSerializer(many=True)
+    count = serializers.FloatField()
+
+# CompetitionMembership
 
 class CompetitionMembershipSerializer(serializers.ModelSerializer):
     # competition = CompetitionSerializer()
@@ -359,3 +464,6 @@ class CompetitionMembershipSerializer(serializers.ModelSerializer):
             'is_active',
         )
 
+class CompetitionMembershipInfoSerializer(serializers.Serializer):
+    competitionmemberships = CompetitionMembershipSerializer(many=True)
+    count = serializers.FloatField()
