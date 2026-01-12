@@ -6,6 +6,7 @@ urlpatterns = [
     path('archers/', views.ArcherListAPIView.as_view()),
     path('archers/info/', views.archer_info),
     path('archers/<uuid:pk>/', views.ArcherDetailAPIView.as_view()),
+    path('user-archers/', views.UserArcherListAPIView.as_view()),
 
     # path('archers/', views.archer_list),
     # path('archers/info/', views.archer_info),
@@ -14,6 +15,7 @@ urlpatterns = [
     path('disciplines/', views.DisciplineListAPIView.as_view()),
     path('disciplines/info/', views.discipline_info),
     path('disciplines/<uuid:pk>/', views.DisciplineDetailAPIView.as_view()),
+    path('user-disciplines/', views.UserDisciplineListAPIView.as_view()),
 
     # path('disciplines/', views.discipline_list),
     # path('disciplines/info/', views.discipline_info),
@@ -22,6 +24,7 @@ urlpatterns = [
     path('disciplinememberships/', views.DisciplineMembershipListAPIView.as_view()),
     path('disciplinememberships/info/', views.discipline_memberships_info),
     path('disciplinememberships/<uuid:pk>/', views.DisciplineMembershipDetailAPIView.as_view()),
+    path('user-disciplinememberships/', views.UserDisciplineMembershipListAPIView.as_view()),
 
     # path('disciplinememberships/', views.discipline_memberships_list),
     # path('disciplinememberships/info/', views.discipline_memberships_info),
@@ -30,6 +33,7 @@ urlpatterns = [
     path('clubs/', views.ClubListAPIView.as_view()),
     path('clubs/info/', views.club_info),
     path('clubs/<uuid:pk>/', views.ClubDetailAPIView.as_view()),
+    path('user-clubs/', views.UserClubListAPIView.as_view()),
 
     # path('clubs/', views.club_list),
     # path('clubs/info/', views.club_info),
@@ -38,6 +42,7 @@ urlpatterns = [
     path('clubmemberships/', views.ClubMembershipListAPIView.as_view()),
     path('clubmemberships/info/', views.club_memberships_info),
     path('clubmemberships/<uuid:pk>/', views.ClubMembershipDetailAPIView.as_view()),
+    path('user-clubmemberships/', views.UserClubMembershipListAPIView.as_view()),
 
     # path('clubmemberships/', views.club_memberships_list),
     # path('clubmemberships/info/', views.club_memberships_info),
@@ -46,6 +51,7 @@ urlpatterns = [
     path('categories/', views.CategoryListAPIView.as_view()),
     path('categories/info/', views.category_info),
     path('categories/<uuid:pk>/', views.CategoryDetailAPIView.as_view()),
+    path('user-categories/', views.UserCategoryListAPIView.as_view()),
 
     # path('categories/', views.category_list),
     # path('categories/info/', views.category_info),

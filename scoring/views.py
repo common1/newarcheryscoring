@@ -62,6 +62,9 @@ from .models import (
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import generics
+from rest_framework.permissions import (
+    IsAuthenticated,
+)
 
 # Archer
 
@@ -73,12 +76,14 @@ class ArcherDetailAPIView(generics.RetrieveAPIView):
     queryset = Archer.objects.all()
     serializer_class = ArcherSerializer
 
-# @api_view(['GET'])
-# def archer_detail(request, pk):
-#     archer = get_object_or_404(Archer, pk=pk)
-#     serializer = ArcherSerializer(archer)
+class UserArcherListAPIView(generics.ListAPIView):
+    queryset = Archer.objects.all()
+    serializer_class = ArcherSerializer
+    permission_classes = [IsAuthenticated]
 
-#     return Response(serializer.data)
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.filter(author=self.request.user)
 
 @api_view(['GET'])
 def archer_info(request):
@@ -100,12 +105,14 @@ class DisciplineDetailAPIView(generics.RetrieveAPIView):
     queryset = Discipline.objects.all()
     serializer_class = DisciplineSerializer
 
-# @api_view(['GET'])
-# def discipline_detail(request, pk):
-#     discipline = get_object_or_404(Discipline, pk=pk)
-#     serializer = DisciplineSerializer(discipline)
+class UserDisciplineListAPIView(generics.ListAPIView):
+    queryset = Discipline.objects.all()
+    serializer_class = DisciplineSerializer
+    permission_classes = [IsAuthenticated]
 
-#     return Response(serializer.data)
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.filter(author=self.request.user)
 
 @api_view(['GET'])
 def discipline_info(request):
@@ -129,12 +136,14 @@ class DisciplineMembershipDetailAPIView(generics.RetrieveAPIView):
     queryset = DisciplineMembership.objects.all()
     serializer_class = DisciplineMembershipSerializer
 
-# @api_view(['GET'])
-# def discipline_memberships_detail(request, pk):
-#     disciplinemembership = get_object_or_404(DisciplineMembership, pk=pk)
-#     serializer = DisciplineMembershipSerializer(disciplinemembership)
+class UserDisciplineMembershipListAPIView(generics.ListAPIView):
+    queryset = DisciplineMembership.objects.all()
+    serializer_class = DisciplineMembershipSerializer
+    permission_classes = [IsAuthenticated]
 
-#     return Response(serializer.data)
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.filter(author=self.request.user)
 
 @api_view(['GET'])
 def discipline_memberships_info(request):
@@ -159,12 +168,14 @@ class ClubDetailAPIView(generics.RetrieveAPIView):
     queryset = Club.objects.all()
     serializer_class = ClubSerializer
 
-# @api_view(['GET'])
-# def club_detail(request, pk):
-#     club = get_object_or_404(Club, pk=pk)
-#     serializer = ClubSerializer(club)
+class UserClubListAPIView(generics.ListAPIView):
+    queryset = Club.objects.all()
+    serializer_class = ClubSerializer
+    permission_classes = [IsAuthenticated]
 
-#     return Response(serializer.data)
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.filter(author=self.request.user)
 
 @api_view(['GET'])
 def club_info(request):
@@ -188,12 +199,15 @@ class ClubMembershipDetailAPIView(generics.RetrieveAPIView):
     queryset = ClubMembership.objects.all()
     serializer_class = ClubMembershipSerializer
 
-# @api_view(['GET'])
-# def club_memberships_detail(request, pk):
-#     clubmembership = get_object_or_404(ClubMembership, pk=pk)
-#     serializer = ClubMembershipSerializer(clubmembership)
+class UserClubMembershipListAPIView(generics.ListAPIView):
+    queryset = ClubMembership.objects.all()
+    serializer_class = ClubMembershipSerializer
 
-#     return Response(serializer.data)
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.filter(author=self.request.user)
 
 @api_view(['GET'])
 def club_memberships_info(request):
@@ -217,6 +231,15 @@ class CategoryListAPIView(generics.ListAPIView):
 class CategoryDetailAPIView(generics.RetrieveAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+
+class UserCategoryListAPIView(generics.ListAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.filter(author=self.request.user)
 
 # @api_view(['GET'])
 # def category_detail(request, pk):

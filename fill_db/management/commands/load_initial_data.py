@@ -29,7 +29,7 @@ SCREEN_OUTPUT = True
 
 class Command(BaseCommand):
     user = None   
-    
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         
@@ -42,8 +42,20 @@ class Command(BaseCommand):
                 password='changeme', 
                 email='me@mail.com'
             )
-        if SCREEN_OUTPUT:
-            self.stdout.write(self.style.SUCCESS('Superuser "admin" ensured.'))
+            if SCREEN_OUTPUT:
+                self.stdout.write(self.style.SUCCESS('Superuser "admin" created.'))
+        
+        # get or create user
+        if not CustomUser.objects.filter(username='johndoe').first():
+            CustomUser.objects.create_user(
+                username='johndoe',
+                display_name='John Doe',
+                password='changeme',
+                email='johndoe@mail.com',
+            )
+            if SCREEN_OUTPUT:
+                self.stdout.write(self.style.SUCCESS('User "johndoe" created.'))
+
         
     help = 'Populate the database with sample data'
     

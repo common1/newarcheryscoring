@@ -175,5 +175,21 @@ serializers ..InfoSerializer classes completed
 ```
 
 ```bash
+del db.sqlite3
+pyclean .
+python manage.py makemigrations
+python manage.py migrate
+python manage.py load_initial_data
+python manage.py runserver
+```
+
+## 15 Django REST Framework - Permissions and Testing Permissions
+
+[https://www.youtube.com/watch?v=rx5IV_4Iuog&list=PL-2EBeDYMIbTLulc9FSoAXhbmXpLq2l5t&index=8]
+
+```
+```
+
+```bash
 ```
 
