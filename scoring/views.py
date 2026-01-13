@@ -241,13 +241,6 @@ class UserCategoryListAPIView(generics.ListAPIView):
         qs = super().get_queryset()
         return qs.filter(author=self.request.user)
 
-# @api_view(['GET'])
-# def category_detail(request, pk):
-#     category = get_object_or_404(Category, pk=pk)
-#     serializer = CategorySerializer(category)
-
-#     return Response(serializer.data)
-
 @api_view(['GET'])
 def category_info(request):
     categories = Category.objects.prefetch_related(
@@ -270,12 +263,14 @@ class AgeGroupDetailAPIView(generics.RetrieveAPIView):
     queryset = AgeGroup.objects.all()
     serializer_class = AgeGroupSerializer
 
-# @api_view(['GET'])
-# def agegroup_detail(request, pk):
-#     agegroup = get_object_or_404(agegroup, pk=pk)
-#     serializer = AgeGroupSerializer(agegroup)
+class UserAgeGroupListAPIView(generics.ListAPIView):
+    queryset = AgeGroup.objects.all()
+    serializer_class = AgeGroupSerializer
+    permission_classes = [IsAuthenticated]
 
-#     return Response(serializer.data)
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.filter(author=self.request.user)
 
 @api_view(['GET'])
 def agegroup_info(request):
@@ -297,12 +292,14 @@ class CategoryMembershipDetailAPIView(generics.RetrieveAPIView):
     queryset = CategoryMembership.objects.all()
     serializer_class = CategoryMembershipSerializer
 
-# @api_view(['GET'])
-# def category_memberships_detail(request, pk):
-#     categorymembership = get_object_or_404(CategoryMembership, pk=pk)
-#     serializer = CategoryMembershipSerializer(categorymembership)
+class UserCategoryMembershipListAPIView(generics.ListAPIView):
+    queryset = CategoryMembership.objects.all()
+    serializer_class = CategoryMembershipSerializer
+    permission_classes = [IsAuthenticated]
 
-#     return Response(serializer.data)
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.filter(author=self.request.user)
 
 @api_view(['GET'])
 def category_memberships_info(request):
@@ -328,12 +325,14 @@ class TeamDetailAPIView(generics.RetrieveAPIView):
     queryset = Team.objects.all()
     serializer_class = TeamSerializer
 
-# @api_view(['GET'])
-# def team_detail(request, pk):
-#     team = get_object_or_404(Team, pk=pk)
-#     serializer = TeamSerializer(team)
+class UserTeamListAPIView(generics.ListAPIView):
+    queryset = Team.objects.all()
+    serializer_class = TeamSerializer
+    permission_classes = [IsAuthenticated]
 
-#     return Response(serializer.data)
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.filter(author=self.request.user)
 
 @api_view(['GET'])
 def team_info(request):
@@ -357,12 +356,14 @@ class TeamMembershipDetailAPIView(generics.RetrieveAPIView):
     queryset = TeamMembership.objects.all()
     serializer_class = TeamMembershipSerializer
 
-# @api_view(['GET'])
-# def team_memberships_detail(request, pk):
-#     teammembership = get_object_or_404(TeamMembership, pk=pk)
-#     serializer = TeamMembershipSerializer(teammembership)
+class UserTeamMembershipListAPIView(generics.ListAPIView):
+    queryset = TeamMembership.objects.all()
+    serializer_class = TeamMembershipSerializer
+    permission_classes = [IsAuthenticated]
 
-#     return Response(serializer.data)
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.filter(author=self.request.user)
 
 @api_view(['GET'])
 def team_memberships_info(request):
@@ -387,12 +388,14 @@ class ScoringSheetDetailAPIView(generics.RetrieveAPIView):
     queryset = ScoringSheet.objects.all()
     serializer_class = ScoringSheetSerializer
 
-# @api_view(['GET'])
-# def scoringsheet_detail(request, pk):
-#     scoringsheets = get_object_or_404(ScoringSheet, pk=pk)
-#     serializer = ScoringSheetSerializer(scoringsheets)
+class UserScoringSheetListAPIView(generics.ListAPIView):
+    queryset = ScoringSheet.objects.all()
+    serializer_class = ScoringSheetSerializer
+    permission_classes = [IsAuthenticated]
 
-#     return Response(serializer.data)
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.filter(author=self.request.user)
 
 @api_view(['GET'])
 def scoringsheet_info(request):
@@ -414,12 +417,14 @@ class TargetFaceNameChoiceDetailAPIView(generics.RetrieveAPIView):
     queryset = TargetFaceNameChoice.objects.all()
     serializer_class = TargetFaceNameChoiceSerializer
 
-@api_view(['GET'])
-def targetfacenamechoice_detail(request, pk):
-    targetfacenamechoice = get_object_or_404(TargetFaceNameChoice, pk=pk)
-    serializer = TargetFaceNameChoiceSerializer(targetfacenamechoice)
+class UserTargetFaceNameChoiceListAPIView(generics.ListAPIView):
+    queryset = TargetFaceNameChoice.objects.all()
+    serializer_class = TargetFaceNameChoiceSerializer
+    permission_classes = [IsAuthenticated]
 
-    return Response(serializer.data)
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.filter(author=self.request.user)
 
 @api_view(['GET'])
 def targetfacenamechoice_info(request):
@@ -441,12 +446,14 @@ class TargetFaceDetailAPIView(generics.RetrieveAPIView):
     queryset = TargetFace.objects.all()
     serializer_class = TargetFaceSerializer
 
-# @api_view(['GET'])
-# def targetface_detail(request, pk):
-#     targetface = get_object_or_404(TargetFace, pk=pk)
-#     serializer = TargetFaceSerializer(targetface)
+class UserTargetFaceListAPIView(generics.ListAPIView):
+    queryset = TargetFace.objects.all()
+    serializer_class = TargetFaceSerializer
+    permission_classes = [IsAuthenticated]
 
-#     return Response(serializer.data)
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.filter(author=self.request.user)
 
 @api_view(['GET'])
 def targetface_info(request):
@@ -468,12 +475,14 @@ class RoundDetailAPIView(generics.RetrieveAPIView):
     queryset = Round.objects.all()
     serializer_class = RoundSerializer
 
-# @api_view(['GET'])
-# def round_detail(request, pk):
-#     round = get_object_or_404(Round, pk=pk)
-#     serializer = RoundSerializer(round)
+class UserRoundListAPIView(generics.ListAPIView):
+    queryset = Round.objects.all()
+    serializer_class = RoundSerializer
+    permission_classes = [IsAuthenticated]
 
-#     return Response(serializer.data)
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.filter(author=self.request.user)
 
 @api_view(['GET'])
 def round_info(request):
@@ -497,12 +506,14 @@ class RoundMembershipDetailAPIView(generics.RetrieveAPIView):
     queryset = RoundMembership.objects.all()
     serializer_class = RoundMembershipSerializer
 
-# @api_view(['GET'])
-# def round_memberships_detail(request, pk):
-#     roundmembership = get_object_or_404(RoundMembership, pk=pk)
-#     serializer = RoundMembershipSerializer(roundmembership)
+class UserRoundMembershipListAPIView(generics.ListAPIView):
+    queryset = RoundMembership.objects.all()
+    serializer_class = RoundMembershipSerializer
+    permission_classes = [IsAuthenticated]
 
-#     return Response(serializer.data)
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.filter(author=self.request.user)
 
 @api_view(['GET'])
 def round_memberships_info(request):
@@ -527,12 +538,14 @@ class ScoreDetailAPIView(generics.RetrieveAPIView):
     queryset = Score.objects.all()
     serializer_class = ScoreSerializer
 
-# @api_view(['GET'])
-# def score_detail(request, pk):
-#     score = get_object_or_404(Score, pk=pk)
-#     serializer = ScoreSerializer(score)
+class UserScoreListAPIView(generics.ListAPIView):
+    queryset = Score.objects.all()
+    serializer_class = ScoreSerializer
+    permission_classes = [IsAuthenticated]
 
-#     return Response(serializer.data)
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.filter(author=self.request.user)
 
 @api_view(['GET'])
 def score_info(request):
@@ -556,12 +569,14 @@ class CompetitionDetailAPIView(generics.RetrieveAPIView):
     queryset = Competition.objects.all()
     serializer_class = CompetitionSerializer
 
-# @api_view(['GET'])
-# def competition_detail(request, pk):
-#     competition = get_object_or_404(Competition, pk=pk)
-#     serializer = CompetitionSerializer(competition)
+class UserCompetitionListAPIView(generics.ListAPIView):
+    queryset = Competition.objects.all()
+    serializer_class = CompetitionSerializer
+    permission_classes = [IsAuthenticated]
 
-#     return Response(serializer.data)
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.filter(author=self.request.user)
 
 @api_view(['GET'])
 def competition_info(request):
@@ -584,6 +599,15 @@ class CompetitionMembershipListAPIView(generics.ListAPIView):
 class CompetitionMembershipDetailAPIView(generics.RetrieveAPIView):
     queryset = CompetitionMembership.objects.all()
     serializer_class = CompetitionMembershipSerializer
+
+class UserCompetitionMembershipListAPIView(generics.ListAPIView):
+    queryset = CompetitionMembership.objects.all()
+    serializer_class = CompetitionMembershipSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.filter(author=self.request.user)
 
 # def competition_memberships_detail(request, pk):
 #     competitionmembership = get_object_or_404(CompetitionMembership, pk=pk)
