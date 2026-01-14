@@ -78,8 +78,8 @@ class  DisciplineInfoSerializer(serializers.Serializer):
 class DisciplineMembershipSerializer(serializers.ModelSerializer):
     # discipline = DisciplineSerializer()
     # archer = ArcherSerializer()
-    discipline = serializers.CharField()
-    archer = serializers.CharField()
+    # discipline = serializers.CharField()
+    # archer = serializers.CharField()
 
     class Meta:
         model = DisciplineMembership
@@ -135,8 +135,8 @@ class  ClubInfoSerializer(serializers.Serializer):
 class ClubMembershipSerializer(serializers.ModelSerializer):
     # club = ClubSerializer()
     # archer = ArcherSerializer()
-    club = serializers.CharField()
-    archer = serializers.CharField()
+    # club = serializers.CharField()
+    # archer = serializers.CharField()
 
     class Meta:
         model = ClubMembership
@@ -206,8 +206,8 @@ class AgeGroupInfoSerializer(serializers.Serializer):
 class CategoryMembershipSerializer(serializers.ModelSerializer):
     # category = CategorySerializer()
     # archer = ArcherSerializer()
-    archer = serializers.CharField()
-    category = serializers.CharField()
+    # archer = serializers.CharField()
+    # category = serializers.CharField()
 
     class Meta:
         model = CategoryMembership
@@ -256,8 +256,8 @@ class TeamInfoSerializer(serializers.Serializer):
 class TeamMembershipSerializer(serializers.ModelSerializer):
     # team = TeamSerializer()
     # archer = ArcherSerializer()
-    team = serializers.CharField()
-    archer = serializers.CharField()
+    # team = serializers.CharField()
+    # archer = serializers.CharField()
 
     class Meta:
         model = TeamMembership

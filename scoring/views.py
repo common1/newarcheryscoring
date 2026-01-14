@@ -69,7 +69,7 @@ from rest_framework.views import APIView
 
 # Archer
 
-class ArcherListAPIView(generics.ListAPIView):
+class ArcherListCreateAPIView(generics.ListCreateAPIView):
     queryset = Archer.objects.all()
     serializer_class = ArcherSerializer
 
@@ -98,7 +98,7 @@ class ArcherInfoAPIView(APIView):
 
 # Discipline
 
-class DisciplineListAPIView(generics.ListAPIView):
+class DisciplineListCreateAPIView(generics.ListCreateAPIView):
     queryset = Discipline.objects.all()
     serializer_class = DisciplineSerializer
 
@@ -129,7 +129,7 @@ class DisciplineInfoAPIView(APIView):
 
 # DisciplineMembership
 
-class DisciplineMembershipListAPIView(generics.ListAPIView):
+class DisciplineMembershipListCreateAPIView(generics.ListCreateAPIView):
     queryset = DisciplineMembership.objects.all()
     serializer_class = DisciplineMembershipSerializer
 
@@ -161,7 +161,7 @@ class DisciplineMembershipInfoAPIView(APIView):
 
 # Club
 
-class ClubListAPIView(generics.ListAPIView):
+class ClubListCreateAPIView(generics.ListCreateAPIView):
     queryset = Club.objects.all()
     serializer_class = ClubSerializer
 
@@ -192,7 +192,7 @@ class ClubInfoAPIView(APIView):
 
 # ClubMembership
 
-class ClubMembershipListAPIView(generics.ListAPIView):
+class ClubMembershipListCreateAPIView(generics.ListCreateAPIView):
     queryset = ClubMembership.objects.all()
     serializer_class = ClubMembershipSerializer
 
@@ -225,7 +225,7 @@ class ClubMembershipInfoAPIView(APIView):
 
 # Category
 
-class CategoryListAPIView(generics.ListAPIView):
+class CategoryListCreateAPIView(generics.ListCreateAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
@@ -256,7 +256,7 @@ class CategoryInfoAPIView(APIView):
 
 # AgeGroup
 
-class AgeGroupListAPIView(generics.ListAPIView):
+class AgeGroupListCreateAPIView(generics.ListCreateAPIView):
     queryset = AgeGroup.objects.all()
     serializer_class = AgeGroupSerializer
 
@@ -285,7 +285,7 @@ class AgeGroupInfoAPIView(APIView):
 
 # CategoryMembership
 
-class CategoryMembershipListAPIView(generics.ListAPIView):
+class CategoryMembershipListCreateAPIView(generics.ListCreateAPIView):
     queryset = CategoryMembership.objects.all()
     serializer_class = CategoryMembershipSerializer
 
@@ -318,7 +318,7 @@ class CategoryMembershipInfoAPIView(APIView):
 
 # Team
 
-class TeamListAPIView(generics.ListAPIView):
+class TeamListCreateAPIView(generics.ListCreateAPIView):
     queryset = Team.objects.all()
     serializer_class = TeamSerializer
 
@@ -349,7 +349,7 @@ class TeamInfoAPIView(APIView):
 
 # TeamMembership
 
-class TeamMembershipListAPIView(generics.ListAPIView):
+class TeamMembershipListCreateAPIView(generics.ListCreateAPIView):
     queryset = TeamMembership.objects.all()
     serializer_class = TeamMembershipSerializer
 

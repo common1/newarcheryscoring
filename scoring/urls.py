@@ -3,7 +3,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('archers/', views.ArcherListAPIView.as_view()),
+    path('archers/', views.ArcherListCreateAPIView.as_view()),
+    path('archers/create/', views.ArcherListCreateAPIView.as_view()),
     path('archers/info/', views.ArcherInfoAPIView.as_view()),
     path('archers/<uuid:pk>/', views.ArcherDetailAPIView.as_view()),
     path('user-archers/', views.UserArcherListAPIView.as_view(), name='user-archers'),
@@ -12,7 +13,8 @@ urlpatterns = [
     # path('archers/info/', views.archer_info),
     # path('archers/<uuid:pk>/', views.archer_detail),
 
-    path('disciplines/', views.DisciplineListAPIView.as_view()),
+    path('disciplines/', views.DisciplineListCreateAPIView.as_view()),
+    path('disciplines/create/', views.DisciplineListCreateAPIView.as_view()),
     path('disciplines/info/', views.DisciplineInfoAPIView.as_view()),
     path('disciplines/<uuid:pk>/', views.DisciplineDetailAPIView.as_view()),
     path('user-disciplines/', views.UserDisciplineListAPIView.as_view(), name='user-disciplines'),
@@ -21,7 +23,8 @@ urlpatterns = [
     # path('disciplines/info/', views.discipline_info),
     # path('disciplines/<uuid:pk>/', views.discipline_detail),
 
-    path('disciplinememberships/', views.DisciplineMembershipListAPIView.as_view()),
+    path('disciplinememberships/', views.DisciplineMembershipListCreateAPIView.as_view()),
+    path('disciplinememberships/create/', views.DisciplineMembershipListCreateAPIView.as_view()),
     path('disciplinememberships/info/', views.DisciplineMembershipInfoAPIView.as_view()),
     path('disciplinememberships/<uuid:pk>/', views.DisciplineMembershipDetailAPIView.as_view()),
     path('user-disciplinememberships/', views.UserDisciplineMembershipListAPIView.as_view(), name='user-disciplinememberships'),
@@ -30,7 +33,8 @@ urlpatterns = [
     # path('disciplinememberships/info/', views.discipline_memberships_info),
     # path('disciplinememberships/<uuid:pk>/', views.discipline_memberships_detail),
 
-    path('clubs/', views.ClubListAPIView.as_view()),
+    path('clubs/', views.ClubListCreateAPIView.as_view()),
+    path('clubs/create/', views.ClubListCreateAPIView.as_view()),
     path('clubs/info/', views.ClubInfoAPIView.as_view()),
     path('clubs/<uuid:pk>/', views.ClubDetailAPIView.as_view()),
     path('user-clubs/', views.UserClubListAPIView.as_view(),name='user-clubs'),
@@ -39,7 +43,8 @@ urlpatterns = [
     # path('clubs/info/', views.club_info),
     # path('clubs/<uuid:pk>/', views.club_detail),
 
-    path('clubmemberships/', views.ClubMembershipListAPIView.as_view()),
+    path('clubmemberships/', views.ClubMembershipListCreateAPIView.as_view()),
+    path('clubmemberships/create/', views.ClubMembershipListCreateAPIView.as_view()),
     path('clubmemberships/info/', views.ClubMembershipInfoAPIView.as_view()),
     path('clubmemberships/<uuid:pk>/', views.ClubMembershipDetailAPIView.as_view()),
     path('user-clubmemberships/', views.UserClubMembershipListAPIView.as_view()),
@@ -48,7 +53,8 @@ urlpatterns = [
     # path('clubmemberships/info/', views.club_memberships_info),
     # path('clubmemberships/<uuid:pk>/', views.club_memberships_detail),
 
-    path('categories/', views.CategoryListAPIView.as_view()),
+    path('categories/', views.CategoryListCreateAPIView.as_view()),
+    path('categories/create/', views.CategoryListCreateAPIView.as_view()),
     path('categories/info/', views.CategoryInfoAPIView.as_view()),
     path('categories/<uuid:pk>/', views.CategoryDetailAPIView.as_view()),
     path('user-categories/', views.UserCategoryListAPIView.as_view(), name='user-categories'),
@@ -57,7 +63,8 @@ urlpatterns = [
     # path('categories/info/', views.category_info),
     # path('categories/<uuid:pk>/', views.category_detail),
 
-    path('agegroups/', views.AgeGroupListAPIView.as_view()),
+    path('agegroups/', views.AgeGroupListCreateAPIView.as_view()),
+    path('agegroups/create/', views.AgeGroupListCreateAPIView.as_view()),
     path('agegroups/info/', views.AgeGroupInfoAPIView.as_view()),
     path('agegroups/<uuid:pk>/', views.AgeGroupDetailAPIView.as_view()),
     path('user-agegroups/', views.UserAgeGroupListAPIView.as_view(), name='user-agegroups'),
@@ -66,7 +73,8 @@ urlpatterns = [
     # path('agegroups/info/', views.agegroup_info),
     # path('agegroups/<uuid:pk>/', views.agegroup_detail),
 
-    path('categorymemberships/', views.CategoryMembershipListAPIView.as_view()),
+    path('categorymemberships/', views.CategoryMembershipListCreateAPIView.as_view()),
+    path('categorymemberships/create/', views.CategoryMembershipListCreateAPIView.as_view()),
     path('categorymemberships/info/', views.CategoryMembershipInfoAPIView.as_view()),
     path('categorymemberships/<uuid:pk>/', views.CategoryMembershipDetailAPIView.as_view()),
     path('user-categorymemberships/', views.UserCategoryMembershipListAPIView.as_view()),
@@ -75,7 +83,8 @@ urlpatterns = [
     # path('categorymemberships/info/', views.category_memberships_info),
     # path('categorymemberships/<uuid:pk>/', views.category_memberships_detail),
 
-    path('teams/', views.TeamListAPIView.as_view()),
+    path('teams/', views.TeamListCreateAPIView.as_view()),
+    path('teams/create/', views.TeamListCreateAPIView.as_view()),
     path('teams/info/', views.TeamInfoAPIView.as_view()),
     path('teams/<uuid:pk>/', views.TeamDetailAPIView.as_view()),
     path('user-teams/', views.UserTeamListAPIView.as_view(), name='user-teams'),
@@ -84,7 +93,8 @@ urlpatterns = [
     # path('teams/info/', views.team_info),
     # path('teams/<uuid:pk>/', views.team_detail),
 
-    path('teammemberships/', views.TeamMembershipListAPIView.as_view()),
+    path('teammemberships/', views.TeamMembershipListCreateAPIView.as_view()),
+    path('teammemberships/create/', views.TeamMembershipListCreateAPIView.as_view()),
     path('teammemberships/info/', views.TeamMembershipInfoAPIView.as_view()),
     path('teammemberships/<uuid:pk>/', views.TeamMembershipDetailAPIView.as_view()),
     path('user-teammemberships/', views.UserTeamMembershipListAPIView.as_view()),

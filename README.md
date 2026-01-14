@@ -197,6 +197,7 @@ python manage.py test scoring
 ## 16 Django REST Framework - APIView class
 
 [https://www.youtube.com/watch?v=TVFCU0w65Ak&list=PL-2EBeDYMIbTLulc9FSoAXhbmXpLq2l5t&index=9]
+[https://testdriven.io/blog/drf-views-part-2/]
 
 ```
 ```
@@ -204,3 +205,12 @@ python manage.py test scoring
 ```bash
 ```
 
+## 17 Django REST Framework - Creating Data | ListCreateAPIView and Generic View Internals
+
+[https://www.youtube.com/watch?v=Jh85U1nhMh8&list=PL-2EBeDYMIbTLulc9FSoAXhbmXpLq2l5t&index=10]
+
+```
+```
+
+```bash
+```
