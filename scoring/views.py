@@ -65,6 +65,7 @@ from rest_framework import generics
 from rest_framework.permissions import (
     IsAuthenticated,
 )
+from rest_framework.views import APIView
 
 # Archer
 
@@ -85,15 +86,15 @@ class UserArcherListAPIView(generics.ListAPIView):
         qs = super().get_queryset()
         return qs.filter(author=self.request.user)
 
-@api_view(['GET'])
-def archer_info(request):
-    archers = Archer.objects.all()
-    serializer = ArcherInfoSerializer({
-        'archers': archers,
-        'count': len(archers),
-    })
-
-    return Response(serializer.data)
+class ArcherInfoAPIView(APIView):
+    def get(self, request):
+        archers = Archer.objects.all()
+        serializer = ArcherInfoSerializer({
+            'archers': archers,
+            'count': len(archers),
+        })
+        
+        return Response(serializer.data)
 
 # Discipline
 
@@ -114,17 +115,17 @@ class UserDisciplineListAPIView(generics.ListAPIView):
         qs = super().get_queryset()
         return qs.filter(author=self.request.user)
 
-@api_view(['GET'])
-def discipline_info(request):
-    disciplines = Discipline.objects.prefetch_related(
-        'archers',
-    )
-    serializer = DisciplineInfoSerializer({
-        'disciplines': disciplines,
-        'count': len(disciplines),
-    })
-
-    return Response(serializer.data)
+class DisciplineInfoAPIView(APIView):
+    def get(self, request):
+        disciplines = Discipline.objects.prefetch_related(
+            'archers',
+        )
+        serializer = DisciplineInfoSerializer({
+            'disciplines': disciplines,
+            'count': len(disciplines),
+        })
+        
+        return Response(serializer.data)
 
 # DisciplineMembership
 
@@ -145,18 +146,18 @@ class UserDisciplineMembershipListAPIView(generics.ListAPIView):
         qs = super().get_queryset()
         return qs.filter(author=self.request.user)
 
-@api_view(['GET'])
-def discipline_memberships_info(request):
-    disciplinememberships = DisciplineMembership.objects.prefetch_related(
-        'discipline',
-        'archer',
-    )
-    serializer = DisciplineMembershipInfoSerializer({
-        'disciplinememberships': disciplinememberships,
-        'count': len(disciplinememberships),
-    })
-
-    return Response(serializer.data)
+class DisciplineMembershipInfoAPIView(APIView):
+    def get(self, request):
+        disciplinememberships = DisciplineMembership.objects.prefetch_related(
+            'discipline',
+            'archer',
+        )
+        serializer = DisciplineMembershipInfoSerializer({
+            'disciplinememberships': disciplinememberships,
+            'count': len(disciplinememberships),
+        })
+        
+        return Response(serializer.data)
 
 # Club
 
@@ -177,17 +178,17 @@ class UserClubListAPIView(generics.ListAPIView):
         qs = super().get_queryset()
         return qs.filter(author=self.request.user)
 
-@api_view(['GET'])
-def club_info(request):
-    clubs = Club.objects.prefetch_related(
-        'archers',
-    )
-    serializer = ClubInfoSerializer({
-        'clubs': clubs,
-        'count': len(clubs),
-    })
-
-    return Response(serializer.data)
+class ClubInfoAPIView(APIView):
+    def get(self, request):
+        clubs = Club.objects.prefetch_related(
+            'archers',
+        )
+        serializer = ClubInfoSerializer({
+            'clubs': clubs,
+            'count': len(clubs),
+        })
+        
+        return Response(serializer.data)
 
 # ClubMembership
 
@@ -209,18 +210,18 @@ class UserClubMembershipListAPIView(generics.ListAPIView):
         qs = super().get_queryset()
         return qs.filter(author=self.request.user)
 
-@api_view(['GET'])
-def club_memberships_info(request):
-    clubmemberships = ClubMembership.objects.prefetch_related(
-        'club',
-        'archer',
-    )
-    serializer = ClubMembershipInfoSerializer({
-        'clubmemberships': clubmemberships,
-        'count': len(clubmemberships)
-    })
-
-    return Response(serializer.data)
+class ClubMembershipInfoAPIView(APIView):
+    def get(self, request):
+        clubmemberships = ClubMembership.objects.prefetch_related(
+            'club',
+            'archer',
+        )
+        serializer = ClubMembershipInfoSerializer({
+            'clubmemberships': clubmemberships,
+            'count': len(clubmemberships)
+        })
+        
+        return Response(serializer.data)
 
 # Category
 
@@ -241,17 +242,17 @@ class UserCategoryListAPIView(generics.ListAPIView):
         qs = super().get_queryset()
         return qs.filter(author=self.request.user)
 
-@api_view(['GET'])
-def category_info(request):
-    categories = Category.objects.prefetch_related(
-        'archers',
-    )
-    serializer = CategoryInfoSerializer({
-        'categories': categories,
-        'count': len(categories),
-    })
-
-    return Response(serializer.data)
+class CategoryInfoAPIView(APIView):
+    def get(self, request):
+        categories = Category.objects.prefetch_related(
+            'archers',
+        )
+        serializer = CategoryInfoSerializer({
+            'categories': categories,
+            'count': len(categories),
+        })
+        
+        return Response(serializer.data)
 
 # AgeGroup
 
@@ -272,15 +273,15 @@ class UserAgeGroupListAPIView(generics.ListAPIView):
         qs = super().get_queryset()
         return qs.filter(author=self.request.user)
 
-@api_view(['GET'])
-def agegroup_info(request):
-    agegroups = AgeGroup.objects.all()
-    serializer = AgeGroupInfoSerializer({
-        'agegroups': agegroups,
-        'count': len(agegroups),
-    })
-
-    return Response(serializer.data)
+class AgeGroupInfoAPIView(APIView):
+    def get(self, request):
+        agegroups = AgeGroup.objects.all()
+        serializer = AgeGroupInfoSerializer({
+            'agegroups': agegroups,
+            'count': len(agegroups),
+        })
+        
+        return Response(serializer.data)
 
 # CategoryMembership
 
@@ -301,19 +302,19 @@ class UserCategoryMembershipListAPIView(generics.ListAPIView):
         qs = super().get_queryset()
         return qs.filter(author=self.request.user)
 
-@api_view(['GET'])
-def category_memberships_info(request):
-    categorymemberships = CategoryMembership.objects.prefetch_related(
-        'category',
-        'archer',
-        'agegroup',
-    )
-    serializer = CategoryMembershipInfoSerializer({
-        'categorymemberships': categorymemberships,
-        'count': len(categorymemberships),
-    })
-
-    return Response(serializer.data)
+class CategoryMembershipInfoAPIView(APIView):
+    def get(self, request):
+        categorymemberships = CategoryMembership.objects.prefetch_related(
+            'category',
+            'archer',
+            'agegroup',
+        )
+        serializer = CategoryMembershipInfoSerializer({
+            'categorymemberships': categorymemberships,
+            'count': len(categorymemberships),
+        })
+        
+        return Response(serializer.data)
 
 # Team
 
@@ -334,17 +335,17 @@ class UserTeamListAPIView(generics.ListAPIView):
         qs = super().get_queryset()
         return qs.filter(author=self.request.user)
 
-@api_view(['GET'])
-def team_info(request):
-    teams = Team.objects.prefetch_related(
-        'archers',
-    )
-    serializer = TeamInfoSerializer({
-        'teams': teams,
-        'count': len(teams),
-    })
-
-    return Response(serializer.data)
+class TeamInfoAPIView(APIView):
+    def get(self, request):
+        teams = Team.objects.prefetch_related(
+            'archers',
+        )
+        serializer = TeamInfoSerializer({
+            'teams': teams,
+            'count': len(teams),
+        })
+        
+        return Response(serializer.data)
 
 # TeamMembership
 
@@ -365,18 +366,18 @@ class UserTeamMembershipListAPIView(generics.ListAPIView):
         qs = super().get_queryset()
         return qs.filter(author=self.request.user)
 
-@api_view(['GET'])
-def team_memberships_info(request):
-    teammemberships = TeamMembership.objects.prefetch_related(
-        'team',
-        'archer',
-    )
-    serializer = TeamMembershipInfoSerializer({
-        'teammemberships': teammemberships,
-        'count': len(teammemberships),
-    })
-
-    return Response(serializer.data)
+class TeamMembershipInfoAPIView(APIView):
+    def get(self, request):
+        teammemberships = TeamMembership.objects.prefetch_related(
+            'team',
+            'archer',
+        )
+        serializer = TeamMembershipInfoSerializer({
+            'teammemberships': teammemberships,
+            'count': len(teammemberships),
+        })
+        
+        return Response(serializer.data)
 
 # ScoringSheet
 
@@ -397,15 +398,15 @@ class UserScoringSheetListAPIView(generics.ListAPIView):
         qs = super().get_queryset()
         return qs.filter(author=self.request.user)
 
-@api_view(['GET'])
-def scoringsheet_info(request):
-    scoringsheets = ScoringSheet.objects.all()
-    serializer = ScoringSheetInfoSerializer({
-        'scoringsheets': scoringsheets,
-        'count': len(scoringsheets),
-    })
-
-    return Response(serializer.data)
+class ScoringSheetInfoAPIView(APIView):
+    def get(self, request):
+        scoringsheets = ScoringSheet.objects.all()
+        serializer = ScoringSheetInfoSerializer({
+            'scoringsheets': scoringsheets,
+            'count': len(scoringsheets),
+        })
+        
+        return Response(serializer.data)
 
 # TargetFaceNameChoice
 
@@ -426,15 +427,15 @@ class UserTargetFaceNameChoiceListAPIView(generics.ListAPIView):
         qs = super().get_queryset()
         return qs.filter(author=self.request.user)
 
-@api_view(['GET'])
-def targetfacenamechoice_info(request):
-    targetfacenamechoices = TargetFaceNameChoice.objects.all()
-    serializer = TargetFaceNameChoiceInfoSerializer({
-        'targetfacenamechoices': targetfacenamechoices,
-        'count': len(targetfacenamechoices),
-    })
-
-    return Response(serializer.data)
+class TargetFaceNameChoiceInfoAPIView(APIView):
+    def get(self, request):
+        targetfacenamechoices = TargetFaceNameChoice.objects.all()
+        serializer = TargetFaceNameChoiceInfoSerializer({
+            'targetfacenamechoices': targetfacenamechoices,
+            'count': len(targetfacenamechoices),
+        })
+        
+        return Response(serializer.data)
 
 # TargetFace
 
@@ -455,15 +456,15 @@ class UserTargetFaceListAPIView(generics.ListAPIView):
         qs = super().get_queryset()
         return qs.filter(author=self.request.user)
 
-@api_view(['GET'])
-def targetface_info(request):
-    targetfaces = TargetFace.objects.all()
-    serializer = TargetFaceInfoSerializer({
-        'targetfaces': targetfaces,
-        'count': len(targetfaces),
-    })
-
-    return Response(serializer.data)
+class TargetFaceInfoAPIView(APIView):
+    def get(self, request):
+        targetfaces = TargetFace.objects.all()
+        serializer = TargetFaceInfoSerializer({
+            'targetfaces': targetfaces,
+            'count': len(targetfaces),
+        })
+        
+        return Response(serializer.data)
 
 # Round
 
@@ -484,17 +485,17 @@ class UserRoundListAPIView(generics.ListAPIView):
         qs = super().get_queryset()
         return qs.filter(author=self.request.user)
 
-@api_view(['GET'])
-def round_info(request):
-    rounds = Round.objects.prefetch_related(
-        'archers',
-    )
-    serializer = RoundInfoSerializer({
-        'rounds': rounds,
-        'count': len(rounds),
-    })
-
-    return Response(serializer.data)
+class RoundInfoAPIView(APIView):
+    def get(self, request):
+        rounds = Round.objects.prefetch_related(
+            'archers',
+        )
+        serializer = RoundInfoSerializer({
+            'rounds': rounds,
+            'count': len(rounds),
+        })
+        
+        return Response(serializer.data)
 
 # RoundMembership
 
@@ -515,18 +516,18 @@ class UserRoundMembershipListAPIView(generics.ListAPIView):
         qs = super().get_queryset()
         return qs.filter(author=self.request.user)
 
-@api_view(['GET'])
-def round_memberships_info(request):
-    roundmemberships = RoundMembership.objects.prefetch_related(
-        'round',
-        'archer',
-    ).all()
-    serializer = RoundMembershipInfoSerializer({
-        'roundmemberships': roundmemberships,
-        'count': len(roundmemberships),
-    })
-
-    return Response(serializer.data)
+class RoundMembershipInfoAPIView(APIView):
+    def get(self, request):
+        roundmemberships = RoundMembership.objects.prefetch_related(
+            'round',
+            'archer',
+        )
+        serializer = RoundMembershipInfoSerializer({
+            'roundmemberships': roundmemberships,
+            'count': len(roundmemberships),
+        })
+        
+        return Response(serializer.data)
 
 # Score
 
@@ -547,17 +548,17 @@ class UserScoreListAPIView(generics.ListAPIView):
         qs = super().get_queryset()
         return qs.filter(author=self.request.user)
 
-@api_view(['GET'])
-def score_info(request):
-    scores = Score.objects.prefetch_related(
-        'round_archer',
-    )
-    serializer = ScoreInfoSerializer({
-        'scores': scores,
-        'count': len(scores),
-    })
-
-    return Response(serializer.data)
+class ScoreInfoAPIView(APIView):
+    def get(self, request):
+        scores = Score.objects.prefetch_related(
+            'round_archer',
+        )
+        serializer = ScoreInfoSerializer({
+            'scores': scores,
+            'count': len(scores),
+        })
+        
+        return Response(serializer.data)
 
 # Competition
 
@@ -578,17 +579,17 @@ class UserCompetitionListAPIView(generics.ListAPIView):
         qs = super().get_queryset()
         return qs.filter(author=self.request.user)
 
-@api_view(['GET'])
-def competition_info(request):
-    competitions = Competition.objects.prefetch_related(
-        'rounds',
-    )
-    serializer = CompetitionInfoSerializer({
-        'competitions': competitions,
-        'count': len(competitions),
-    })
-
-    return Response(serializer.data)
+class CompetitionInfoAPIView(APIView):
+    def get(self, request):
+        competitions = Competition.objects.prefetch_related(
+            'rounds',
+        )
+        serializer = CompetitionInfoSerializer({
+            'competitions': competitions,
+            'count': len(competitions),
+        })
+        
+        return Response(serializer.data)
 
 # CompetitionMembership
 
@@ -609,21 +610,16 @@ class UserCompetitionMembershipListAPIView(generics.ListAPIView):
         qs = super().get_queryset()
         return qs.filter(author=self.request.user)
 
-# def competition_memberships_detail(request, pk):
-#     competitionmembership = get_object_or_404(CompetitionMembership, pk=pk)
-#     serializer = CompetitionMembershipSerializer(competitionmembership)
+class CompetitionMembershipInfoAPIView(APIView):
+    def get(self, request):
+        competitionmemberships = CompetitionMembership.objects.prefetch_related(
+            'competition',
+            'round',
+        )
+        serializer = CompetitionMembershipInfoSerializer({
+            'competitionmemberships': competitionmemberships,
+            'count': len(competitionmemberships),
+        })
+        
+        return Response(serializer.data)
 
-#     return Response(serializer.data)
-
-@api_view(['GET'])
-def competition_memberships_info(request):
-    competitionmemberships = CompetitionMembership.objects.prefetch_related(
-        'competition',
-        'round',
-    )
-    serializer = CompetitionMembershipInfoSerializer({
-        'competitionmemberships': competitionmemberships,
-        'count': len(competitionmemberships),
-    })
-
-    return Response(serializer.data)

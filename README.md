@@ -194,3 +194,13 @@ python manage.py runserver
 python manage.py test scoring
 ```
 
+## 16 Django REST Framework - APIView class
+
+[https://www.youtube.com/watch?v=TVFCU0w65Ak&list=PL-2EBeDYMIbTLulc9FSoAXhbmXpLq2l5t&index=9]
+
+```
+```
+
+```bash
+```
+
