@@ -214,3 +214,14 @@ python manage.py test scoring
 
 ```bash
 ```
+
+## 18 Django REST Framework - Customising permissions in Generic Views | VSCode REST Client extension
+
+[https://www.youtube.com/watch?v=mlQZ1i8rUKQ&list=PL-2EBeDYMIbTLulc9FSoAXhbmXpLq2l5t&index=11]
+
+```
+```
+
+```bash
+```
+

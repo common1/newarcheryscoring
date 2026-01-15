@@ -64,6 +64,8 @@ from rest_framework.decorators import api_view
 from rest_framework import generics
 from rest_framework.permissions import (
     IsAuthenticated,
+    IsAdminUser,
+    AllowAny,
 )
 from rest_framework.views import APIView
 
@@ -72,6 +74,12 @@ from rest_framework.views import APIView
 class ArcherListCreateAPIView(generics.ListCreateAPIView):
     queryset = Archer.objects.all()
     serializer_class = ArcherSerializer
+
+    def get_permissions(self):
+            self.permission_classes = [AllowAny]
+            if self.request.method == 'POST':
+                self.permission_classes = [IsAdminUser]
+            return super().get_permissions()
 
 class ArcherDetailAPIView(generics.RetrieveAPIView):
     queryset = Archer.objects.all()
@@ -101,6 +109,12 @@ class ArcherInfoAPIView(APIView):
 class DisciplineListCreateAPIView(generics.ListCreateAPIView):
     queryset = Discipline.objects.all()
     serializer_class = DisciplineSerializer
+
+    def get_permissions(self):
+            self.permission_classes = [AllowAny]
+            if self.request.method == 'POST':
+                self.permission_classes = [IsAdminUser]
+            return super().get_permissions()
 
 class DisciplineDetailAPIView(generics.RetrieveAPIView):
     queryset = Discipline.objects.all()
@@ -132,6 +146,12 @@ class DisciplineInfoAPIView(APIView):
 class DisciplineMembershipListCreateAPIView(generics.ListCreateAPIView):
     queryset = DisciplineMembership.objects.all()
     serializer_class = DisciplineMembershipSerializer
+
+    def get_permissions(self):
+            self.permission_classes = [AllowAny]
+            if self.request.method == 'POST':
+                self.permission_classes = [IsAdminUser]
+            return super().get_permissions()
 
 class DisciplineMembershipDetailAPIView(generics.RetrieveAPIView):
     queryset = DisciplineMembership.objects.all()
@@ -165,6 +185,12 @@ class ClubListCreateAPIView(generics.ListCreateAPIView):
     queryset = Club.objects.all()
     serializer_class = ClubSerializer
 
+    def get_permissions(self):
+            self.permission_classes = [AllowAny]
+            if self.request.method == 'POST':
+                self.permission_classes = [IsAdminUser]
+            return super().get_permissions()
+
 class ClubDetailAPIView(generics.RetrieveAPIView):
     queryset = Club.objects.all()
     serializer_class = ClubSerializer
@@ -195,6 +221,12 @@ class ClubInfoAPIView(APIView):
 class ClubMembershipListCreateAPIView(generics.ListCreateAPIView):
     queryset = ClubMembership.objects.all()
     serializer_class = ClubMembershipSerializer
+
+    def get_permissions(self):
+            self.permission_classes = [AllowAny]
+            if self.request.method == 'POST':
+                self.permission_classes = [IsAdminUser]
+            return super().get_permissions()
 
 class ClubMembershipDetailAPIView(generics.RetrieveAPIView):
     queryset = ClubMembership.objects.all()
@@ -229,6 +261,12 @@ class CategoryListCreateAPIView(generics.ListCreateAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
+    def get_permissions(self):
+            self.permission_classes = [AllowAny]
+            if self.request.method == 'POST':
+                self.permission_classes = [IsAdminUser]
+            return super().get_permissions()
+
 class CategoryDetailAPIView(generics.RetrieveAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
@@ -260,6 +298,12 @@ class AgeGroupListCreateAPIView(generics.ListCreateAPIView):
     queryset = AgeGroup.objects.all()
     serializer_class = AgeGroupSerializer
 
+    def get_permissions(self):
+            self.permission_classes = [AllowAny]
+            if self.request.method == 'POST':
+                self.permission_classes = [IsAdminUser]
+            return super().get_permissions()
+
 class AgeGroupDetailAPIView(generics.RetrieveAPIView):
     queryset = AgeGroup.objects.all()
     serializer_class = AgeGroupSerializer
@@ -288,6 +332,12 @@ class AgeGroupInfoAPIView(APIView):
 class CategoryMembershipListCreateAPIView(generics.ListCreateAPIView):
     queryset = CategoryMembership.objects.all()
     serializer_class = CategoryMembershipSerializer
+
+    def get_permissions(self):
+            self.permission_classes = [AllowAny]
+            if self.request.method == 'POST':
+                self.permission_classes = [IsAdminUser]
+            return super().get_permissions()
 
 class CategoryMembershipDetailAPIView(generics.RetrieveAPIView):
     queryset = CategoryMembership.objects.all()
@@ -322,6 +372,12 @@ class TeamListCreateAPIView(generics.ListCreateAPIView):
     queryset = Team.objects.all()
     serializer_class = TeamSerializer
 
+    def get_permissions(self):
+            self.permission_classes = [AllowAny]
+            if self.request.method == 'POST':
+                self.permission_classes = [IsAdminUser]
+            return super().get_permissions()
+
 class TeamDetailAPIView(generics.RetrieveAPIView):
     queryset = Team.objects.all()
     serializer_class = TeamSerializer
@@ -352,6 +408,12 @@ class TeamInfoAPIView(APIView):
 class TeamMembershipListCreateAPIView(generics.ListCreateAPIView):
     queryset = TeamMembership.objects.all()
     serializer_class = TeamMembershipSerializer
+
+    def get_permissions(self):
+            self.permission_classes = [AllowAny]
+            if self.request.method == 'POST':
+                self.permission_classes = [IsAdminUser]
+            return super().get_permissions()
 
 class TeamMembershipDetailAPIView(generics.RetrieveAPIView):
     queryset = TeamMembership.objects.all()
@@ -385,6 +447,12 @@ class ScoringSheetListCreateAPIView(generics.ListCreateAPIView):
     queryset = ScoringSheet.objects.all()
     serializer_class = ScoringSheetSerializer
 
+    def get_permissions(self):
+            self.permission_classes = [AllowAny]
+            if self.request.method == 'POST':
+                self.permission_classes = [IsAdminUser]
+            return super().get_permissions()
+
 class ScoringSheetDetailAPIView(generics.RetrieveAPIView):
     queryset = ScoringSheet.objects.all()
     serializer_class = ScoringSheetSerializer
@@ -413,6 +481,12 @@ class ScoringSheetInfoAPIView(APIView):
 class TargetFaceNameChoiceListCreateAPIView(generics.ListCreateAPIView):
     queryset = TargetFaceNameChoice.objects.all()
     serializer_class = TargetFaceNameChoiceSerializer
+
+    def get_permissions(self):
+            self.permission_classes = [AllowAny]
+            if self.request.method == 'POST':
+                self.permission_classes = [IsAdminUser]
+            return super().get_permissions()
 
 class TargetFaceNameChoiceDetailAPIView(generics.RetrieveAPIView):
     queryset = TargetFaceNameChoice.objects.all()
@@ -443,6 +517,12 @@ class TargetFaceListCreateAPIView(generics.ListCreateAPIView):
     queryset = TargetFace.objects.all()
     serializer_class = TargetFaceSerializer
 
+    def get_permissions(self):
+            self.permission_classes = [AllowAny]
+            if self.request.method == 'POST':
+                self.permission_classes = [IsAdminUser]
+            return super().get_permissions()
+
 class TargetFaceDetailAPIView(generics.RetrieveAPIView):
     queryset = TargetFace.objects.all()
     serializer_class = TargetFaceSerializer
@@ -471,6 +551,12 @@ class TargetFaceInfoAPIView(APIView):
 class RoundListCreateAPIView(generics.ListCreateAPIView):
     queryset = Round.objects.all()
     serializer_class = RoundSerializer
+
+    def get_permissions(self):
+            self.permission_classes = [AllowAny]
+            if self.request.method == 'POST':
+                self.permission_classes = [IsAdminUser]
+            return super().get_permissions()
 
 class RoundDetailAPIView(generics.RetrieveAPIView):
     queryset = Round.objects.all()
@@ -502,6 +588,12 @@ class RoundInfoAPIView(APIView):
 class RoundMembershipListCreateAPIView(generics.ListCreateAPIView):
     queryset = RoundMembership.objects.all()
     serializer_class = RoundMembershipSerializer
+
+    def get_permissions(self):
+            self.permission_classes = [AllowAny]
+            if self.request.method == 'POST':
+                self.permission_classes = [IsAdminUser]
+            return super().get_permissions()
 
 class RoundMembershipDetailAPIView(generics.RetrieveAPIView):
     queryset = RoundMembership.objects.all()
@@ -535,6 +627,12 @@ class ScoreListCreateAPIView(generics.ListCreateAPIView):
     queryset = Score.objects.all()
     serializer_class = ScoreSerializer
 
+    def get_permissions(self):
+            self.permission_classes = [AllowAny]
+            if self.request.method == 'POST':
+                self.permission_classes = [IsAdminUser]
+            return super().get_permissions()
+
 class ScoreDetailAPIView(generics.RetrieveAPIView):
     queryset = Score.objects.all()
     serializer_class = ScoreSerializer
@@ -566,6 +664,12 @@ class CompetitionListCreateAPIView(generics.ListCreateAPIView):
     queryset = Competition.objects.all()
     serializer_class = CompetitionSerializer
 
+    def get_permissions(self):
+            self.permission_classes = [AllowAny]
+            if self.request.method == 'POST':
+                self.permission_classes = [IsAdminUser]
+            return super().get_permissions()
+
 class CompetitionDetailAPIView(generics.RetrieveAPIView):
     queryset = Competition.objects.all()
     serializer_class = CompetitionSerializer
@@ -596,6 +700,12 @@ class CompetitionInfoAPIView(APIView):
 class CompetitionMembershipListCreateAPIView(generics.ListCreateAPIView):
     queryset = CompetitionMembership.objects.all()
     serializer_class = CompetitionMembershipSerializer
+
+    def get_permissions(self):
+            self.permission_classes = [AllowAny]
+            if self.request.method == 'POST':
+                self.permission_classes = [IsAdminUser]
+            return super().get_permissions()
 
 class CompetitionMembershipDetailAPIView(generics.RetrieveAPIView):
     queryset = CompetitionMembership.objects.all()
