@@ -4,7 +4,6 @@ from . import views
 
 urlpatterns = [
     path('archers/', views.ArcherListCreateAPIView.as_view()),
-    path('archers/create/', views.ArcherListCreateAPIView.as_view()),
     path('archers/info/', views.ArcherInfoAPIView.as_view()),
     path('archers/<uuid:pk>/', views.ArcherDetailAPIView.as_view()),
     path('user-archers/', views.UserArcherListAPIView.as_view(), name='user-archers'),
@@ -14,7 +13,6 @@ urlpatterns = [
     # path('archers/<uuid:pk>/', views.archer_detail),
 
     path('disciplines/', views.DisciplineListCreateAPIView.as_view()),
-    path('disciplines/create/', views.DisciplineListCreateAPIView.as_view()),
     path('disciplines/info/', views.DisciplineInfoAPIView.as_view()),
     path('disciplines/<uuid:pk>/', views.DisciplineDetailAPIView.as_view()),
     path('user-disciplines/', views.UserDisciplineListAPIView.as_view(), name='user-disciplines'),
@@ -24,7 +22,6 @@ urlpatterns = [
     # path('disciplines/<uuid:pk>/', views.discipline_detail),
 
     path('disciplinememberships/', views.DisciplineMembershipListCreateAPIView.as_view()),
-    path('disciplinememberships/create/', views.DisciplineMembershipListCreateAPIView.as_view()),
     path('disciplinememberships/info/', views.DisciplineMembershipInfoAPIView.as_view()),
     path('disciplinememberships/<uuid:pk>/', views.DisciplineMembershipDetailAPIView.as_view()),
     path('user-disciplinememberships/', views.UserDisciplineMembershipListAPIView.as_view(), name='user-disciplinememberships'),
@@ -34,7 +31,6 @@ urlpatterns = [
     # path('disciplinememberships/<uuid:pk>/', views.discipline_memberships_detail),
 
     path('clubs/', views.ClubListCreateAPIView.as_view()),
-    path('clubs/create/', views.ClubListCreateAPIView.as_view()),
     path('clubs/info/', views.ClubInfoAPIView.as_view()),
     path('clubs/<uuid:pk>/', views.ClubDetailAPIView.as_view()),
     path('user-clubs/', views.UserClubListAPIView.as_view(),name='user-clubs'),
@@ -44,7 +40,6 @@ urlpatterns = [
     # path('clubs/<uuid:pk>/', views.club_detail),
 
     path('clubmemberships/', views.ClubMembershipListCreateAPIView.as_view()),
-    path('clubmemberships/create/', views.ClubMembershipListCreateAPIView.as_view()),
     path('clubmemberships/info/', views.ClubMembershipInfoAPIView.as_view()),
     path('clubmemberships/<uuid:pk>/', views.ClubMembershipDetailAPIView.as_view()),
     path('user-clubmemberships/', views.UserClubMembershipListAPIView.as_view()),
@@ -54,7 +49,6 @@ urlpatterns = [
     # path('clubmemberships/<uuid:pk>/', views.club_memberships_detail),
 
     path('categories/', views.CategoryListCreateAPIView.as_view()),
-    path('categories/create/', views.CategoryListCreateAPIView.as_view()),
     path('categories/info/', views.CategoryInfoAPIView.as_view()),
     path('categories/<uuid:pk>/', views.CategoryDetailAPIView.as_view()),
     path('user-categories/', views.UserCategoryListAPIView.as_view(), name='user-categories'),
@@ -64,7 +58,6 @@ urlpatterns = [
     # path('categories/<uuid:pk>/', views.category_detail),
 
     path('agegroups/', views.AgeGroupListCreateAPIView.as_view()),
-    path('agegroups/create/', views.AgeGroupListCreateAPIView.as_view()),
     path('agegroups/info/', views.AgeGroupInfoAPIView.as_view()),
     path('agegroups/<uuid:pk>/', views.AgeGroupDetailAPIView.as_view()),
     path('user-agegroups/', views.UserAgeGroupListAPIView.as_view(), name='user-agegroups'),
@@ -74,7 +67,6 @@ urlpatterns = [
     # path('agegroups/<uuid:pk>/', views.agegroup_detail),
 
     path('categorymemberships/', views.CategoryMembershipListCreateAPIView.as_view()),
-    path('categorymemberships/create/', views.CategoryMembershipListCreateAPIView.as_view()),
     path('categorymemberships/info/', views.CategoryMembershipInfoAPIView.as_view()),
     path('categorymemberships/<uuid:pk>/', views.CategoryMembershipDetailAPIView.as_view()),
     path('user-categorymemberships/', views.UserCategoryMembershipListAPIView.as_view()),
@@ -84,7 +76,6 @@ urlpatterns = [
     # path('categorymemberships/<uuid:pk>/', views.category_memberships_detail),
 
     path('teams/', views.TeamListCreateAPIView.as_view()),
-    path('teams/create/', views.TeamListCreateAPIView.as_view()),
     path('teams/info/', views.TeamInfoAPIView.as_view()),
     path('teams/<uuid:pk>/', views.TeamDetailAPIView.as_view()),
     path('user-teams/', views.UserTeamListAPIView.as_view(), name='user-teams'),
@@ -94,7 +85,6 @@ urlpatterns = [
     # path('teams/<uuid:pk>/', views.team_detail),
 
     path('teammemberships/', views.TeamMembershipListCreateAPIView.as_view()),
-    path('teammemberships/create/', views.TeamMembershipListCreateAPIView.as_view()),
     path('teammemberships/info/', views.TeamMembershipInfoAPIView.as_view()),
     path('teammemberships/<uuid:pk>/', views.TeamMembershipDetailAPIView.as_view()),
     path('user-teammemberships/', views.UserTeamMembershipListAPIView.as_view()),
@@ -103,7 +93,7 @@ urlpatterns = [
     # path('teammemberships/info/', views.team_memberships_info),
     # path('teammemberships/<uuid:pk>/', views.team_memberships_detail),
 
-    path('scoringsheets/', views.ScoringSheetListAPIView.as_view()),
+    path('scoringsheets/', views.ScoringSheetListCreateAPIView.as_view()),
     path('scoringsheets/info/', views.ScoringSheetInfoAPIView.as_view()),
     path('scoringsheets/<uuid:pk>/', views.ScoringSheetDetailAPIView.as_view()),
     path('user-scoringsheets/', views.UserScoringSheetListAPIView.as_view(), name='user-scoringsheets'),
@@ -112,7 +102,7 @@ urlpatterns = [
     # path('scoringsheets/info/', views.scoringsheet_info),
     # path('scoringsheets/<uuid:pk>/', views.scoringsheet_detail),
     
-    path('targetfacenamechoices/', views.TargetFaceNameChoiceListAPIView.as_view()),
+    path('targetfacenamechoices/', views.TargetFaceNameChoiceListCreateAPIView.as_view()),
     path('targetfacenamechoices/info/', views.TargetFaceNameChoiceInfoAPIView.as_view()),
     path('targetfacenamechoices/<uuid:pk>/', views.TargetFaceNameChoiceDetailAPIView.as_view()),
     path('user-targetfacenamechoices/', views.UserTargetFaceNameChoiceListAPIView.as_view(), name='user-targetfacenamechoices'),
@@ -121,7 +111,7 @@ urlpatterns = [
     # path('targetfacenamechoices/info/', views.targetfacenamechoice_info),
     # path('targetfacenamechoices/<uuid:pk>/', views.targetfacenamechoice_detail),
 
-    path('targetfaces/', views.TargetFaceListAPIView.as_view()),
+    path('targetfaces/', views.TargetFaceListCreateAPIView.as_view()),
     path('targetfaces/info/', views.TargetFaceInfoAPIView.as_view()),
     path('targetfaces/<uuid:pk>/', views.TargetFaceDetailAPIView.as_view()),
     path('user-targetfaces/', views.UserTargetFaceListAPIView.as_view(), name='user-targetfaces'),
@@ -130,7 +120,7 @@ urlpatterns = [
     # path('targetfaces/info/', views.targetface_info),
     # path('targetfaces/<uuid:pk>/', views.targetface_detail),
 
-    path('rounds/', views.RoundListAPIView.as_view()),
+    path('rounds/', views.RoundListCreateAPIView.as_view()),
     path('rounds/info/', views.RoundInfoAPIView.as_view()),
     path('rounds/<uuid:pk>/', views.RoundDetailAPIView.as_view()),
     path('user-rounds/', views.UserRoundListAPIView.as_view(), name='user-rounds'),
@@ -139,7 +129,7 @@ urlpatterns = [
     # path('rounds/info/', views.round_info),
     # path('rounds/<uuid:pk>/', views.round_detail),
 
-    path('roundmemberships/', views.RoundMembershipListAPIView.as_view()),
+    path('roundmemberships/', views.RoundMembershipListCreateAPIView.as_view()),
     path('roundmemberships/info/', views.RoundMembershipInfoAPIView.as_view()),
     path('roundmemberships/<uuid:pk>/', views.RoundMembershipDetailAPIView.as_view()),
     path('user-roundmemberships/', views.UserRoundMembershipListAPIView.as_view()),
@@ -148,7 +138,7 @@ urlpatterns = [
     # path('roundmemberships/info/', views.round_memberships_info),
     # path('roundmemberships/<uuid:pk>/', views.round_memberships_detail),
 
-    path('scores/', views.ScoreListAPIView.as_view()),
+    path('scores/', views.ScoreListCreateAPIView.as_view()),
     path('scores/info/', views.ScoreInfoAPIView.as_view()),
     path('scores/<uuid:pk>/', views.ScoreDetailAPIView.as_view()),
     path('user-scores/', views.UserScoreListAPIView.as_view(), name='user-scores'),
@@ -157,7 +147,7 @@ urlpatterns = [
     # path('scores/info/', views.score_info),
     # path('scores/<uuid:pk>/', views.score_detail),
 
-    path('competitions/', views.CompetitionListAPIView.as_view()),
+    path('competitions/', views.CompetitionListCreateAPIView.as_view()),
     path('competitions/info/', views.CompetitionInfoAPIView.as_view()),
     path('competitions/<uuid:pk>/', views.CompetitionDetailAPIView.as_view()),
     path('user-competitions/', views.UserCompetitionListAPIView.as_view(), name='user-competitions'),
@@ -166,7 +156,7 @@ urlpatterns = [
     # path('competitions/info/', views.competition_info),
     # path('competitions/<uuid:pk>/', views.competition_detail),
 
-    path('competitionmemberships/', views.CompetitionMembershipListAPIView.as_view()),
+    path('competitionmemberships/', views.CompetitionMembershipListCreateAPIView.as_view()),
     path('competitionmemberships/info/', views.CompetitionMembershipInfoAPIView.as_view()),
     path('competitionmemberships/<uuid:pk>/', views.CompetitionMembershipDetailAPIView.as_view()),
     path('user-competitionmemberships/', views.UserCompetitionMembershipListAPIView.as_view()),

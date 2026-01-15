@@ -375,8 +375,8 @@ class RoundInfoSerializer(serializers.Serializer):
 class RoundMembershipSerializer(serializers.ModelSerializer):
     # round = RoundSerializer()
     # archer = ArcherSerializer()
-    round = serializers.CharField()
-    archer = serializers.CharField()
+    # round = serializers.CharField()
+    # archer = serializers.CharField()
 
     class Meta:
         model = RoundMembership
@@ -447,14 +447,14 @@ class CompetitionInfoSerializer(serializers.Serializer):
 class CompetitionMembershipSerializer(serializers.ModelSerializer):
     # competition = CompetitionSerializer()
     # round = RoundSerializer()
-    competition = serializers.CharField()
-    rount = serializers.CharField()
+    # competition = serializers.CharField()
+    # round = serializers.CharField()
 
     class Meta:
         model = CompetitionMembership
         fields = (
             'id',
-            'compeition',
+            'competition',
             'round',
             'slug',
             'info',

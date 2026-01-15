@@ -815,7 +815,7 @@ class TargetFaceNameChoice(BaseScoringModel):
         unique=True,
         blank=False,
         verbose_name=_("Name"),
-        help_text=_("format: generated, max-128")
+        help_text=_("format: required, max-128")
     )
     slug = AutoSlugField(populate_from='name',editable=True)
     environment = models.CharField(

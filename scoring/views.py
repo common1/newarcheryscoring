@@ -381,7 +381,7 @@ class TeamMembershipInfoAPIView(APIView):
 
 # ScoringSheet
 
-class ScoringSheetListAPIView(generics.ListAPIView):
+class ScoringSheetListCreateAPIView(generics.ListCreateAPIView):
     queryset = ScoringSheet.objects.all()
     serializer_class = ScoringSheetSerializer
 
@@ -410,7 +410,7 @@ class ScoringSheetInfoAPIView(APIView):
 
 # TargetFaceNameChoice
 
-class TargetFaceNameChoiceListAPIView(generics.ListAPIView):
+class TargetFaceNameChoiceListCreateAPIView(generics.ListCreateAPIView):
     queryset = TargetFaceNameChoice.objects.all()
     serializer_class = TargetFaceNameChoiceSerializer
 
@@ -439,7 +439,7 @@ class TargetFaceNameChoiceInfoAPIView(APIView):
 
 # TargetFace
 
-class TargetFaceListAPIView(generics.ListAPIView):
+class TargetFaceListCreateAPIView(generics.ListCreateAPIView):
     queryset = TargetFace.objects.all()
     serializer_class = TargetFaceSerializer
 
@@ -468,7 +468,7 @@ class TargetFaceInfoAPIView(APIView):
 
 # Round
 
-class RoundListAPIView(generics.ListAPIView):
+class RoundListCreateAPIView(generics.ListCreateAPIView):
     queryset = Round.objects.all()
     serializer_class = RoundSerializer
 
@@ -499,7 +499,7 @@ class RoundInfoAPIView(APIView):
 
 # RoundMembership
 
-class RoundMembershipListAPIView(generics.ListAPIView):
+class RoundMembershipListCreateAPIView(generics.ListCreateAPIView):
     queryset = RoundMembership.objects.all()
     serializer_class = RoundMembershipSerializer
 
@@ -531,7 +531,7 @@ class RoundMembershipInfoAPIView(APIView):
 
 # Score
 
-class ScoreListAPIView(generics.ListAPIView):
+class ScoreListCreateAPIView(generics.ListCreateAPIView):
     queryset = Score.objects.all()
     serializer_class = ScoreSerializer
 
@@ -562,7 +562,7 @@ class ScoreInfoAPIView(APIView):
 
 # Competition
 
-class CompetitionListAPIView(generics.ListAPIView):
+class CompetitionListCreateAPIView(generics.ListCreateAPIView):
     queryset = Competition.objects.all()
     serializer_class = CompetitionSerializer
 
@@ -593,7 +593,7 @@ class CompetitionInfoAPIView(APIView):
 
 # CompetitionMembership
 
-class CompetitionMembershipListAPIView(generics.ListAPIView):
+class CompetitionMembershipListCreateAPIView(generics.ListCreateAPIView):
     queryset = CompetitionMembership.objects.all()
     serializer_class = CompetitionMembershipSerializer
 
