@@ -238,3 +238,14 @@ python manage.py test scoring
 ```bash
 pip install djangorestframework-simplejwt
 ```
+
+## 20 Django REST Framework - Refresh Tokens & JWT Authentication
+
+[https://www.youtube.com/watch?v=H3OY36wa7Cs&list=PL-2EBeDYMIbTLulc9FSoAXhbmXpLq2l5t&index=13]
+
+```
+```
+
+```bash
+```
+

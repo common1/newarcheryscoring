@@ -6,3 +6,12 @@ Content-Type: application/json
   "password": "changeme"
 }
 
+###
+
+POST http://localhost:8000/api/token/refresh/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc2ODY3ODM2OSwiaWF0IjoxNzY4NTkxOTY5LCJqdGkiOiIwNzMzMGU2ZGIwYTg0ZGQ2ODc2Yjc2ZTlkNzc1NGIxZiIsInVzZXJfaWQiOiIyIn0.heJkkL0Dbbe-0Z7_jNf84yK-UQRWkYxna3cuTrLkyeU"
+}
+
