@@ -1,0 +1,13 @@
+# Team 
+
+GET http://localhost:8000/scoring/teams/ HTTP/1.1
+
+###
+
+POST http://localhost:8000/scoring/teams/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Team 1"
+}
+

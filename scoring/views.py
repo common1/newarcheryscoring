@@ -627,11 +627,11 @@ class ScoreListCreateAPIView(generics.ListCreateAPIView):
     queryset = Score.objects.all()
     serializer_class = ScoreSerializer
 
-    def get_permissions(self):
-            self.permission_classes = [AllowAny]
-            if self.request.method == 'POST':
-                self.permission_classes = [IsAdminUser]
-            return super().get_permissions()
+    # def get_permissions(self):
+    #         self.permission_classes = [AllowAny]
+    #         if self.request.method == 'POST':
+    #             self.permission_classes = [IsAdminUser]
+    #         return super().get_permissions()
 
 class ScoreDetailAPIView(generics.RetrieveAPIView):
     queryset = Score.objects.all()
@@ -664,11 +664,11 @@ class CompetitionListCreateAPIView(generics.ListCreateAPIView):
     queryset = Competition.objects.all()
     serializer_class = CompetitionSerializer
 
-    def get_permissions(self):
-            self.permission_classes = [AllowAny]
-            if self.request.method == 'POST':
-                self.permission_classes = [IsAdminUser]
-            return super().get_permissions()
+    # def get_permissions(self):
+    #     self.permission_classes = [AllowAny]
+    #     if self.request.method == 'POST':
+    #         self.permission_classes = [IsAdminUser]
+    #     return super().get_permissions()
 
 class CompetitionDetailAPIView(generics.RetrieveAPIView):
     queryset = Competition.objects.all()

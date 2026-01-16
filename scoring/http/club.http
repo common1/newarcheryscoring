@@ -1,0 +1,13 @@
+# Club
+
+GET http://localhost:8000/scoring/clubs/ HTTP/1.1
+
+###
+
+POST http://localhost:8000/scoring/clubs/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Club 1"
+}
+
