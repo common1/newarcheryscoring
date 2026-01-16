@@ -225,3 +225,16 @@ python manage.py test scoring
 ```bash
 ```
 
+## 19 Django REST Framework - JWT Authentication with djangorestframework-simplejwt
+
+[https://www.youtube.com/watch?v=Xp0-Yy5ow5k&list=PL-2EBeDYMIbTLulc9FSoAXhbmXpLq2l5t&index=12]
+[https://www.django-rest-framework.org/api-guide/authentication/#authentication]
+[https://github.com/jazzband/djangorestframework-simplejwt]
+[https://django-rest-framework-simplejwt.readthedocs.io/en/latest/]
+
+```
+```
+
+```bash
+pip install djangorestframework-simplejwt
+```

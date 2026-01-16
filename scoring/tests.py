@@ -43,7 +43,7 @@ class UserArcherTestCase(TestCase):
 
     def test_user_archer_list_unauthenticated(self):
         response = self.client.get(reverse('user-archers'))
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
 class UserDisciplineTestCase(TestCase):
     def setUp(self):
@@ -65,7 +65,7 @@ class UserDisciplineTestCase(TestCase):
 
     def test_user_discipline_list_unauthenticated(self):
         response = self.client.get(reverse('user-disciplines'))
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
 class UserClubTestCase(TestCase):
     def setUp(self):
@@ -87,7 +87,7 @@ class UserClubTestCase(TestCase):
 
     def test_user_club_list_unauthenticated(self):
         response = self.client.get(reverse('user-clubs'))
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
 class UserCategoryTestCase(TestCase):
     def setUp(self):
@@ -109,7 +109,7 @@ class UserCategoryTestCase(TestCase):
 
     def test_user_category_list_unauthenticated(self):
         response = self.client.get(reverse('user-categories'))
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
 class UserAgeGroupTestCase(TestCase):
     def setUp(self):
@@ -131,7 +131,7 @@ class UserAgeGroupTestCase(TestCase):
 
     def test_user_agegroup_list_unauthenticated(self):
         response = self.client.get(reverse('user-agegroups'))
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
 class UserTeamTestCase(TestCase):
     def setUp(self):
@@ -153,7 +153,7 @@ class UserTeamTestCase(TestCase):
 
     def test_user_team_list_unauthenticated(self):
         response = self.client.get(reverse('user-teams'))
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
 class UserScoringSheetTestCase(TestCase):
     def setUp(self):
@@ -175,7 +175,7 @@ class UserScoringSheetTestCase(TestCase):
 
     def test_user_scoringsheet_list_unauthenticated(self):
         response = self.client.get(reverse('user-scoringsheets'))
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
 class UserTargetFaceNameChoiceTestCase(TestCase):
     def setUp(self):
@@ -197,7 +197,7 @@ class UserTargetFaceNameChoiceTestCase(TestCase):
 
     def test_user_targetfacenamechoice_list_unauthenticated(self):
         response = self.client.get(reverse('user-targetfacenamechoices'))
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
 class UserTargetFaceTestCase(TestCase):
     def setUp(self):
@@ -219,7 +219,7 @@ class UserTargetFaceTestCase(TestCase):
 
     def test_user_targetface_list_unauthenticated(self):
         response = self.client.get(reverse('user-targetfaces'))
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
 class UserRoundTestCase(TestCase):
     def setUp(self):
@@ -241,7 +241,7 @@ class UserRoundTestCase(TestCase):
 
     def test_user_round_list_unauthenticated(self):
         response = self.client.get(reverse('user-rounds'))
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
 class UserScoreTestCase(TestCase):
     def setUp(self):
@@ -263,7 +263,7 @@ class UserScoreTestCase(TestCase):
 
     def test_user_score_list_unauthenticated(self):
         response = self.client.get(reverse('user-scores'))
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
 class UserCompetitionTestCase(TestCase):
     def setUp(self):
@@ -285,4 +285,4 @@ class UserCompetitionTestCase(TestCase):
 
     def test_user_competition_list_unauthenticated(self):
         response = self.client.get(reverse('user-competitions'))
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)

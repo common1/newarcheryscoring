@@ -8,6 +8,11 @@ from wagtail.documents import urls as wagtaildocs_urls
 
 from search import views as search_views
 
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+
 urlpatterns = [
     path("django-admin/", admin.site.urls),
     path("admin/", include(wagtailadmin_urls)),
@@ -32,6 +37,11 @@ if settings.DEBUG:
     urlpatterns += [path('silk/', include('silk.urls', namespace='silk'))]
 
 urlpatterns = urlpatterns + [
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+]
+
+urlpatterns = urlpatterns + [
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in
     # the list:
@@ -40,3 +50,4 @@ urlpatterns = urlpatterns + [
     # of your site, rather than the site root:
     #    path("pages/", include(wagtail_urls)),
 ]
+
