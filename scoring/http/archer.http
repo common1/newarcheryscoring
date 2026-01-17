@@ -1,14 +1,43 @@
-# Archer
+### list archers
 GET http://localhost:8000/scoring/archers/ HTTP/1.1
+Content-Type: application/json
 
-###
-
+### create archer
 POST http://localhost:8000/scoring/archers/ HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY4NTcwNzMxLCJpYXQiOjE3Njg1NzA0MzEsImp0aSI6ImQyOTE4Y2QzMTg3MjRkNDdiM2U3ZTVhY2U1NWQwMjFlIiwidXNlcl9pZCI6IjEifQ.SiBjcnvaTAZncJGR1A68kbB22yh2EMS_TUeYaqVf2qY
+Authorization: Bearer <access token here>
 
 {
-  "last_name": "Archer",
-  "first_name": "Another"
+  "last_name": "New Archer Last Name",
+  "first_name": "New Archer First Name"
 }
+
+### get archer detail
+GET http://localhost:8000/scoring/archers/<id>/ HTTP/1.1
+Content-Type: application/json
+
+### update archer
+PUT http://localhost:8000/scoring/archers/<id>/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <access token here>
+
+{
+  "last_name": "Updated Archer Last Name",
+  "first_name": "Updated Archer First Name"
+}
+
+### partial update archer
+PATCH http://localhost:8000/scoring/archers/<id>/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <access token here>
+
+{
+  "last_name": "Updated Archer Last Name",
+  "first_name": "Updated Archer First Name"
+}
+
+### delete archer
+DELETE http://localhost:8000/scoring/archers/<id>/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <access token here>
 
