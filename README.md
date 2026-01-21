@@ -291,3 +291,5 @@ pip install djangorestframework-simplejwt
 ```bash
 ```
 
+## 26 Page permissions
+
