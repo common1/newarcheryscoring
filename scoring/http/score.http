@@ -1,0 +1,40 @@
+### list scores
+GET http://localhost:8000/scoring/scores/ HTTP/1.1
+Content-Type: application/json
+
+### create score
+POST http://localhost:8000/scoring/scores/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <access token here>
+
+{
+  "name": "Score 5"
+}
+
+### get score detail
+GET http://localhost:8000/scoring/scores/<id>/ HTTP/1.1
+Content-Type: application/json
+
+### update score
+PUT http://localhost:8000/scoring/scores/<id>/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <access token here>
+
+{
+  "name": "Updated Score Name"
+}
+
+### partial update score
+PATCH http://localhost:8000/scoring/scores/<id>/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <access token here>
+
+{
+  "name": "Updated Score Name"
+}
+
+### delete score
+DELETE http://localhost:8000/scoring/scores/<id>/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <access token here>
+

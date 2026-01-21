@@ -1,0 +1,40 @@
+### list rounds
+GET http://localhost:8000/scoring/rounds/ HTTP/1.1
+Content-Type: application/json
+
+### create round
+POST http://localhost:8000/scoring/rounds/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <access token here>
+
+{
+  "name": "Round 5"
+}
+
+### get round detail
+GET http://localhost:8000/scoring/rounds/<id>/ HTTP/1.1
+Content-Type: application/json
+
+### update round
+PUT http://localhost:8000/scoring/rounds/<id>/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <access token here>
+
+{
+  "name": "Updated Round Name"
+}
+
+### partial update round
+PATCH http://localhost:8000/scoring/rounds/<id>/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <access token here>
+
+{
+  "name": "Updated Round Name"
+}
+
+### delete round
+DELETE http://localhost:8000/scoring/rounds/<id>/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <access token here>
+

@@ -1,0 +1,40 @@
+### list categories
+GET http://localhost:8000/scoring/categories/ HTTP/1.1
+Content-Type: application/json
+
+### create category
+POST http://localhost:8000/scoring/categories/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <access token here>
+
+{
+  "name": "Archer 5"
+}
+
+### get category detail
+GET http://localhost:8000/scoring/categories/<id>/ HTTP/1.1
+Content-Type: application/json
+
+### update category
+PUT http://localhost:8000/scoring/categories/<id>/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <access token here>
+
+{
+  "name": "Updated Archer Name"
+}
+
+### partial update category
+PATCH http://localhost:8000/scoring/categories/<id>/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <access token here>
+
+{
+  "name": "Updated Archer Name"
+}
+
+### delete category
+DELETE http://localhost:8000/scoring/categories/<id>/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <access token here>
+

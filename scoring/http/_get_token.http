@@ -1,0 +1,16 @@
+POST http://localhost:8000/api/token/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "username": "<admin username>",
+  "password": "<admin password>"
+}
+
+###
+
+POST http://localhost:8000/api/token/refresh/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "refresh": "<access token here>"
+}

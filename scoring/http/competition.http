@@ -1,0 +1,40 @@
+### list competitions
+GET http://localhost:8000/scoring/competitions/ HTTP/1.1
+Content-Type: application/json
+
+### create competition
+POST http://localhost:8000/scoring/competitions/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <access token here>
+
+{
+  "name": "Competition 5"
+}
+
+### get competition detail
+GET http://localhost:8000/scoring/competitions/<id>/ HTTP/1.1
+Content-Type: application/json
+
+### update competition
+PUT http://localhost:8000/scoring/competitions/<id>/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <access token here>
+
+{
+  "name": "Updated Competition Name"
+}
+
+### partial update competition
+PATCH http://localhost:8000/scoring/competitions/<id>/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <access token here>
+
+{
+  "name": "Updated Competition Name"
+}
+
+### delete competition
+DELETE http://localhost:8000/scoring/competitions/<id>/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <access token here>
+

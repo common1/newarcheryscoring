@@ -1,0 +1,40 @@
+### list disciplines
+GET http://localhost:8000/scoring/disciplines/ HTTP/1.1
+Content-Type: application/json
+
+### create discipline
+POST http://localhost:8000/scoring/disciplines/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <access token here>
+
+{
+  "name": "Discipline 5"
+}
+
+### get discipline detail
+GET http://localhost:8000/scoring/disciplines/<id>/ HTTP/1.1
+Content-Type: application/json
+
+### update discipline
+PUT http://localhost:8000/scoring/disciplines/<id>/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <access token here>
+
+{
+  "name": "Updated Discipline Name"
+}
+
+### partial update discipline
+PATCH http://localhost:8000/scoring/disciplines/<id>/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <access token here>
+
+{
+  "name": "Updated Discipline Name"
+}
+
+### delete discipline
+DELETE http://localhost:8000/scoring/disciplines/<id>/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <access token here>
+

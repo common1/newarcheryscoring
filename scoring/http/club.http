@@ -1,0 +1,40 @@
+### list clubs
+GET http://localhost:8000/scoring/clubs/ HTTP/1.1
+Content-Type: application/json
+
+### create club
+POST http://localhost:8000/scoring/clubs/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <access token here>
+
+{
+  "name": "Club 5"
+}
+
+### get club detail
+GET http://localhost:8000/scoring/clubs/<id>/ HTTP/1.1
+Content-Type: application/json
+
+### update club
+PUT http://localhost:8000/scoring/clubs/<id>/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <access token here>
+
+{
+  "name": "Updated Club Name"
+}
+
+### partial update club
+PATCH http://localhost:8000/scoring/clubs/<id>/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <access token here>
+
+{
+  "name": "Updated Club Name"
+}
+
+### delete club
+DELETE http://localhost:8000/scoring/clubs/<id>/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <access token here>
+
