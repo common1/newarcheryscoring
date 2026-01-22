@@ -299,3 +299,10 @@ pip install djangorestframework-simplejwt
 ```bash
 ```
 
+## 27 Cache
+
+```
+```
+
+```bash
+```
