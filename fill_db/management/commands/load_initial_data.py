@@ -6,9 +6,11 @@ from userauth.models import CustomUser
 from django.utils import lorem_ipsum
 
 from scoring.models import (
-    Archer, 
+    AgeGroup,
+    Archer,
     Club,
     ClubMembership,
+    Competition,
     Discipline,
     DisciplineMembership,
     Category,
@@ -73,6 +75,8 @@ class Command(BaseCommand):
         self.create_sample_target_face_name_choices()
         self.create_sample_target_faces()
         self.create_sample_rounds()
+        self.create_sample_agegroups()
+        self.create_sample_competitions()
 
     def create_sample_archers(self):
         archers = [
@@ -486,35 +490,35 @@ class Command(BaseCommand):
         rounds = [
             Round(
                 author = self.user,
-                name = "Indoor 18 meter Donderdag 1 Januarie 2026",
+                name = "Indoor 18 meter Donderdag 1 Januari 2026",
                 start_date = "2026-01-01",
                 start_time = "20:00",
                 info=lorem_ipsum.paragraph(),
             ),
             Round(
                 author = self.user,
-                name = "Indoor 18 meter Donderdag 8 Januarie 2026",
+                name = "Indoor 18 meter Donderdag 8 Januari 2026",
                 start_date = "2026-01-08",
                 start_time = "20:00",
                 info=lorem_ipsum.paragraph(),
             ),
             Round(
                 author = self.user,
-                name = "Indoor 18 meter Donderdag 15 Januarie 2026",
+                name = "Indoor 18 meter Donderdag 15 Januari 2026",
                 start_date = "2026-01-15",
                 start_time = "20:00",
                 info=lorem_ipsum.paragraph(),
             ),
             Round(
                 author = self.user,
-                name = "Indoor 18 meter Donderdag 22 Januarie 2026",
+                name = "Indoor 18 meter Donderdag 22 Januari 2026",
                 start_date = "2026-01-22",
                 start_time = "20:00",
                 info=lorem_ipsum.paragraph(),
             ),
             Round(
                 author = self.user,
-                name = "Indoor 18 meter Donderdag 29 Januarie 2026",
+                name = "Indoor 18 meter Donderdag 29 Januari 2026",
                 start_date = "2026-01-29",
                 start_time = "20:00",
                 info=lorem_ipsum.paragraph(),
@@ -525,3 +529,113 @@ class Command(BaseCommand):
                 round.save()
                 if SCREEN_OUTPUT:
                     self.stdout.write(self.style.SUCCESS(f'Round - {round.name} created'))
+
+    # Pupils    -   Pupillen 
+    # Aspirants -   Aspiranten
+    # Cadets    -   Cadetten
+    # Juniors   -   Junioren
+    # Seniors   -   Senioren
+    # Masters   -   Masters
+    # Veterans  -   Veteranen
+    def create_sample_agegroups(self):
+        agegroups = [
+            AgeGroup(
+                author = self.user,
+                name = "Pupils",
+                info=lorem_ipsum.paragraph(),
+            ),
+            AgeGroup(
+                author = self.user,
+                name = "Aspirants",
+                info=lorem_ipsum.paragraph(),
+            ),
+            AgeGroup(
+                author = self.user,
+                name = "Cadets",
+                info=lorem_ipsum.paragraph(),
+            ),
+            AgeGroup(
+                author = self.user,
+                name = "Juniors",
+                info=lorem_ipsum.paragraph(),
+            ),
+            AgeGroup(
+                author = self.user,
+                name = "Seniors",
+                info=lorem_ipsum.paragraph(),
+            ),
+            AgeGroup(
+                author = self.user,
+                name = "Masters",
+                info=lorem_ipsum.paragraph(),
+            ),
+            AgeGroup(
+                author = self.user,
+                name = "Veterans",
+                info=lorem_ipsum.paragraph(),
+            ),
+        ]
+        for  agegroup in  agegroups:
+            if not AgeGroup.objects.filter(name=agegroup.name):
+                agegroup.save()
+                if SCREEN_OUTPUT:
+                    self.stdout.write(self.style.SUCCESS(f'AgeGroup - {agegroup.name} created'))
+
+    def create_sample_competitions(self):
+        competitions = [
+            Competition(
+                author = self.user,
+                name = "Indoor 18 meter 2025",
+                info=lorem_ipsum.paragraph(),
+            ),
+            Competition(
+                author = self.user,
+                name = "Indoor 25 meter 2025",
+                info=lorem_ipsum.paragraph(),
+            ),
+            Competition(
+                author = self.user,
+                name = "Indoor 18 meter 2026",
+                info=lorem_ipsum.paragraph(),
+            ),
+            Competition(
+                author = self.user,
+                name = "Indoor 25 meter 2026",
+                info=lorem_ipsum.paragraph(),
+            ),
+            Competition(
+                author = self.user,
+                name = "Indoor 18 meter 2027",
+                info=lorem_ipsum.paragraph(),
+            ),
+            Competition(
+                author = self.user,
+                name = "Indoor 25 meter 2027",
+                info=lorem_ipsum.paragraph(),
+            ),
+            Competition(
+                author = self.user,
+                name = "Indoor 18 meter 2028",
+                info=lorem_ipsum.paragraph(),
+            ),
+            Competition(
+                author = self.user,
+                name = "Indoor 25 meter 2028",
+                info=lorem_ipsum.paragraph(),
+            ),
+            Competition(
+                author = self.user,
+                name = "Indoor 18 meter 2029",
+                info=lorem_ipsum.paragraph(),
+            ),
+            Competition(
+                author = self.user,
+                name = "Indoor 25 meter 2029",
+                info=lorem_ipsum.paragraph(),
+            ),
+        ]
+        for  competition in  competitions:
+            if not Competition.objects.filter(name=competition.name):
+                competition.save()
+                if SCREEN_OUTPUT:
+                    self.stdout.write(self.style.SUCCESS(f'Competition - {competition.name} created'))

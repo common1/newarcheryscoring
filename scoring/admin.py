@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.contrib import admin
+from django.db import models
 from django import forms
 from .models import (
     Archer,
@@ -21,11 +22,22 @@ from .models import (
     Score,
     ScoringSheet,
 )
+from modelcluster.fields import ParentalKey
 
+from wagtail.models import Page, Orderable
 from wagtail.snippets.views.snippets import SnippetViewSet, SnippetViewSetGroup
 from wagtail.snippets.models import register_snippet
 from wagtail.admin.ui.tables import BooleanColumn
-from wagtail.admin.panels import MultiFieldPanel, FieldPanel, FieldRowPanel
+from wagtail.admin.panels import (
+    FieldPanel,
+    HelpPanel,
+    MultiFieldPanel,
+    InlinePanel,
+    PageChooserPanel,
+    FieldRowPanel,
+    MultipleChooserPanel,
+    TitleFieldPanel,
+)
 
 @admin.action(description="Activate selected Archers")
 def activate_archers(modeladmin, request, queryset):
@@ -780,7 +792,9 @@ class CompetitionMembershipAdmin(admin.ModelAdmin):
 
 # TODO: Continue here in admin
 
+# -----------------
 # Wagtail Snippets
+# -----------------
 
 class ArcherSnippetViewSet(SnippetViewSet):
     model = Archer
@@ -872,7 +886,7 @@ class ClubSnippetViewSet(SnippetViewSet):
     panels = [
         FieldPanel('name'),
         FieldPanel('info'),
-        FieldPanel('archers'),
+        FieldPanel('archers', widget=forms.CheckboxSelectMultiple),
         MultiFieldPanel(
             [
                 FieldPanel('address'),
@@ -959,7 +973,7 @@ class CategorySnippetViewSet(SnippetViewSet):
     panels = [
         FieldPanel('name'),
         FieldPanel('info'),
-        FieldPanel('archers'),
+        FieldPanel('archers', widget=forms.CheckboxSelectMultiple),
         MultiFieldPanel(
             [
                 FieldPanel('slug'),
@@ -1026,7 +1040,7 @@ class TeamSnippetViewSet(SnippetViewSet):
     panels = [
         FieldPanel('name'),
         FieldPanel('info'),
-        FieldPanel('archers'),
+        FieldPanel('archers', widget=forms.CheckboxSelectMultiple),
         MultiFieldPanel(
             [
                 FieldPanel('slug'),
@@ -1128,7 +1142,7 @@ class DisciplineSnippetViewSet(SnippetViewSet):
     panels = [
         FieldPanel('name'),
         FieldPanel('info'),
-        FieldPanel('archers'),
+        FieldPanel('archers', widget=forms.CheckboxSelectMultiple),
         MultiFieldPanel(
             [
                 FieldPanel('slug'),
@@ -1243,7 +1257,7 @@ class CompetitionSnippetViewSet(SnippetViewSet):
         FieldPanel('info'),
         FieldPanel('start_date'),
         FieldPanel('end_date'),
-        FieldPanel('rounds'),
+        FieldPanel('rounds', widget=forms.CheckboxSelectMultiple),
         MultiFieldPanel(
             [
                 FieldPanel('slug'),
@@ -1313,7 +1327,7 @@ class RoundSnippetViewSet(SnippetViewSet):
         FieldPanel('start_time'),
         FieldPanel('end_date'),
         FieldPanel('end_time'),
-        FieldPanel('archers'),
+        FieldPanel('archers', widget=forms.CheckboxSelectMultiple),
         MultiFieldPanel(
             [
                 FieldPanel('slug'),

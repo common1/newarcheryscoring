@@ -90,6 +90,7 @@ TEMPLATES = [
             PROJECT_DIR / "templates",
             BASE_DIR / "templates",
             BASE_DIR / "userauth/templates/userauth",
+            BASE_DIR / "scoring/templates/scoring",
         ],
         "APP_DIRS": True,
         "OPTIONS": {

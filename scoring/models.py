@@ -8,7 +8,9 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 from userauth.models import CustomUser
 
-class BaseScoringModel(models.Model):
+from modelcluster.models import ClusterableModel
+
+class BaseScoringModel(ClusterableModel):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
     created_at = models.DateTimeField(default=timezone.now, editable=False)
@@ -1268,7 +1270,11 @@ from wagtail.admin.panels import (
     MultipleChooserPanel,
     TitleFieldPanel,
 )
-from modelcluster.fields import ParentalKey
+from modelcluster.fields import (
+    ParentalKey,
+    ParentalManyToManyField,
+)
+from django import forms
 
 class BaseScoringPage(Page):
     created_at = models.DateTimeField(default=timezone.now, editable=False)
@@ -1282,9 +1288,12 @@ class BaseScoringPage(Page):
 # Archer
 
 class ArcherPage(BaseScoringPage):
+    parent_page_types = ['home.HomePage']
+    subpage_types = []
+
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
-
+   
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         FieldPanel('body'),
