@@ -306,3 +306,14 @@ pip install djangorestframework-simplejwt
 
 ```bash
 ```
+
+## 28 Supercharging Wagtail Snippets with Advanced Features
+
+```
+Part1 Not finished yet
+```
+
+```bash
+python manage.py update_index
+```
+

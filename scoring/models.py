@@ -10,6 +10,17 @@ from userauth.models import CustomUser
 
 from modelcluster.models import ClusterableModel
 
+from django.contrib.contenttypes.fields import GenericRelation
+from wagtail.admin.panels import PublishingPanel
+from wagtail.models import (
+    DraftStateMixin, 
+    RevisionMixin, 
+    LockableMixin,
+    PreviewableMixin,
+)
+
+from wagtail.search import index
+
 class BaseScoringModel(ClusterableModel):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
@@ -21,6 +32,7 @@ class BaseScoringModel(ClusterableModel):
     class Meta:
         abstract = True
 
+# TODO: Supercharging Archer Snippet with Advanced Features
 class Archer(BaseScoringModel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -167,6 +179,8 @@ class Archer(BaseScoringModel):
 # Para Archery
 # Run archery
 # Bowhunting
+
+# TODO: Supercharging Discipline Snippet with Advanced Features
 class Discipline(BaseScoringModel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -219,6 +233,7 @@ class Discipline(BaseScoringModel):
     def __unicode__(self):
         return self.name
 
+# TODO: Supercharging DisciplineMembership Snippet with Advanced Features
 class DisciplineMembership(BaseScoringModel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -268,6 +283,7 @@ class DisciplineMembership(BaseScoringModel):
     def __unicode__(self):
         return f"{str(self.archer)} - {str(self.discipline)}"
 
+# TODO: Supercharging Club Snippet with Advanced Features
 class Club(BaseScoringModel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -379,6 +395,7 @@ class Club(BaseScoringModel):
     def __unicode__(self):       
         return self.name
 
+# TODO: Supercharging ClubMembership Snippet with Advanced Features
 class ClubMembership(BaseScoringModel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -454,6 +471,7 @@ class ClubMembership(BaseScoringModel):
 # Barebow
 # Longbow
 # Traditional
+# TODO: Supercharging Category Snippet with Advanced Features
 class Category(BaseScoringModel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -502,6 +520,7 @@ class Category(BaseScoringModel):
     def __unicode__(self):
         return self.name
 
+# TODO: Supercharging AgeGroup Snippet with Advanced Features
 class AgeGroup(BaseScoringModel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -544,6 +563,7 @@ class AgeGroup(BaseScoringModel):
     def __unicode__(self):
         return self.name
 
+# TODO: Supercharging CategoryMembership Snippet with Advanced Features
 class CategoryMembership(BaseScoringModel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -608,6 +628,7 @@ class CategoryMembership(BaseScoringModel):
     def __unicode__(self):
         return f"{str(self.archer)} - {str(self.category)}"
 
+# TODO: Supercharging Team Snippet with Advanced Features
 class Team(BaseScoringModel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -658,6 +679,7 @@ class Team(BaseScoringModel):
     def __unicode__(self):
         return self.name
 
+# TODO: Supercharging TeamMembership Snippet with Advanced Features
 class TeamMembership(BaseScoringModel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -715,10 +737,7 @@ class TeamMembership(BaseScoringModel):
     def __unicode__(self):
         return f"{str(self.archer)} - {str(self.team)}"
     
-#----------------------------------------
-# ScoringSheet Models
-#----------------------------------------
-
+# TODO: Supercharging ScoringSheet Snippet with Advanced Features
 class ScoringSheet(BaseScoringModel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -779,6 +798,7 @@ class ScoringSheet(BaseScoringModel):
     def __unicode__(self):
         return f"{self.name} ( rows : {self.rows}, columns : {self.columns} )"
 
+# TODO: Supercharging TargetFaceNameChoide Snippet with Advanced Features
 class TargetFaceNameChoice(BaseScoringModel):
     ENVIRONMENTS = [
         ('Indoor', 'Indoor'),
@@ -885,6 +905,7 @@ class TargetFaceNameChoice(BaseScoringModel):
     def __unicode__(self):
         return f"{self.name} )"  
 
+# TODO: Supercharging TargetFace Snippet with Advanced Features
 class TargetFace(BaseScoringModel):
 
     def __init__(self, *args, **kwargs):
@@ -928,6 +949,7 @@ class TargetFace(BaseScoringModel):
     def __unicode__(self):
         return f"{self.name} )"
 
+# TODO: Supercharging Round Snippet with Advanced Features
 class Round(BaseScoringModel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -1014,6 +1036,7 @@ class Round(BaseScoringModel):
     def __unicode__(self):       
         return self.name
 
+# TODO: Supercharging RoundMembership Snippet with Advanced Features
 class RoundMembership(BaseScoringModel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -1067,6 +1090,7 @@ class RoundMembership(BaseScoringModel):
     def __unicode__(self):
         return f"{str(self.archer)} - {str(self.round)}"
 
+# TODO: Supercharging Score Snippet with Advanced Features
 class Score(BaseScoringModel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -1133,6 +1157,7 @@ class Score(BaseScoringModel):
 #     def __init__(self, *args, **kwargs):
 #         super().__init__(*args, **kwargs)
 
+# TODO: Supercharging Competition Snippet with Advanced Features
 class Competition(BaseScoringModel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -1202,6 +1227,7 @@ class Competition(BaseScoringModel):
     def __unicode__(self):       
         return self.name
 
+# TODO: Supercharging CompetitionMembership Snippet with Advanced Features
 class CompetitionMembership(BaseScoringModel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

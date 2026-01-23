@@ -28,6 +28,7 @@ from wagtail.models import Page, Orderable
 from wagtail.snippets.views.snippets import SnippetViewSet, SnippetViewSetGroup
 from wagtail.snippets.models import register_snippet
 from wagtail.admin.ui.tables import BooleanColumn
+from wagtail.admin.panels import PublishingPanel
 from wagtail.admin.panels import (
     FieldPanel,
     HelpPanel,
