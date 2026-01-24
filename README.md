@@ -317,3 +317,13 @@ Part1 Not finished yet
 python manage.py update_index
 ```
 
+## 29 Adding grid app
+
+```
+Part 1
+```
+
+```bash
+python manage.py startapp my_grid_model
+```
+

@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     "wagtail_modeladmin",
     "rest_framework",
     "silk",
+    "my_grid_model",
 ]
 
 SITE_ID = 1
