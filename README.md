@@ -327,3 +327,14 @@ Part 1
 python manage.py startapp my_grid_model
 ```
 
+## 30 Global Navigation Using Django Context Processors
+
+```
+Part 1 Create app site_settings
+No context processors yet
+```
+
+```bash
+python manage.py startapp site_settings
+```
+

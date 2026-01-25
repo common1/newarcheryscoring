@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     "userauth", # an app that contains the custom user model
     "fill_db",
     "scoring",
+    "site_settings",
     "newarcheryscoring.apps.CustomUsersAppConfig", # a custom app config for the wagtail.users app
     "newarcheryscoring.base",
     "newarcheryscoring.blog",
