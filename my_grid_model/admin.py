@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import SimpleGrid
+
+@admin.register(SimpleGrid)
+class SimpleGridAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+

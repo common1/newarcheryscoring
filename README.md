@@ -338,3 +338,24 @@ No context processors yet
 python manage.py startapp site_settings
 ```
 
+## 31 Global Navigation Using Django Context Processors
+
+```
+```
+
+```bash
+python manage.py shell
+>>> from my_grid_model.models import SimpleGrid 
+>>> SimpleGrid.objects.create(name='Grid1', data=None) # SQL NULL.
+>>> SimpleGrid.objects.create(name="Archie", data=Value(None, JSONField())) # JSON null
+
+```
+## 32 Working on my_grid_model
+
+```Part 1
+Defining models
+```
+
+```bash
+```
+

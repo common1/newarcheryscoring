@@ -1,7 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
 class BaseCell(models.Model):
     value = models.CharField(max_length=64)
 
@@ -13,12 +11,10 @@ class BaseCell(models.Model):
     class Meta:
         abstract = True
 
-class BaseGrid(models.Model):
-    def __init__(self, x: int, y: int):
-        self.x = x
-        self.y = y
-
-    @classmethod
-    def create(cls, x, y):
-        return cls(x = x, y = y)
-
+class SimpleGrid(models.Model):
+    name = models.CharField(max_length=128)
+    data = models.JSONField(null=True)
+        
+    def __str__(self):
+        return self.name
+    

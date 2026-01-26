@@ -41,7 +41,7 @@ class Command(BaseCommand):
             self.user = CustomUser.objects.create_superuser(
                 username='admin',
                 display_name='Admin User',
-                password='changeme', 
+                password='abcd@1234', 
                 email='me@mail.com'
             )
             if SCREEN_OUTPUT:
