@@ -346,14 +346,15 @@ python manage.py startapp site_settings
 ```bash
 python manage.py shell
 >>> from my_grid_model.models import SimpleGrid 
->>> SimpleGrid.objects.create(name='Grid1', data=None) # SQL NULL.
->>> SimpleGrid.objects.create(name="Archie", data=Value(None, JSONField())) # JSON null
+>>> grid1 = SimpleGrid.objects.create(name='Grid1', data=None) # SQL NULL.
+>>> grid2 = SimpleGrid.objects.create(name="Grid2", data={"grid": []})
 
 ```
 ## 32 Working on my_grid_model
 
 ```Part 1
 Defining models
+[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
 ```
 
 ```bash
