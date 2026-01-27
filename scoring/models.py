@@ -1286,8 +1286,9 @@ class CompetitionMembership(BaseScoringModel):
 #----------------------------------------
 
 from wagtail.contrib.table_block.blocks import TableBlock
+from wagtail.blocks import DateBlock, IntegerBlock
 from wagtail.models import Page, Orderable
-from wagtail.fields import RichTextField, StreamField
+from wagtail.fields import RichTextField, StreamField, StreamBlock
 from wagtail.admin.panels import (
     FieldPanel,
     HelpPanel,
@@ -1776,8 +1777,7 @@ class CompetitionMembershipPageMembers(Orderable):
         FieldPanel('competitionmembership', heading="Record"),
     ]
 
-# TODO: Custom TableBlock for 10x3 and 5x5 grids
-class BaseGridPage(BaseScoringPage):
+class ScoringPage(BaseScoringPage):
     base_grid_options = {
         'minSpareRows': 3,      # The number of rows to append to the end of an empty grid. The default setting is 0.
         'startRows': 3,         # The default number of rows for a new table.
@@ -1809,14 +1809,34 @@ class BaseGridPage(BaseScoringPage):
 
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
+
     grid = StreamField(
         [
-            ('table', TableBlock(table_options=base_grid_options)),
-        ], use_json_field=True
-    )  
+            ('scoring', StreamBlock([
+                ('date', DateBlock(
+                    required=False,
+                    help_text=_("format: Y-m-d, not required"),
+                )),
+                ('score', IntegerBlock(
+                    required=False,
+                    help_text=_("Total score. format: not required")
+                )),
+                ('arrows', IntegerBlock(
+                    required=False,
+                    help_text=_("Number of arrows. format: not required")
+                )),
+                ('grid', TableBlock(
+                    required=False,
+                    table_options=base_grid_options,
+                    help_text=_("Scores per arrow. format: not required")
+                )),               
+            ])),
+        ]
+    )
    
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         FieldPanel('body'),
-        FieldPanel('grid')
+        FieldPanel('grid'),
     ]
+    
