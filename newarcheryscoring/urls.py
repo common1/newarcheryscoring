@@ -24,6 +24,7 @@ urlpatterns = urlpatterns + [
     path('accounts/', include('allauth.urls')),
     path('accounts/', include('userauth.urls')),
     path('scoring/', include('scoring.urls')),
+    path('people/', include('django_tables2_tutorial.urls')),
 ]
 
 if settings.DEBUG:

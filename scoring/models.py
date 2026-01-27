@@ -1776,6 +1776,7 @@ class CompetitionMembershipPageMembers(Orderable):
         FieldPanel('competitionmembership', heading="Record"),
     ]
 
+# TODO: Custom TableBlock for 10x3 and 5x5 grids
 class BaseGridPage(BaseScoringPage):
     base_grid_options = {
         'minSpareRows': 3,      # The number of rows to append to the end of an empty grid. The default setting is 0.
@@ -1813,7 +1814,6 @@ class BaseGridPage(BaseScoringPage):
             ('table', TableBlock(table_options=base_grid_options)),
         ], use_json_field=True
     )  
-
    
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),

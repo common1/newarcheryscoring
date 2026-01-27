@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
+    "django_tables2",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
@@ -67,6 +68,7 @@ INSTALLED_APPS = [
     "wagtail_modeladmin",
     "rest_framework",
     "silk",
+    "django_tables2_tutorial",
 ]
 
 SITE_ID = 1
@@ -94,6 +96,8 @@ TEMPLATES = [
             BASE_DIR / "templates",
             BASE_DIR / "userauth/templates/userauth",
             BASE_DIR / "scoring/templates/scoring",
+            BASE_DIR / "django_tables2_tutorial/templates/django_tables2_tutorial",
+            
         ],
         "APP_DIRS": True,
         "OPTIONS": {

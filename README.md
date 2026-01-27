@@ -360,15 +360,23 @@ Defining models
 ```bash
 ```
 
-## 33 User of TableBlock and TypedTableBlock
+## 33 Use of TableBlock and TypedTableBlock snf django-tables2
 
 [https://docs.wagtail.org/en/6.4/reference/contrib/table_block.html]
 [https://docs.wagtail.org/en/6.4/reference/contrib/typed_table_block.html]
+[https://django-tables2.readthedocs.io/en/latest/]
 
 ```
 scoring.models.BaseGridPage
 ```
 
 ```bash
+pip install django-tables2
+python manage.py startapp django_tables2_tutorial
+python manage.py makemigrations
+python manage.py migrate
+python manage.py shell
+>>> from django_tables2_tutorial.models import Person
+Person.objects.bulk_create([Person(name="Jieter"), Person(name="Bradley")])
 ```
 
