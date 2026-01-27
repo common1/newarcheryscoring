@@ -347,7 +347,7 @@ python manage.py startapp site_settings
 python manage.py shell
 >>> from my_grid_model.models import SimpleGrid 
 >>> grid1 = SimpleGrid.objects.create(name='Grid1', data=None) # SQL NULL.
->>> grid2 = SimpleGrid.objects.create(name="Grid2", data={"grid": []})
+>>> grid2 = SimpleGrid.objects.create(name="Grid2", data={grid:[["col":0,"row":0,"value":""]]})
 
 ```
 ## 32 Working on my_grid_model
@@ -355,6 +355,18 @@ python manage.py shell
 ```Part 1
 Defining models
 [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+```
+
+```bash
+```
+
+## 33 User of TableBlock and TypedTableBlock
+
+[https://docs.wagtail.org/en/6.4/reference/contrib/table_block.html]
+[https://docs.wagtail.org/en/6.4/reference/contrib/typed_table_block.html]
+
+```
+scoring.models.BaseGridPage
 ```
 
 ```bash

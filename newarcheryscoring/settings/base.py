@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     "search",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
+    "wagtail.contrib.table_block",
+    "wagtail.contrib.typed_table_block",
     "wagtail.embeds",
     "wagtail.sites",
     # "wagtail.users",
@@ -65,7 +67,6 @@ INSTALLED_APPS = [
     "wagtail_modeladmin",
     "rest_framework",
     "silk",
-    "my_grid_model",
 ]
 
 SITE_ID = 1

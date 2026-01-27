@@ -19,6 +19,7 @@ from wagtail.models import (
     PreviewableMixin,
 )
 
+
 from wagtail.search import index
 
 class BaseScoringModel(ClusterableModel):
@@ -1284,8 +1285,9 @@ class CompetitionMembership(BaseScoringModel):
 # Wagtail
 #----------------------------------------
 
+from wagtail.contrib.table_block.blocks import TableBlock
 from wagtail.models import Page, Orderable
-from wagtail.fields import RichTextField
+from wagtail.fields import RichTextField, StreamField
 from wagtail.admin.panels import (
     FieldPanel,
     HelpPanel,
@@ -1314,8 +1316,8 @@ class BaseScoringPage(Page):
 # Archer
 
 class ArcherPage(BaseScoringPage):
-    parent_page_types = ['home.HomePage']
-    subpage_types = []
+    # parent_page_types = ['home.HomePage']
+    # subpage_types = []
 
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
@@ -1774,3 +1776,47 @@ class CompetitionMembershipPageMembers(Orderable):
         FieldPanel('competitionmembership', heading="Record"),
     ]
 
+class BaseGridPage(BaseScoringPage):
+    base_grid_options = {
+        'minSpareRows': 3,      # The number of rows to append to the end of an empty grid. The default setting is 0.
+        'startRows': 3,         # The default number of rows for a new table.
+        'startCols': 3,         # The default number of columns for new tables.
+        'colHeaders': True,     # Can be set to True or False. This setting designates if new tables should be created with column headers.
+        'rowHeaders': False,    # Operates the same as colHeaders to designate if new tables should be created with the first column as a row header.
+        'contextMenu': [
+            'row_above',
+            'row_below',
+            '---------',
+            'col_left',
+            'col_right',
+            '---------',
+            'remove_row',
+            'remove_col',
+            '---------',
+            'undo',
+            'redo',
+            '---------',
+            'copy',
+            'cut',
+            '---------',
+            'alignment',
+        ],
+        'editor': 'text',       # Defines the editor used for table cells. The default setting is text.
+        'stretchH': 'none',     # Sets the default horizontal resizing of tables. Options include, ‘none’, ‘last’, and ‘all’.
+        'height': 108,          # The default height of the grid. By default TableBlock sets the height to 108,
+    }
+
+    subtitle = models.CharField(max_length=100, blank=True)
+    body = RichTextField(blank=True)
+    grid = StreamField(
+        [
+            ('table', TableBlock(table_options=base_grid_options)),
+        ], use_json_field=True
+    )  
+
+   
+    content_panels = Page.content_panels + [
+        FieldPanel('subtitle'),
+        FieldPanel('body'),
+        FieldPanel('grid')
+    ]
