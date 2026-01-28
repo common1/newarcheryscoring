@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     "fill_db",
     "scoring",
     "site_settings",
+    "common",
     "newarcheryscoring.apps.CustomUsersAppConfig", # a custom app config for the wagtail.users app
     "newarcheryscoring.base",
     "newarcheryscoring.blog",

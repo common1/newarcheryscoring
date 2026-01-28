@@ -19,8 +19,11 @@ from wagtail.models import (
     PreviewableMixin,
 )
 
-
-from wagtail.search import index
+from common.blocks import (
+    TableBlock_3_Cols_10_Rows,
+    TableBlock_3_Cols_12_Rows,
+    TableBlock_5_Cols_5_Rows,
+)
 
 class BaseScoringModel(ClusterableModel):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -1285,7 +1288,6 @@ class CompetitionMembership(BaseScoringModel):
 # Wagtail
 #----------------------------------------
 
-from wagtail.contrib.table_block.blocks import TableBlock
 from wagtail.blocks import DateBlock, IntegerBlock
 from wagtail.models import Page, Orderable
 from wagtail.fields import RichTextField, StreamField, StreamBlock
@@ -1778,34 +1780,6 @@ class CompetitionMembershipPageMembers(Orderable):
     ]
 
 class ScoringPage(BaseScoringPage):
-    base_grid_options = {
-        'minSpareRows': 3,      # The number of rows to append to the end of an empty grid. The default setting is 0.
-        'startRows': 3,         # The default number of rows for a new table.
-        'startCols': 3,         # The default number of columns for new tables.
-        'colHeaders': True,     # Can be set to True or False. This setting designates if new tables should be created with column headers.
-        'rowHeaders': False,    # Operates the same as colHeaders to designate if new tables should be created with the first column as a row header.
-        'contextMenu': [
-            'row_above',
-            'row_below',
-            '---------',
-            'col_left',
-            'col_right',
-            '---------',
-            'remove_row',
-            'remove_col',
-            '---------',
-            'undo',
-            'redo',
-            '---------',
-            'copy',
-            'cut',
-            '---------',
-            'alignment',
-        ],
-        'editor': 'text',       # Defines the editor used for table cells. The default setting is text.
-        'stretchH': 'none',     # Sets the default horizontal resizing of tables. Options include, ‘none’, ‘last’, and ‘all’.
-        'height': 108,          # The default height of the grid. By default TableBlock sets the height to 108,
-    }
 
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
@@ -1813,21 +1787,28 @@ class ScoringPage(BaseScoringPage):
     grid = StreamField(
         [
             ('scoring', StreamBlock([
-                ('date', DateBlock(
+                ('Date', DateBlock(
                     required=False,
                     help_text=_("format: Y-m-d, not required"),
                 )),
-                ('score', IntegerBlock(
+                ('Score', IntegerBlock(
                     required=False,
                     help_text=_("Total score. format: not required")
                 )),
-                ('arrows', IntegerBlock(
+                ('Arrows', IntegerBlock(
                     required=False,
                     help_text=_("Number of arrows. format: not required")
                 )),
-                ('grid', TableBlock(
+                ('Sheet_10x3',TableBlock_3_Cols_10_Rows(
                     required=False,
-                    table_options=base_grid_options,
+                    help_text=_("Scores per arrow. format: not required")
+                )),
+                ('Sheet_12x3',TableBlock_3_Cols_12_Rows(
+                    required=False,
+                    help_text=_("Scores per arrow. format: not required")
+                )),               
+                ('Sheet_5x5',TableBlock_5_Cols_5_Rows(
+                    required=False,
                     help_text=_("Scores per arrow. format: not required")
                 )),               
             ])),

@@ -383,10 +383,12 @@ Person.objects.bulk_create([Person(name="Jieter"), Person(name="Bradley")])
 ## 34 scoring.models.py - ScoringPage with StreamField and StreamBlock
 
 [https://docs.wagtail.org/en/v7.2.1/topics/streamfield.html]
+[https://pypi.org/project/wagtailtables/]
 
 ```
 ```
 
-```bash
+```bashpython manage.py startapp common
+
 ```
 

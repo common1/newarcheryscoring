@@ -25,6 +25,7 @@ class HomePage(Page):
         'scoring.RoundMembershipPage',
         'scoring.RoundPage',
         'scoring.ScorePage',
+        'scoring.ScoringPage',
         'scoring.ScoringSheetPage',
         'scoring.TargetFaceNameChoicePage',
         'scoring.TargetFacePage',
