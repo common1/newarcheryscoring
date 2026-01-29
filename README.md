@@ -388,7 +388,15 @@ Person.objects.bulk_create([Person(name="Jieter"), Person(name="Bradley")])
 ```
 ```
 
-```bashpython manage.py startapp common
+```bash
+python manage.py startapp common
+```
 
+## 35 Add authors field to pages
+
+```
+```
+
+```bash
 ```
 

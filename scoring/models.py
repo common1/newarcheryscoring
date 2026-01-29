@@ -1325,6 +1325,8 @@ class ArcherPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
    
+    authors = ParentalManyToManyField(CustomUser, blank=True)
+   
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         FieldPanel('body'),
@@ -1335,7 +1337,8 @@ class ArcherPage(BaseScoringPage):
             label="Archer",
             chooser_field_name='archer',
             help_text="Select archers to be associated with this page."
-        )
+        ),
+        FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
     ]
 
 class ArcherPageMembers(Orderable):
@@ -1352,6 +1355,8 @@ class DisciplinePage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
     
+    authors = ParentalManyToManyField(CustomUser, blank=True)
+
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         FieldPanel('body'),
@@ -1362,8 +1367,8 @@ class DisciplinePage(BaseScoringPage):
             label="Discipline",
             chooser_field_name='discipline',
             help_text="Select disciplines to be associated with this page."
-        )
-
+        ),
+        FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
     ]
 
 class DisciplinePageMembers(Orderable):
@@ -1378,6 +1383,8 @@ class DisciplineMembershipPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
     
+    authors = ParentalManyToManyField(CustomUser, blank=True)
+
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         FieldPanel('body'),
@@ -1388,7 +1395,8 @@ class DisciplineMembershipPage(BaseScoringPage):
             label="Discipline Membership",
             chooser_field_name='disciplinemembership',
             help_text="Select discipline memberships to be associated with this page."
-        )    
+        ),
+        FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
     ]
 
 class DisciplineMembershipPageMembers(Orderable):
@@ -1402,7 +1410,9 @@ class DisciplineMembershipPageMembers(Orderable):
 class ClubPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
-    
+   
+    authors = ParentalManyToManyField(CustomUser, blank=True)
+ 
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         FieldPanel('body'),
@@ -1413,9 +1423,8 @@ class ClubPage(BaseScoringPage):
             label="Club",
             chooser_field_name='club',
             help_text="Select clubs to be associated with this page."
-        )
-
-        # InlinePanel('club_members', heading="Clubs", label="Club"),
+        ),
+        FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
     ]
 
 class ClubPageMembers(Orderable):
@@ -1430,6 +1439,8 @@ class ClubMembershipPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
     
+    authors = ParentalManyToManyField(CustomUser, blank=True)
+    
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         FieldPanel('body'),
@@ -1440,9 +1451,8 @@ class ClubMembershipPage(BaseScoringPage):
             label="Club Membership",
             chooser_field_name='clubmembership',
             help_text="Select club memberships to be associated with this page."
-        )
-
-        # InlinePanel('clubmembership_members', heading="Club Memberships", label="Club Membership"),
+        ),
+        FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
     ]
 
 class ClubMembershipPageMembers(Orderable):
@@ -1457,6 +1467,8 @@ class CategoryPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
     
+    authors = ParentalManyToManyField(CustomUser, blank=True)
+
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         FieldPanel('body'),
@@ -1467,7 +1479,8 @@ class CategoryPage(BaseScoringPage):
             label="Category",
             chooser_field_name='category',
             help_text="Select categories to be associated with this page."
-        )
+        ),
+        FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
     ]
 
 class CategoryPageMembers(Orderable):
@@ -1482,6 +1495,8 @@ class AgeGroupPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
     
+    authors = ParentalManyToManyField(CustomUser, blank=True)
+
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         FieldPanel('body'),
@@ -1492,13 +1507,15 @@ class AgeGroupPage(BaseScoringPage):
             label="Age Group",
             chooser_field_name='agegroup',
             help_text="Select age groups to be associated with this page."
-        )
-
+        ),
+        FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
     ]
 
 class AgeGroupPageMembers(Orderable):
     page = ParentalKey('AgeGroupPage', on_delete=models.CASCADE, related_name='agegroup_members')
     agegroup = models.ForeignKey(AgeGroup, on_delete=models.PROTECT)
+
+    authors = ParentalManyToManyField(CustomUser, blank=True)
 
     panels = [
         FieldPanel('agegroup', heading="Record"),
@@ -1507,6 +1524,8 @@ class AgeGroupPageMembers(Orderable):
 class CategoryMembershipPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
+    
+    authors = ParentalManyToManyField(CustomUser, blank=True)
     
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
@@ -1518,7 +1537,8 @@ class CategoryMembershipPage(BaseScoringPage):
             label="Category Membership",
             chooser_field_name='categorymembership',
             help_text="Select category memberships to be associated with this page."
-        )
+        ),
+        FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
     ]
 
 class CategoryMembershipPageMembers(Orderable):
@@ -1533,6 +1553,8 @@ class TeamPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
     
+    authors = ParentalManyToManyField(CustomUser, blank=True)
+    
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         FieldPanel('body'),
@@ -1543,7 +1565,8 @@ class TeamPage(BaseScoringPage):
             label="Team",
             chooser_field_name='team',
             help_text="Select teams to be associated with this page."
-        )
+        ),
+        FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
     ]
 
 class TeamPageMembers(Orderable):
@@ -1558,6 +1581,8 @@ class TeamMembershipPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
     
+    authors = ParentalManyToManyField(CustomUser, blank=True)
+    
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         FieldPanel('body'),
@@ -1568,7 +1593,8 @@ class TeamMembershipPage(BaseScoringPage):
             label="Team Membership",
             chooser_field_name='teammembership',
             help_text="Select team memberships to be associated with this page."
-        )
+        ),
+        FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
     ]
 
 class TeamMembershipPageMembers(Orderable):
@@ -1583,6 +1609,8 @@ class ScoringSheetPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
     
+    authors = ParentalManyToManyField(CustomUser, blank=True)
+    
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         FieldPanel('body'),
@@ -1593,7 +1621,8 @@ class ScoringSheetPage(BaseScoringPage):
             label="Scoring Sheet",
             chooser_field_name='scoringsheet',
             help_text="Select scoring sheets to be associated with this page."
-        )
+        ),
+        FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
     ]
 
 class ScoringSheetPageMembers(Orderable):
@@ -1607,7 +1636,9 @@ class ScoringSheetPageMembers(Orderable):
 class TargetFaceNameChoicePage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
-    
+
+    authors = ParentalManyToManyField(CustomUser, blank=True)
+
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         FieldPanel('body'),
@@ -1618,7 +1649,8 @@ class TargetFaceNameChoicePage(BaseScoringPage):
             label="Target Face Name Choice",
             chooser_field_name='targetfacenamechoice',
             help_text="Select target face name choices to be associated with this page."
-        )
+        ),
+        FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
     ]
     
 class TargetFaceNameChoicePageMembers(Orderable):
@@ -1633,6 +1665,8 @@ class TargetFacePage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
     
+    authors = ParentalManyToManyField(CustomUser, blank=True)
+
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         FieldPanel('body'),
@@ -1643,7 +1677,8 @@ class TargetFacePage(BaseScoringPage):
             label="Target Face",
             chooser_field_name='targetface',
             help_text="Select target faces to be associated with this page."
-        )
+        ),
+        FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
     ]
 
 class TargetFacePageMembers(Orderable):
@@ -1658,6 +1693,8 @@ class RoundPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
     
+    authors = ParentalManyToManyField(CustomUser, blank=True)
+    
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         FieldPanel('body'),
@@ -1668,7 +1705,8 @@ class RoundPage(BaseScoringPage):
             label="Round",
             chooser_field_name='round',
             help_text="Select rounds to be associated with this page."
-        )
+        ),
+        FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
     ]
     
 class RoundPageMembers(Orderable):
@@ -1682,7 +1720,9 @@ class RoundPageMembers(Orderable):
 class RoundMembershipPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
-    
+
+    authors = ParentalManyToManyField(CustomUser, blank=True)
+
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         FieldPanel('body'),
@@ -1693,7 +1733,8 @@ class RoundMembershipPage(BaseScoringPage):
             label="Round Membership",
             chooser_field_name='roundmembership',
             help_text="Select round memberships to be associated with this page."
-        )
+        ),
+        FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
     ]
 
 class  RoundMembershipPageMembers(Orderable):
@@ -1708,6 +1749,8 @@ class ScorePage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
     
+    authors = ParentalManyToManyField(CustomUser, blank=True)
+
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         FieldPanel('body'),
@@ -1718,7 +1761,8 @@ class ScorePage(BaseScoringPage):
             label="Score",
             chooser_field_name='score',
             help_text="Select scores to be associated with this page."
-        )
+        ),
+        FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
     ]
 
 class ScorePageMembers(Orderable):
@@ -1733,6 +1777,8 @@ class CompetitionPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
     
+    authors = ParentalManyToManyField(CustomUser, blank=True)
+
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         FieldPanel('body'),
@@ -1744,6 +1790,7 @@ class CompetitionPage(BaseScoringPage):
             chooser_field_name='competition',
             help_text="Select competitions to be associated with this page."
         ),
+        FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
     ]
     
 class CompetitionPageMembers(Orderable):
@@ -1758,6 +1805,8 @@ class CompetitionMembershipPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
     
+    authors = ParentalManyToManyField(CustomUser, blank=True)
+
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         FieldPanel('body'),
@@ -1769,6 +1818,7 @@ class CompetitionMembershipPage(BaseScoringPage):
             chooser_field_name='competitionmembership',
             help_text="Select competition memberships to be associated with this page."
         ),
+        FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
     ]
 
 class CompetitionMembershipPageMembers(Orderable):
@@ -1783,6 +1833,8 @@ class ScoringPage(BaseScoringPage):
 
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
+
+    authors = ParentalManyToManyField(CustomUser, blank=True)
 
     grid = StreamField(
         [
@@ -1819,5 +1871,6 @@ class ScoringPage(BaseScoringPage):
         FieldPanel('subtitle'),
         FieldPanel('body'),
         FieldPanel('grid'),
+        FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
     ]
     
