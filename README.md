@@ -407,6 +407,7 @@ python manage.py startapp common
 
 ```bash
 ```
+
 ## 37 scoring.models - Add image field to pages
 
 ```
@@ -415,4 +416,11 @@ python manage.py startapp common
 ```bash
 ```
 
+## 38 scoring.models - Basic templates content
 
+```
+scoring.templates.scoring
+```
+
+```bash
+```

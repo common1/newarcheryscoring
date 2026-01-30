@@ -1376,7 +1376,7 @@ class ArcherPageMembers(Orderable):
     archer = models.ForeignKey(Archer, on_delete=models.PROTECT)
 
     panels = [
-        FieldPanel('archer', heading="Record"),
+        FieldPanel('archer', heading="Record"),        
     ]
 
 # Discipline
