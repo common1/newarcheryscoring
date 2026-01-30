@@ -424,3 +424,12 @@ scoring.templates.scoring
 
 ```bash
 ```
+## 39 Copied blocks.py and filters.py from Bakery site
+
+```
+newarcheryscoring.base.blocks.py
+newarcheryscoring.base.filters.py
+```
+
+```bash
+```
