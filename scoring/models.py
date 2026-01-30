@@ -25,6 +25,8 @@ from common.blocks import (
     TableBlock_5_Cols_5_Rows,
 )
 
+from wagtail.snippets.models import register_snippet
+
 class BaseScoringModel(ClusterableModel):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
@@ -66,6 +68,13 @@ class Archer(BaseScoringModel):
         help_text=_("format: not required, max-6")
     )
     slug = AutoSlugField(populate_from='last_name',editable=True)
+    archer_image = models.ForeignKey(
+        'wagtailimages.Image', 
+        null=True, 
+        blank=True,
+        on_delete=models.SET_NULL, 
+        related_name='+'
+    )
     union_number = models.PositiveIntegerField(
         unique=True,
         null=True,
@@ -1307,6 +1316,9 @@ from modelcluster.fields import (
 )
 from django import forms
 
+from modelcluster.contrib.taggit import ClusterTaggableManager
+from taggit.models import TaggedItemBase
+
 class BaseScoringPage(Page):
     created_at = models.DateTimeField(default=timezone.now, editable=False)
     modified_at = models.DateTimeField(auto_now=True)
@@ -1318,6 +1330,13 @@ class BaseScoringPage(Page):
 
 # Archer
 
+class ArcherPageTag(TaggedItemBase):
+    content_object = ParentalKey(
+        'ArcherPage',
+        related_name='tagged_archerpage_items',
+        on_delete=models.CASCADE
+    )
+
 class ArcherPage(BaseScoringPage):
     # parent_page_types = ['home.HomePage']
     # subpage_types = []
@@ -1326,7 +1345,8 @@ class ArcherPage(BaseScoringPage):
     body = RichTextField(blank=True)
    
     authors = ParentalManyToManyField(CustomUser, blank=True)
-   
+    tags = ClusterTaggableManager(through=ArcherPageTag, blank=True)
+    
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         FieldPanel('body'),
@@ -1339,6 +1359,7 @@ class ArcherPage(BaseScoringPage):
             help_text="Select archers to be associated with this page."
         ),
         FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
+        FieldPanel('tags'),
     ]
 
 class ArcherPageMembers(Orderable):
@@ -1351,11 +1372,19 @@ class ArcherPageMembers(Orderable):
 
 # Discipline
 
+class DisciplinePageTag(TaggedItemBase):
+    content_object = ParentalKey(
+        'DisciplinePage',
+        related_name='tagged_disciplinepage_items',
+        on_delete=models.CASCADE
+    )
+
 class DisciplinePage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
     
     authors = ParentalManyToManyField(CustomUser, blank=True)
+    tags = ClusterTaggableManager(through=DisciplinePageTag, blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
@@ -1369,6 +1398,7 @@ class DisciplinePage(BaseScoringPage):
             help_text="Select disciplines to be associated with this page."
         ),
         FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
+        FieldPanel('tags'),
     ]
 
 class DisciplinePageMembers(Orderable):
@@ -1379,11 +1409,19 @@ class DisciplinePageMembers(Orderable):
         FieldPanel('discipline', heading="Record"),
     ]
     
+class DisciplineMembershipPageTag(TaggedItemBase):
+    content_object = ParentalKey(
+        'DisciplineMembershipPage',
+        related_name='tagged_disciplinemembershippage_items',
+        on_delete=models.CASCADE
+    )
+    
 class DisciplineMembershipPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
     
     authors = ParentalManyToManyField(CustomUser, blank=True)
+    tags = ClusterTaggableManager(through=DisciplineMembershipPageTag, blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
@@ -1397,6 +1435,7 @@ class DisciplineMembershipPage(BaseScoringPage):
             help_text="Select discipline memberships to be associated with this page."
         ),
         FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
+        FieldPanel('tags'),
     ]
 
 class DisciplineMembershipPageMembers(Orderable):
@@ -1407,11 +1446,19 @@ class DisciplineMembershipPageMembers(Orderable):
         FieldPanel('disciplinemembership', heading="Record"),
     ]
 
+class ClubPageTag(TaggedItemBase):
+    content_object = ParentalKey(
+        'ClubPage',
+        related_name='tagged_clubpage_items',
+        on_delete=models.CASCADE
+    )
+
 class ClubPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
    
     authors = ParentalManyToManyField(CustomUser, blank=True)
+    tags = ClusterTaggableManager(through=ClubPageTag, blank=True)
  
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
@@ -1425,6 +1472,7 @@ class ClubPage(BaseScoringPage):
             help_text="Select clubs to be associated with this page."
         ),
         FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
+        FieldPanel('tags'),
     ]
 
 class ClubPageMembers(Orderable):
@@ -1435,12 +1483,20 @@ class ClubPageMembers(Orderable):
         FieldPanel('club', heading="Record"),
     ]
        
+class ClubMembershipPageTag(TaggedItemBase):
+    content_object = ParentalKey(
+        'ClubMembershipPage',
+        related_name='tagged_clubmembershippage_items',
+        on_delete=models.CASCADE
+    )
+       
 class ClubMembershipPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
     
     authors = ParentalManyToManyField(CustomUser, blank=True)
-    
+    tags = ClusterTaggableManager(through=ClubMembershipPageTag, blank=True)
+
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         FieldPanel('body'),
@@ -1453,6 +1509,7 @@ class ClubMembershipPage(BaseScoringPage):
             help_text="Select club memberships to be associated with this page."
         ),
         FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
+        FieldPanel('tags'),
     ]
 
 class ClubMembershipPageMembers(Orderable):
@@ -1463,11 +1520,19 @@ class ClubMembershipPageMembers(Orderable):
         FieldPanel('clubmembership', heading="Record"),
     ]
 
+class CategoryPageTag(TaggedItemBase):
+    content_object = ParentalKey(
+        'CategoryPage',
+        related_name='tagged_categorypage_items',
+        on_delete=models.CASCADE
+    )
+
 class CategoryPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
     
     authors = ParentalManyToManyField(CustomUser, blank=True)
+    tags = ClusterTaggableManager(through=CategoryPageTag, blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
@@ -1481,6 +1546,7 @@ class CategoryPage(BaseScoringPage):
             help_text="Select categories to be associated with this page."
         ),
         FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
+        FieldPanel('tags'),
     ]
 
 class CategoryPageMembers(Orderable):
@@ -1491,11 +1557,19 @@ class CategoryPageMembers(Orderable):
         FieldPanel('category', heading="Record"),
     ]
 
+class AgeGroupPageTag(TaggedItemBase):
+    content_object = ParentalKey(
+        'AgeGroupPage',
+        related_name='tagged_agegrouppage_items',
+        on_delete=models.CASCADE
+    )
+
 class AgeGroupPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
     
     authors = ParentalManyToManyField(CustomUser, blank=True)
+    tags = ClusterTaggableManager(through=AgeGroupPageTag, blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
@@ -1509,6 +1583,7 @@ class AgeGroupPage(BaseScoringPage):
             help_text="Select age groups to be associated with this page."
         ),
         FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
+        FieldPanel('tags'),
     ]
 
 class AgeGroupPageMembers(Orderable):
@@ -1521,12 +1596,20 @@ class AgeGroupPageMembers(Orderable):
         FieldPanel('agegroup', heading="Record"),
     ]
 
+class CategoryMembershipPageTag(TaggedItemBase):
+    content_object = ParentalKey(
+        'CategoryMembershipPage',
+        related_name='tagged_categorymembershippage_items',
+        on_delete=models.CASCADE
+    )
+
 class CategoryMembershipPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
     
     authors = ParentalManyToManyField(CustomUser, blank=True)
-    
+    tags = ClusterTaggableManager(through=CategoryMembershipPageTag, blank=True)
+
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         FieldPanel('body'),
@@ -1539,6 +1622,7 @@ class CategoryMembershipPage(BaseScoringPage):
             help_text="Select category memberships to be associated with this page."
         ),
         FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
+        FieldPanel('tags'),
     ]
 
 class CategoryMembershipPageMembers(Orderable):
@@ -1549,12 +1633,20 @@ class CategoryMembershipPageMembers(Orderable):
         FieldPanel('categorymembership', heading="Record"),
     ]
 
+class TeamPageTag(TaggedItemBase):
+    content_object = ParentalKey(
+        'TeamPage',
+        related_name='tagged_teampage_items',
+        on_delete=models.CASCADE
+    )
+
 class TeamPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
     
     authors = ParentalManyToManyField(CustomUser, blank=True)
-    
+    tags = ClusterTaggableManager(through=TeamPageTag, blank=True)
+
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         FieldPanel('body'),
@@ -1567,6 +1659,7 @@ class TeamPage(BaseScoringPage):
             help_text="Select teams to be associated with this page."
         ),
         FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
+        FieldPanel('tags'),
     ]
 
 class TeamPageMembers(Orderable):
@@ -1577,12 +1670,20 @@ class TeamPageMembers(Orderable):
         FieldPanel('team', heading="Record"),
     ]
 
+class TeamMembershipPageTag(TaggedItemBase):
+    content_object = ParentalKey(
+        'TeamMembershipPage',
+        related_name='tagged_teammembershippage_items',
+        on_delete=models.CASCADE
+    )
+
 class TeamMembershipPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
     
     authors = ParentalManyToManyField(CustomUser, blank=True)
-    
+    tags = ClusterTaggableManager(through=TeamMembershipPageTag, blank=True)
+
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         FieldPanel('body'),
@@ -1595,6 +1696,7 @@ class TeamMembershipPage(BaseScoringPage):
             help_text="Select team memberships to be associated with this page."
         ),
         FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
+        FieldPanel('tags'),
     ]
 
 class TeamMembershipPageMembers(Orderable):
@@ -1605,12 +1707,20 @@ class TeamMembershipPageMembers(Orderable):
         FieldPanel('teammembership', heading="Record"),
     ]
 
+class ScoringSheetPageTag(TaggedItemBase):
+    content_object = ParentalKey(
+        'ScoringSheetPage',
+        related_name='tagged_scoringsheetpage_items',
+        on_delete=models.CASCADE
+    )
+
 class ScoringSheetPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
     
     authors = ParentalManyToManyField(CustomUser, blank=True)
-    
+    tags = ClusterTaggableManager(through=ScoringSheetPageTag, blank=True)
+
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
         FieldPanel('body'),
@@ -1623,6 +1733,7 @@ class ScoringSheetPage(BaseScoringPage):
             help_text="Select scoring sheets to be associated with this page."
         ),
         FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
+        FieldPanel('tags'),
     ]
 
 class ScoringSheetPageMembers(Orderable):
@@ -1633,11 +1744,19 @@ class ScoringSheetPageMembers(Orderable):
         FieldPanel('scoringsheet', heading="Record"),
     ]
 
+class TargetFaceNameChoicePageTag(TaggedItemBase):
+    content_object = ParentalKey(
+        'TargetFaceNameChoicePage',
+        related_name='tagged_targetfacenamechoicepage_items',
+        on_delete=models.CASCADE
+    )
+
 class TargetFaceNameChoicePage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
 
     authors = ParentalManyToManyField(CustomUser, blank=True)
+    tags = ClusterTaggableManager(through=TargetFaceNameChoicePageTag, blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
@@ -1651,6 +1770,7 @@ class TargetFaceNameChoicePage(BaseScoringPage):
             help_text="Select target face name choices to be associated with this page."
         ),
         FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
+        FieldPanel('tags'),
     ]
     
 class TargetFaceNameChoicePageMembers(Orderable):
@@ -1661,11 +1781,19 @@ class TargetFaceNameChoicePageMembers(Orderable):
         FieldPanel('targetfacenamechoice', heading="Record"),
     ]
 
+class TargetFacePageTag(TaggedItemBase):
+    content_object = ParentalKey(
+        'TargetFacePage',
+        related_name='tagged_targetfacepage_items',
+        on_delete=models.CASCADE
+    )
+
 class TargetFacePage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
     
     authors = ParentalManyToManyField(CustomUser, blank=True)
+    tags = ClusterTaggableManager(through=TargetFacePageTag, blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
@@ -1679,6 +1807,7 @@ class TargetFacePage(BaseScoringPage):
             help_text="Select target faces to be associated with this page."
         ),
         FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
+        FieldPanel('tags'),
     ]
 
 class TargetFacePageMembers(Orderable):
@@ -1688,12 +1817,20 @@ class TargetFacePageMembers(Orderable):
     panels = [
         FieldPanel('targetface', heading="Record"),
     ]
+
+class RoundPageTag(TaggedItemBase):
+    content_object = ParentalKey(
+        'RoundPage',
+        related_name='tagged_roundpage_items',
+        on_delete=models.CASCADE
+    )
     
 class RoundPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
     
     authors = ParentalManyToManyField(CustomUser, blank=True)
+    tags = ClusterTaggableManager(through=RoundPageTag, blank=True)
     
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
@@ -1707,6 +1844,7 @@ class RoundPage(BaseScoringPage):
             help_text="Select rounds to be associated with this page."
         ),
         FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
+        FieldPanel('tags'),
     ]
     
 class RoundPageMembers(Orderable):
@@ -1717,11 +1855,19 @@ class RoundPageMembers(Orderable):
         FieldPanel('round', heading="Record"),
     ]
     
+class RoundMembershipPageTag(TaggedItemBase):
+    content_object = ParentalKey(
+        'RoundMembershipPage',
+        related_name='tagged_roundmembershippage_items',
+        on_delete=models.CASCADE
+    )
+    
 class RoundMembershipPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
 
     authors = ParentalManyToManyField(CustomUser, blank=True)
+    tags = ClusterTaggableManager(through=RoundMembershipPageTag, blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
@@ -1735,6 +1881,7 @@ class RoundMembershipPage(BaseScoringPage):
             help_text="Select round memberships to be associated with this page."
         ),
         FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
+        FieldPanel('tags'),
     ]
 
 class  RoundMembershipPageMembers(Orderable):
@@ -1744,12 +1891,20 @@ class  RoundMembershipPageMembers(Orderable):
     panels = [
         FieldPanel('roundmembership', heading="Record"),
     ]
-    
+
+class ScorePageTag(TaggedItemBase):
+    content_object = ParentalKey(
+        'ScorePage',
+        related_name='tagged_scorepage_items',
+        on_delete=models.CASCADE
+    )
+
 class ScorePage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
     
     authors = ParentalManyToManyField(CustomUser, blank=True)
+    tags = ClusterTaggableManager(through=ScorePageTag, blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
@@ -1763,6 +1918,7 @@ class ScorePage(BaseScoringPage):
             help_text="Select scores to be associated with this page."
         ),
         FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
+        FieldPanel('tags'),
     ]
 
 class ScorePageMembers(Orderable):
@@ -1773,11 +1929,19 @@ class ScorePageMembers(Orderable):
         FieldPanel('score', heading="Record"),
     ]
 
+class CompetitionPageTag(TaggedItemBase):
+    content_object = ParentalKey(
+        'CompetitionPage',
+        related_name='tagged_competitionpage_items',
+        on_delete=models.CASCADE
+    )
+
 class CompetitionPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
     
     authors = ParentalManyToManyField(CustomUser, blank=True)
+    tags = ClusterTaggableManager(through=CompetitionPageTag, blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
@@ -1791,6 +1955,7 @@ class CompetitionPage(BaseScoringPage):
             help_text="Select competitions to be associated with this page."
         ),
         FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
+        FieldPanel('tags'),
     ]
     
 class CompetitionPageMembers(Orderable):
@@ -1801,11 +1966,19 @@ class CompetitionPageMembers(Orderable):
         FieldPanel('competition', heading="Record"),
     ]
     
+class CompetitionMembershipPageTag(TaggedItemBase):
+    content_object = ParentalKey(
+        'CompetitionMembershipPage',
+        related_name='tagged_competitionmembershippage_items',
+        on_delete=models.CASCADE
+    )
+
 class CompetitionMembershipPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
     
     authors = ParentalManyToManyField(CustomUser, blank=True)
+    tags = ClusterTaggableManager(through=CompetitionMembershipPageTag, blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
@@ -1819,6 +1992,7 @@ class CompetitionMembershipPage(BaseScoringPage):
             help_text="Select competition memberships to be associated with this page."
         ),
         FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
+        FieldPanel('tags'),
     ]
 
 class CompetitionMembershipPageMembers(Orderable):
@@ -1829,12 +2003,20 @@ class CompetitionMembershipPageMembers(Orderable):
         FieldPanel('competitionmembership', heading="Record"),
     ]
 
+class ScoringPageTag(TaggedItemBase):
+    content_object = ParentalKey(
+        'ScoringPage',
+        related_name='tagged_scoringpage_items',
+        on_delete=models.CASCADE
+    )
+
 class ScoringPage(BaseScoringPage):
 
     subtitle = models.CharField(max_length=100, blank=True)
     body = RichTextField(blank=True)
 
     authors = ParentalManyToManyField(CustomUser, blank=True)
+    tags = ClusterTaggableManager(through=ScoringPageTag, blank=True)
 
     grid = StreamField(
         [
@@ -1872,5 +2054,6 @@ class ScoringPage(BaseScoringPage):
         FieldPanel('body'),
         FieldPanel('grid'),
         FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
+        FieldPanel('tags'),
     ]
     

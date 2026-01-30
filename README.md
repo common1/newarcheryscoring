@@ -400,3 +400,11 @@ python manage.py startapp common
 ```bash
 ```
 
+## 36 Add tags field to pages
+
+```
+```
+
+```bash
+```
+

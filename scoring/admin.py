@@ -59,7 +59,7 @@ class ArcherAdmin(admin.ModelAdmin):
     ordering = ('last_name', 'first_name')
     fieldsets = (
         (None, {
-            'fields': ( 'union_number', 'last_name', 'first_name', 'middle_name', 'info',)
+            'fields': ( 'union_number', 'last_name', 'first_name', 'middle_name', 'archer_image', 'info',)
         }),
         ('Contact Information', {
             'classes': ['collapse'],
@@ -815,6 +815,7 @@ class ArcherSnippetViewSet(SnippetViewSet):
         FieldPanel('last_name'),
         FieldPanel('first_name'),
         FieldPanel('middle_name'),
+        FieldPanel('archer_image'),
         FieldPanel('union_number'),
         FieldPanel('info'),
         MultiFieldPanel(
