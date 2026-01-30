@@ -392,7 +392,7 @@ Person.objects.bulk_create([Person(name="Jieter"), Person(name="Bradley")])
 python manage.py startapp common
 ```
 
-## 35 Add authors field to pages
+## 35 scoring.models - Add authors field to pages
 
 ```
 ```
@@ -400,11 +400,19 @@ python manage.py startapp common
 ```bash
 ```
 
-## 36 Add tags field to pages
+## 36 scoring.models - Add tags field to pages
 
 ```
 ```
 
 ```bash
 ```
+## 37 scoring.models - Add image field to pages
+
+```
+```
+
+```bash
+```
+
 

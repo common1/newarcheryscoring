@@ -7,8 +7,6 @@ from wagtail.admin.panels import (
 )
 
 class HomePage(Page):   
-    body = RichTextField(blank=True)
-    
     parent_page_types = ['wagtailcore.Page']
 
     subpage_types = [
@@ -33,8 +31,21 @@ class HomePage(Page):
         'scoring.TeamPage',
     ]
 
+    subtitle = models.CharField(max_length=100, blank=True)
+    image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        help_text="Homepage image",
+    )
+    body = RichTextField(blank=True)
+
     # content_panels = Page.content_panels + ["body"]
     content_panels = Page.content_panels + [
+        FieldPanel('subtitle'),
+        FieldPanel('image'),
         FieldPanel('body'),
     ]
 

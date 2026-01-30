@@ -1342,6 +1342,14 @@ class ArcherPage(BaseScoringPage):
     # subpage_types = []
 
     subtitle = models.CharField(max_length=100, blank=True)
+    image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        help_text="ArcherPage image",
+    )
     body = RichTextField(blank=True)
    
     authors = ParentalManyToManyField(CustomUser, blank=True)
@@ -1349,6 +1357,7 @@ class ArcherPage(BaseScoringPage):
     
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
+        FieldPanel('image'),
         FieldPanel('body'),
         FieldPanel('is_active'),
         MultipleChooserPanel(
@@ -1384,10 +1393,19 @@ class DisciplinePage(BaseScoringPage):
     body = RichTextField(blank=True)
     
     authors = ParentalManyToManyField(CustomUser, blank=True)
+    image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        help_text="DisciplinePage image",
+    )
     tags = ClusterTaggableManager(through=DisciplinePageTag, blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
+        FieldPanel('image'),
         FieldPanel('body'),
         FieldPanel('is_active'),
         MultipleChooserPanel(
@@ -1418,6 +1436,14 @@ class DisciplineMembershipPageTag(TaggedItemBase):
     
 class DisciplineMembershipPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
+    image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        help_text="DisciplineMembershipPage image",
+    )
     body = RichTextField(blank=True)
     
     authors = ParentalManyToManyField(CustomUser, blank=True)
@@ -1425,6 +1451,7 @@ class DisciplineMembershipPage(BaseScoringPage):
 
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
+        FieldPanel('image'),
         FieldPanel('body'),
         FieldPanel('is_active'),
         MultipleChooserPanel(
@@ -1455,6 +1482,14 @@ class ClubPageTag(TaggedItemBase):
 
 class ClubPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
+    image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        help_text="ClubPage image",
+    )
     body = RichTextField(blank=True)
    
     authors = ParentalManyToManyField(CustomUser, blank=True)
@@ -1462,6 +1497,7 @@ class ClubPage(BaseScoringPage):
  
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
+        FieldPanel('image'),
         FieldPanel('body'),
         FieldPanel('is_active'),
         MultipleChooserPanel(
@@ -1492,6 +1528,14 @@ class ClubMembershipPageTag(TaggedItemBase):
        
 class ClubMembershipPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
+    image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        help_text="ClubMembershipPage image",
+    )
     body = RichTextField(blank=True)
     
     authors = ParentalManyToManyField(CustomUser, blank=True)
@@ -1499,6 +1543,7 @@ class ClubMembershipPage(BaseScoringPage):
 
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
+        FieldPanel('image'),
         FieldPanel('body'),
         FieldPanel('is_active'),
         MultipleChooserPanel(
@@ -1529,6 +1574,14 @@ class CategoryPageTag(TaggedItemBase):
 
 class CategoryPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
+    image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        help_text="CategoryPage image",
+    )
     body = RichTextField(blank=True)
     
     authors = ParentalManyToManyField(CustomUser, blank=True)
@@ -1536,6 +1589,7 @@ class CategoryPage(BaseScoringPage):
 
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
+        FieldPanel('image'),
         FieldPanel('body'),
         FieldPanel('is_active'),
         MultipleChooserPanel(
@@ -1566,6 +1620,14 @@ class AgeGroupPageTag(TaggedItemBase):
 
 class AgeGroupPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
+    image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        help_text="AgeGroupPage image",
+    )
     body = RichTextField(blank=True)
     
     authors = ParentalManyToManyField(CustomUser, blank=True)
@@ -1573,6 +1635,7 @@ class AgeGroupPage(BaseScoringPage):
 
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
+        FieldPanel('image'),
         FieldPanel('body'),
         FieldPanel('is_active'),
         MultipleChooserPanel(
@@ -1605,6 +1668,14 @@ class CategoryMembershipPageTag(TaggedItemBase):
 
 class CategoryMembershipPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
+    image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        help_text="ArcherPage image",
+    )
     body = RichTextField(blank=True)
     
     authors = ParentalManyToManyField(CustomUser, blank=True)
@@ -1612,6 +1683,7 @@ class CategoryMembershipPage(BaseScoringPage):
 
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
+        FieldPanel('image'),
         FieldPanel('body'),
         FieldPanel('is_active'),
         MultipleChooserPanel(
@@ -1642,6 +1714,14 @@ class TeamPageTag(TaggedItemBase):
 
 class TeamPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
+    image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        help_text="TeamPage image",
+    )
     body = RichTextField(blank=True)
     
     authors = ParentalManyToManyField(CustomUser, blank=True)
@@ -1649,6 +1729,7 @@ class TeamPage(BaseScoringPage):
 
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
+        FieldPanel('image'),
         FieldPanel('body'),
         FieldPanel('is_active'),
         MultipleChooserPanel(
@@ -1679,6 +1760,14 @@ class TeamMembershipPageTag(TaggedItemBase):
 
 class TeamMembershipPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
+    image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        help_text="TeamMembershipPage image",
+    )
     body = RichTextField(blank=True)
     
     authors = ParentalManyToManyField(CustomUser, blank=True)
@@ -1686,6 +1775,7 @@ class TeamMembershipPage(BaseScoringPage):
 
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
+        FieldPanel('image'),
         FieldPanel('body'),
         FieldPanel('is_active'),
         MultipleChooserPanel(
@@ -1716,6 +1806,14 @@ class ScoringSheetPageTag(TaggedItemBase):
 
 class ScoringSheetPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
+    image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        help_text="ScoringSheetPage image",
+    )
     body = RichTextField(blank=True)
     
     authors = ParentalManyToManyField(CustomUser, blank=True)
@@ -1723,6 +1821,7 @@ class ScoringSheetPage(BaseScoringPage):
 
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
+        FieldPanel('image'),
         FieldPanel('body'),
         FieldPanel('is_active'),
         MultipleChooserPanel(
@@ -1753,6 +1852,14 @@ class TargetFaceNameChoicePageTag(TaggedItemBase):
 
 class TargetFaceNameChoicePage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
+    image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        help_text="TargetFaceNameChoicePage image",
+    )
     body = RichTextField(blank=True)
 
     authors = ParentalManyToManyField(CustomUser, blank=True)
@@ -1760,6 +1867,7 @@ class TargetFaceNameChoicePage(BaseScoringPage):
 
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
+        FieldPanel('image'),
         FieldPanel('body'),
         FieldPanel('is_active'),
         MultipleChooserPanel(
@@ -1790,6 +1898,14 @@ class TargetFacePageTag(TaggedItemBase):
 
 class TargetFacePage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
+    image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        help_text="TargetFacePage image",
+    )
     body = RichTextField(blank=True)
     
     authors = ParentalManyToManyField(CustomUser, blank=True)
@@ -1797,6 +1913,7 @@ class TargetFacePage(BaseScoringPage):
 
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
+        FieldPanel('image'),
         FieldPanel('body'),
         FieldPanel('is_active'),
         MultipleChooserPanel(
@@ -1827,6 +1944,14 @@ class RoundPageTag(TaggedItemBase):
     
 class RoundPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
+    image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        help_text="RoundPage image",
+    )
     body = RichTextField(blank=True)
     
     authors = ParentalManyToManyField(CustomUser, blank=True)
@@ -1834,6 +1959,7 @@ class RoundPage(BaseScoringPage):
     
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
+        FieldPanel('image'),
         FieldPanel('body'),
         FieldPanel('is_active'),
         MultipleChooserPanel(
@@ -1864,6 +1990,14 @@ class RoundMembershipPageTag(TaggedItemBase):
     
 class RoundMembershipPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
+    image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        help_text="RoundMembershipPage image",
+    )
     body = RichTextField(blank=True)
 
     authors = ParentalManyToManyField(CustomUser, blank=True)
@@ -1871,6 +2005,7 @@ class RoundMembershipPage(BaseScoringPage):
 
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
+        FieldPanel('image'),
         FieldPanel('body'),
         FieldPanel('is_active'),
         MultipleChooserPanel(
@@ -1901,6 +2036,14 @@ class ScorePageTag(TaggedItemBase):
 
 class ScorePage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
+    image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        help_text="ScorePage image",
+    )
     body = RichTextField(blank=True)
     
     authors = ParentalManyToManyField(CustomUser, blank=True)
@@ -1908,6 +2051,7 @@ class ScorePage(BaseScoringPage):
 
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
+        FieldPanel('image'),
         FieldPanel('body'),
         FieldPanel('is_active'),
         MultipleChooserPanel(
@@ -1938,6 +2082,14 @@ class CompetitionPageTag(TaggedItemBase):
 
 class CompetitionPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
+    image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        help_text="CompetitionPage image",
+    )
     body = RichTextField(blank=True)
     
     authors = ParentalManyToManyField(CustomUser, blank=True)
@@ -1945,6 +2097,7 @@ class CompetitionPage(BaseScoringPage):
 
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
+        FieldPanel('image'),
         FieldPanel('body'),
         FieldPanel('is_active'),
         MultipleChooserPanel(
@@ -1975,6 +2128,14 @@ class CompetitionMembershipPageTag(TaggedItemBase):
 
 class CompetitionMembershipPage(BaseScoringPage):
     subtitle = models.CharField(max_length=100, blank=True)
+    image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        help_text="CompetitionMembershipPage image",
+    )
     body = RichTextField(blank=True)
     
     authors = ParentalManyToManyField(CustomUser, blank=True)
@@ -1982,6 +2143,7 @@ class CompetitionMembershipPage(BaseScoringPage):
 
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
+        FieldPanel('image'),
         FieldPanel('body'),
         FieldPanel('is_active'),
         MultipleChooserPanel(
@@ -2011,8 +2173,15 @@ class ScoringPageTag(TaggedItemBase):
     )
 
 class ScoringPage(BaseScoringPage):
-
     subtitle = models.CharField(max_length=100, blank=True)
+    image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        help_text="ScoringPage image",
+    )
     body = RichTextField(blank=True)
 
     authors = ParentalManyToManyField(CustomUser, blank=True)
@@ -2051,6 +2220,7 @@ class ScoringPage(BaseScoringPage):
    
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
+        FieldPanel('image'),
         FieldPanel('body'),
         FieldPanel('grid'),
         FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
